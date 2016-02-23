@@ -52,11 +52,7 @@
   background-size: calc(160%);
   background-repeat: no-repeat;
   box-sizing: content-box;
-<<<<<<< HEAD
   background-image: url("/static/images/icon-list.png"); }
-=======
-  background-image: url("../../images/icon-list.png"); }
->>>>>>> 91027ff1ac3441c772c98dea723ff1622ad2862a
 
 .jin-product {
   margin-left: 15px;
@@ -154,11 +150,7 @@
   background-size: calc(100%);
   background-repeat: no-repeat;
   box-sizing: content-box;
-<<<<<<< HEAD
   background-image: url("/static/images/shop-nav.png"); }
-=======
-  background-image: url("../../images/shop-nav.png"); }
->>>>>>> 91027ff1ac3441c772c98dea723ff1622ad2862a
 
 .credits-exchange-list > li {
   float: left;
@@ -202,11 +194,7 @@
   top: -30px;
   background-size: cover;
   box-sizing: content-box;
-<<<<<<< HEAD
   background-image: url("/static/images/deve-alert.png"); }
-=======
-  background-image: url("../../images/deve-alert.png"); }
->>>>>>> 91027ff1ac3441c772c98dea723ff1622ad2862a
 
 .developing-panel .text {
   width: 85%;
@@ -246,11 +234,7 @@
   margin-left: auto;
   margin-right: auto;
   background-size: cover;
-<<<<<<< HEAD
   background-image: url("/static/images/null-data.png"); }
-=======
-  background-image: url("../../images/null-data.png"); }
->>>>>>> 91027ff1ac3441c772c98dea723ff1622ad2862a
 
 .discover-credit-top .credit-lately-nav-btn {
   height: 34px;

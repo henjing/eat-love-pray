@@ -2,13 +2,8 @@
 @media (min-width: 320px) {
   @font-face {
     font-family: "k-iconfont";
-<<<<<<< HEAD
     src: url(/static/fonts/jin/iconfont.eot);
     src: url(/static/fonts/jin/iconfont.eot?#iefix) format("embedded-opentype"), url(/static/fonts/jin/iconfont.woff) format("woff"), url(/static/fonts/jin/iconfont.ttf) format("truetype"), url(/static/fonts/jin/iconfont.svg#iconfont) format("svg"); }
-=======
-    src: url(../../fonts/jin/iconfont.eot);
-    src: url(../../fonts/jin/iconfont.eot?#iefix) format("embedded-opentype"), url(../../fonts/jin/iconfont.woff) format("woff"), url(../../fonts/jin/iconfont.ttf) format("truetype"), url(../../fonts/jin/iconfont.svg#iconfont) format("svg"); }
->>>>>>> 91027ff1ac3441c772c98dea723ff1622ad2862a
   .k-icon,
   [class^=k-icon-] {
     font-family: "k-iconfont" !important;
@@ -87,11 +82,7 @@
     position: relative;
     width: 100%;
     padding-top: 60%;
-<<<<<<< HEAD
     background-image: url(/static/images/information/user-bg.png);
-=======
-    background-image: url(../../images/information/user-bg.png);
->>>>>>> 91027ff1ac3441c772c98dea723ff1622ad2862a
     background-position: center;
     background-size: cover;
     box-sizing: border-box; }
@@ -207,11 +198,7 @@
     height: 25px;
     background-size: 1000%;
     background-size: calc(1000%);
-<<<<<<< HEAD
     background-image: url(/static/images/information/main-nav-icon.png);
-=======
-    background-image: url(../../images/information/main-nav-icon.png);
->>>>>>> 91027ff1ac3441c772c98dea723ff1622ad2862a
     background-repeat: no-repeat;
     box-sizing: content-box; }
   .user-all-footer-main {
