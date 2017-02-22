@@ -27,23 +27,23 @@ const CDN = '/jin2.0';
 
 // build的路径
 let huangXingBin = {
-    html: '/Users/gttx/Documents/jin-wechat-test/root/application/xiaojin/view/',
-    resources: '/Users/gttx/Documents/jin-wechat-test/root/public/jin2.0/'
+    html: '/Users/gttx/Documents/jin-wechat-test/root/application/xiaojin/views/',
+    resources: '/Users/gttx/Documents/jin-wechat-test/root/public/static/'
 };
 let huangEnJing = {
-    html: '',
-    resources: ''
+    html: '/Users/enjing/Documents/myWebProject/heshi/heshi_api/application/index/views/',
+    resources: '/Users/enjing/Documents/myWebProject/heshi/heshi_api/public/static/'
 };
 let qinHaiLang = {
     html: '',
     resources: ''
 };
 let luYuQiu = {
-    html: '',
-    resouces: ''
+	html: '../kongdian_hs/application/index/view',
+	resources: '../kongdian_hs/public/static/'
 };
 // 确保是自己的路径
-let targetRoute = huangXingBin;
+let targetRoute = luYuQiu;
 
 // 下面就是dirty work, get your hands dirty!
 var webpackConfig = {
