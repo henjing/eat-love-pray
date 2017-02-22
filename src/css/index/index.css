@@ -43,6 +43,7 @@
   background-size: cover; }
 
 .home-log-bg {
+<<<<<<< HEAD
   background-image: url("/static/images/home-banner.png"); }
 
 .home-invite-bg {
@@ -50,6 +51,15 @@
 
 .home-accept-bg {
   background-image: url("/static/images/invite-banner.png"); }
+=======
+  background-image: url("../../images/home-banner.png"); }
+
+.home-invite-bg {
+  background-image: url("../../images/invite-pre.png"); }
+
+.home-accept-bg {
+  background-image: url("../../images/invite-banner.png"); }
+>>>>>>> 91027ff1ac3441c772c98dea723ff1622ad2862a
 
 .home-data {
   padding: 10px 0; }
@@ -147,7 +157,11 @@
   background-size: calc(100%);
   background-repeat: no-repeat;
   box-sizing: content-box;
+<<<<<<< HEAD
   background-image: url("/static/images/icon-list.png"); }
+=======
+  background-image: url("../../images/icon-list.png"); }
+>>>>>>> 91027ff1ac3441c772c98dea723ff1622ad2862a
 
 .invite-info-list > li {
   width: 88%;
@@ -189,7 +203,11 @@
   width: 100%;
   padding-top: 35%;
   background-size: cover;
+<<<<<<< HEAD
   background-image: url("/static/images/light.png"); }
+=======
+  background-image: url("../../images/light.png"); }
+>>>>>>> 91027ff1ac3441c772c98dea723ff1622ad2862a
 
 .invite-modal .packet {
   width: 82%;
