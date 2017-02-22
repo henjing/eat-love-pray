@@ -27,11 +27,11 @@ const CDN = '/jin2.0';
 
 // build的路径
 let huangXingBin = {
-    html: '/Users/gttx/Documents/jin-wechat-test/root/application/xiaojin/views/',
+    html: '/Users/gttx/Documents/jin-wechat-test/root/application/xiaojin/view/',
     resources: '/Users/gttx/Documents/jin-wechat-test/root/public/static/'
 };
 let huangEnJing = {
-    html: '/Users/enjing/Documents/myWebProject/heshi/heshi_api/application/index/views/',
+    html: '/Users/enjing/Documents/myWebProject/heshi/heshi_api/application/index/view/',
     resources: '/Users/enjing/Documents/myWebProject/heshi/heshi_api/public/static/'
 };
 let qinHaiLang = {
