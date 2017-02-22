@@ -39,11 +39,11 @@ let qinHaiLang = {
     resources: ''
 };
 let luYuQiu = {
-    html: '',
-    resources: ''
+	html: '../kongdian_hs/application/index/view/',
+	resources: '../kongdian_hs/public/static/'
 };
 // 确保是自己的路径
-let targetRoute = huangXingBin;
+let targetRoute = luYuQiu;
 
 // 下面就是dirty work, get your hands dirty!
 var webpackConfig = {

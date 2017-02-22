@@ -1,0 +1,75 @@
+.graphic img {
+  width: 100%; }
+
+fieldset, img {
+  border: 0; }
+
+.twxq {
+  bottom: 10px;
+  right: 5px;
+  z-index: 99; }
+
+.abs {
+  position: absolute; }
+
+.twxq > a {
+  display: -webkit-box;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  -webkit-box-align: center;
+  -webkit-box-pack: center; }
+
+.twxq-yuan {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  border: 1px solid #000000; }
+
+.banner .swiper-slide {
+  padding-top: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+/**/
+.bottom-btn {
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0; }
+
+.display-box {
+  display: -webkit-box;
+  -webkit-box-align: center;
+  box-align: center; }
+
+.bg-white {
+  background-color: #fff !important; }
+
+body, .container {
+  max-width: 480px;
+  min-width: 320px;
+  margin: 0 auto; }
+
+.bottom-btn > li {
+  width: 48%;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 4px; }
+
+.bottom-btn-r {
+  color: #fff;
+  background-color: #ff3e2a; }
+
+.bottom-btn-l {
+  color: #000;
+  border: 1px solid #ddd; }
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, header, hgroup, nav, section, article, aside, footer, figure, figcaption, menu, button {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
