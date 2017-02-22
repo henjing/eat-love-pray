@@ -1,7 +1,7 @@
 //import '../mock/test.js';
 import '../lib/layer.js';
 import '../lib/layer.css';
-import { XHRPost } from '../ajax.js';
+import { XHRPost,XHRGet } from '../ajax.js';
 import { countdown } from '../tools.js';
 
 var login = new Vue({
@@ -29,7 +29,7 @@ var login = new Vue({
 				cellphone: encrypt(this.phone),
 				exist: encrypt('0')
 			}
-			XHRPost('/oriental_treasure/register_and_login/sendPhoneCode', data, function (response) {
+			XHRPost('/api/registerAndLogin/sendPhoneCode', data, function (response) {
 				if (response.data.status === 1) {
 					const _this = this;
 					countdown(60,function (time) {
@@ -52,8 +52,7 @@ var login = new Vue({
 		},
 		goToRegister: function () {
 			var config = {
-				url: '/oriental_treasure/register_and_login/goRegister',
-//				url: '/api_login',
+				url: '/api/registerAndLogin/goRegister',
 				data: {
 					cellphone: encrypt(this.phone),
 					verify_code: '',
@@ -87,7 +86,14 @@ var login = new Vue({
 						content: response.data.info,
 						time: 1.5,
 						end: function () {
-							window.location.href = '/xiaojin/index/index.html';
+							XHRGet('/oriental_treasure/Wechat/getUserOpenId', {}, function (response) {
+								layer.closeAll();
+								if (response.data.status === 1) {
+									window.location.href = response.data.data;
+								} else {
+									window.location.href = '/index/store/index.html';
+								}
+							}.bind(this));
 						}
 					});
 

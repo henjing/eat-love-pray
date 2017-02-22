@@ -1,7 +1,7 @@
 //import '../mock/test.js';
 import '../lib/layer.js';
 import '../lib/layer.css';
-import { XHRPost } from '../ajax.js';
+import { XHRPost,XHRGet } from '../ajax.js';
 
 var login = new Vue({
 	el: '#login',
@@ -13,8 +13,7 @@ var login = new Vue({
 	methods: {
 		goToLogin: function () {
 			var config = {
-				url: '/oriental_treasure/register_and_login/login',
-//				url: '/api_login',
+				url: '/api/registerAndLogin/login',
 				data: {
 					cellphone: '',
 					password: ''
@@ -42,7 +41,14 @@ var login = new Vue({
 				console.log(response)
 				layer.close(load);
 				if (response.data.status === 1) {
-					window.location.href = '/xiaojin/index/index.html'
+					XHRGet('/oriental_treasure/Wechat/getUserOpenId', {}, function (response) {
+						layer.close(load);
+						if (response.data.status === 1) {
+							window.location.href = response.data.data;
+						} else {
+							window.location.href = '/index/store/index.html';
+						}
+					}.bind(this));
 				} else {
 					this.errorTip(response.data.info);
 				}

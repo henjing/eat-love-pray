@@ -23,7 +23,7 @@ const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const revCollector = require('gulp-rev-collector');
 const exec = require('child_process').exec;
-const CDN = '/jin2.0';
+const CDN = '/static';
 
 // build的路径
 let huangXingBin = {
