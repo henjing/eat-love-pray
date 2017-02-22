@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="author" content="ISUX"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>主要商品</title>
+    <link rel="stylesheet" href="../../css/frozen.css">
+    <link rel="stylesheet" href="../../css/jin-base.css"/>
+    <link rel="stylesheet" href="../../css/main/index.css"/>
+    <link rel="stylesheet" href="../../css/swiper-3.3.0.min.css"/>
+
+</head>
+<body>
+<div class="k-wrap margin-b-10 top-display-n">
+    <div class="banner">
+        <div class="swiper-container">
+            <ul class="swiper-wrapper">
+                <li class="swiper-slide" style="background-image: url('../../images/d-header.jpg')"></li>
+                <li class="swiper-slide" style="background-image: url('../../images/d-header.jpg')"></li>
+                <li class="swiper-slide" style="background-image: url('../../images/d-header.jpg')"></li>
+            </ul>
+            <div class="swiper-pagination"></div>
+            <div class=" twxq abs"><a href="#img" class="line-h-nor font12 twxq-yuan ui-txt-info">图文<br/>详情</a></div>
+        </div>
+
+    </div>
+    <!--产品说明信息-->
+    <ul class="ui-whitespace w-detail-info ui-row-flex ui-border-b">
+        <li class="display-box ui-col ui-col-2 ui-txt-warning">￥<span class="font20 font-w600">100.00</span>/<i class="font12">件</i></li>
+        <li class="ui-col text-right">
+            <div class="font18line-h-12">186</div>
+            <div class="font12 ui-txt-infoline-h-12">累计销量</div>
+        </li>
+    </ul>
+    <!--产品介绍信息-->
+    <div class="ui-tab detail-intro bg-white ui-border-b">
+        <ul class="ui-whitespace margin-b-10">
+            <li class="k-list-group">体一杯茶品人生沉浮，平常心造万千世界！</li>
+            <li>
+                <!--line-clamp line-clamp-4-->
+                <div class=" unfold">
+                    <p class="font14 ui-txt-info line-clamp line-clamp-4">
+                        广西六堡茶历史悠久，早在清朝嘉庆年间，就被列为全国名茶之一，主产于广西梧州市苍梧县六堡乡，茶叶条索紧细圆直、色泽黑褐光润，茶汤红浓明亮，凭借其独特的槟榔香气、越陈越佳的品质特征享誉海内外。时常饮用六堡茶，能起到消暑袪湿、明目清心、帮助消化等功效，适合高血压、高血脂、高血糖、尿酸高引起的痛风症人群饮用。
+                    </p>
+                </div>
+            </li>
+            <li><h3 class="ui-txt-warning margin-t-10" id="unfold">展开</h3></li>
+        </ul>
+    </div>
+    <!--地址-->
+
+    <div class="ui-list" id="img">
+        <div class="graphic margin-t-10">
+            <img src="../../images/d-header.jpg">
+            <img src="../../images/d-bingcha.jpg">
+        </div>
+    </div>
+    <ul class="ui-whitespace bottom-btn ui-justify-flex display-box bg-white container">
+        <li class="bottom-btn-l" id="openAddCartDialog">加入购物车</li>
+        <li class="bottom-btn-r type" id="openBuyDialog">立即购买</li>
+    </ul>
+</div>
+
+
+<!--购买弹框-->
+<div class="de-actionsheet container">
+    <div id="addCartDialog" class="actionsheet-cnt c-up-before payment container" gid="2">
+        <ul class="ui-list">
+            <li>
+                <div class="k-avatar ui-list-thumb">
+                    <span tag='goodsImg' style="background-image:url('../../images/d-header.jpg')"></span>
+                </div>
+                <div class="ui-list-info font14" id="bank1">
+                    <p class="ui-nowrap ui-txt-muted padding-r-15 font14">空店大饼茶</p>
+
+                    <div class="ui-txt-warning font14">￥100.00</div>
+                </div>
+                <div class="ui-txt-info padding-t-15 padding-r-10" id="addCartDialogClose"><span class="ui-icon-close-page font28"></span>
+                </div>
+            </li>
+        </ul>
+
+        <div class="ui-form-item ui-border-b bg-white ui-txt-info">
+            <label>数量</label>
+            <div class="goods-number pull-right clearfix ui-txt-info">
+                <span class="reduce"><i class="k-icon-quxiao"></i></span>
+                <input tag='number' class="number padding-l-0" name="" type="tel" value="1">
+                <span class="add"><i class="k-icon-jiaguanzhu"></i></span>
+            </div>
+        </div>
+        <div class="ui-btn-wrap ui-list">
+            <button class="ui-btn-lg ui-btn-danger buyNowEnter">立即购买</button>
+            <button class="ui-btn-lg ui-btn-danger addCartEnter" style="display: none">加入购物车</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
