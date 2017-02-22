@@ -1,26 +1,37 @@
 @charset "UTF-8";
 @media (min-width: 320px) {
   [v-cloak] {
-    display: none; }
+    display: none;
+  }
+
   .k-list-group {
     margin-top: 15px;
-    margin-bottom: 15px; }
+    margin-bottom: 15px;
+  }
+
   .k-list-thumb-s {
     width: 22px;
-    height: 22px; }
-  .bor {
-    border: 3px solid #fff; }
-  .mine-header {
-    padding: 10px 0; }
+    height: 22px;
+  }
+  .bor{
+    border:3px solid #fff;
+  }
+  .mine-header{
+  padding:10px 0;
+  }
   .k-list-thumb-bg span {
-    background-size: 540%; }
+    background-size: 540%;
+  }
+
   .ui-list-thumb > span, .ui-list-thumb-s > span, .ui-list-img > span, .ui-list-icon > span {
     display: block;
     width: 100%;
     height: 100%;
     z-index: 1;
     background-repeat: no-repeat;
-    -webkit-background-size: cover; }
+    -webkit-background-size: cover;
+  }
+
   .asset-btn {
     width: 45%;
     height: 35px;
@@ -30,14 +41,21 @@
     border-radius: 100px;
     box-shadow: 0 2px 5px rgba(240, 73, 72, 0.3);
     background-image: linear-gradient(90deg, #6acbfe 0%, #2377f3 100%);
-    margin: 0 auto; }
+    margin: 0 auto;
+  }
+
   .vip {
     background: #fbd12d;
     border-radius: 5px;
-    color: #fff; }
+    color: #fff;
+  }
+
+
+
   body {
     width: 100%;
-    background: #f4f3f3; }
+    background:#f4f3f3;
+  }
   /**/
   ul, p, h1, h2, h3, h4, h5, h6, dl, dt {
     margin: 0;
@@ -61,6 +79,7 @@
     margin: 30px 0;
     padding: 0 20px;
     border-right: 1px solid #edecf3; }
+
   #renmai ul li div span {
     background-size: 100% 100%; }
   input {
@@ -79,6 +98,9 @@
     height: 70px;
     -webkit-border-radius: 200px;
     overflow: hidden; }
+
+
+
   .user-all-footer-main {
     margin: 30px 0;
     padding: 0 20px;
@@ -219,15 +241,14 @@ button {
 
 .dis_p {
   display: block; }
-
 /*键的颜色*/
 .ui-btn-primary {
   background-color: #ffcb00;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #ffcb00), to(#ffcb66));
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(.5,#ffcb00),to(#ffcb66));
   color: #fff;
   border-color: #ffcb00;
-  background-clip: padding-box; }
-
+  background-clip: padding-box;
+}
 .ui-btn-primary:not(.disabled):not(:disabled):active,
 .ui-btn-primary.active {
   background: #FFCB00;
@@ -235,24 +256,23 @@ button {
   color: rgba(255, 255, 255, 0.5);
   -webkit-background-clip: padding-box;
   background-clip: padding-box; }
-
 /*修改支付密码页面*/
 .kd-empty .logo, .notkiong-tip .logo {
   margin: 0 auto;
   height: 100px;
-  width: 100px; }
-
+  width: 100px;
+}
 .notkiong-tip .logo i {
   line-height: 100px;
-  font-size: 100px; }
-
+  font-size: 100px;
+}
 .ui-btn-primary:before {
-  border: 1px solid #ffcb00; }
-
+  border: 1px solid #ffcb00;
+}
 .id-alert {
   width: 100px;
   height: 120px;
-  background: url(/static/images/id-alert.png);
+  background: url(../../images/id-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 85px;
@@ -261,7 +281,7 @@ button {
 .bank-alert {
   width: 120px;
   height: 120px;
-  background: url(/static/images/bank-alert.png);
+  background: url(../../images/bank-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 75px;
@@ -270,16 +290,17 @@ button {
 .know-alert {
   width: 120px;
   height: 120px;
-  background: url(/static/images/deve-alert.png);
+  background: url(../../images/deve-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 75px;
   top: -30px; }
-
-.ui-avatar img {
+.ui-avatar  img {
   width: 100%;
   height: 100%;
   display: block;
   -webkit-border-radius: 200px;
   overflow: hidden;
-  background-size: 100% 100%; }
+  background-size:100% 100% ;
+}
+

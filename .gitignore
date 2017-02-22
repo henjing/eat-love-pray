@@ -47,3 +47,8 @@ public
 
 # 构建时产生的临时文件夹
 src/tmp
+
+#使用yarn时产生的lock文件
+Yarn.lock
+
+.project
