@@ -1,3 +1,7 @@
-/**
- * Created by gttx on 17/2/22.
- */
+import Vue from 'vue';
+import Connection from '../../components/connection/connection-connection-connection.vue';
+
+window.app = new Vue({
+    el: '#container',
+    render: h => h(Connection)
+});

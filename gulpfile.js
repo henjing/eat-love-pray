@@ -23,15 +23,15 @@ const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const revCollector = require('gulp-rev-collector');
 const exec = require('child_process').exec;
-const CDN = '/jin2.0';
+const CDN = '/static';
 
 // build的路径
 let huangXingBin = {
-    html: '/Users/gttx/Documents/jin-wechat-test/root/application/xiaojin/views/',
-    resources: '/Users/gttx/Documents/jin-wechat-test/root/public/static/'
+    html: '/Users/gttx/Documents/6464/root/application/index/view/',
+    resources: '/Users/gttx/Documents/6464/root/public/static/'
 };
 let huangEnJing = {
-    html: '/Users/enjing/Documents/myWebProject/heshi/heshi_api/application/index/views/',
+    html: '/Users/enjing/Documents/myWebProject/heshi/heshi_api/application/index/view/',
     resources: '/Users/enjing/Documents/myWebProject/heshi/heshi_api/public/static/'
 };
 let qinHaiLang = {
@@ -40,10 +40,10 @@ let qinHaiLang = {
 };
 let luYuQiu = {
     html: '',
-    resouces: ''
+    resources: ''
 };
 // 确保是自己的路径
-let targetRoute = huangEnJing;
+let targetRoute = huangXingBin;
 
 // 下面就是dirty work, get your hands dirty!
 var webpackConfig = {
