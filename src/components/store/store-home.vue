@@ -71,11 +71,13 @@
 			StoreFooter
 		},
 		created() {
-			var mySwiper = new Swiper ('.swiper-home-hook', {
-	            loop: true,
-	            // 如果需要分页器
-	            pagination: '.swiper-pagination',
-	        });	
+			this.$nextTick(function () {
+				var mySwiper = new Swiper ('.swiper-home-hook', {
+		            loop: true,
+		            // 如果需要分页器
+		            pagination: '.swiper-pagination',
+		        });	
+			})
 		},
 		methods: {
 			// 查看详情

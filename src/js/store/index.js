@@ -5,8 +5,6 @@ import storeHome from 'components/store/store-home.vue';
 
 import '../lib/layer.js';
 import '../lib/layer.css';
-import "../lib/swiper-3.3.0.min";
-import "../lib/swiper-3.3.0.min.css";
 
 const routes = [
     {path: '/store', component: storeHome},
