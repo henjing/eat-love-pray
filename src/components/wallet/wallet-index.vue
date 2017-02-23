@@ -101,7 +101,7 @@
     }
 </style>
 <script>
-    import { XHRGet } from './../../js/ajax';
+        import { XHRGet } from './../../js/ajax';
     export default{
         data(){
             return {

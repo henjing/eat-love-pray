@@ -11,23 +11,23 @@
                 </p>
                 <div class="text-right">
                     <div class="font14 ui-txt-warning">￥{{orderData.price}}</div>
-                    <div class="font10 color-9b">x{{number.plan}}</div>
+                    <div class="font10 color-9b">x{{number}}</div>
                 </div>
             </li>
         </ul>
         <div class="jin-justify-flex ui-whitespace padding-t-10 padding-b-10 bg-white">
             <div class="font14 color-9b">合计</div>
-            <div class="font14 ui-txt-warning">￥{{orderData.price * number.plan}}</div>
+            <div class="font14 ui-txt-warning">￥{{orderData.price}}</div>
         </div>
         <div class="store-submit-btn jin-box-end ui-whitespace bg-white">
-            <div class="">合计:<span class="ui-txt-warning">￥{{orderData.price * number}}</span></div>
+            <div class="">合计:<span class="ui-txt-warning">￥{{orderData.total_price}}</span></div>
             <div class="order-btn margin-l-15 font14" @click="onBank">提交订单</div>
         </div>
     </div>
         <store-bank
                 v-if="bank"
                 v-bind:state-bank="bank"
-                v-bind:state-id="goods_id"
+                v-bind:state-order-id="goods_order.order_id"
                 @on-close="onSelectBank"
         >
         </store-bank>
@@ -69,8 +69,10 @@
             return{
                 mod:"",
                 bank:false,
-                number:this.$route.query,
-                orderData:""
+                number:this.$route.query.plan,
+                orderData:"",
+                goods_order:"",
+                goods_id:this.$route.query.gid
             }
         },
         props:['state-buy'],
@@ -94,7 +96,15 @@
             },
 //            提交订单
             onBank(){
-                this.bank=true;
+                var id=encrypt(String(this.goods_id));
+                var num=encrypt(String(this.number));
+                XHRPost('/api/Shop/commitOrder',{goods_id:id, goods_number:num},function (response) {
+                    if (response.data.status==1){
+                        this.goods_order=response.data.data;
+                        this.bank=true;
+                    }
+                }.bind(this));
+
             },
             onSelectBank(){
                 this.bank=false;
@@ -102,7 +112,7 @@
             goodsDetail(){
                 var load = layer.open({ type: 2,shadeClose: false})
                 XHRGet('/api/Shop/getCommitOrderData',{},function (response) {
-                    this.orderData=response;
+                    this.orderData=response.data.data;
                     console.log(this.orderData)
                     layer.close(load);
                 }.bind(this));

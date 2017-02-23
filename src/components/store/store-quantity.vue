@@ -75,11 +75,10 @@
             },
 //            提交购买
             onOrder(){
-                let num =String(this.number);
-                console.log(num)
-                XHRPost('/api/Shop/buyGoods',{goods_id:encrypt(this.goods_id), goods_number:encrypt(num)},function (response) {
+                let data={goods_id:encrypt(String(this.goods_id)), goods_number:encrypt(String(this.number))};
+                XHRPost('/api/Shop/buyGoods',data,function (response) {
                       if (response.status = 1){
-                           this.$router.push({path:'/store/storeOrder',query:{plan:this.number}})
+                           this.$router.push({path:'/store/storeOrder',query:{plan:this.number,gid:this.goods_id}})
                       }
                 }.bind(this));
             }

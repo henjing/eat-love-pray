@@ -4,14 +4,14 @@
         <div  class="actionsheet-cnt c-up-before payment container " :class="{'c-up-move':mod}">
             <div class="bank-title text-center font12">选择支付方式</div>
             <ul class="ui-list bank-list">
-                <li class="ui-border-b" @click="onPay">
+                <li class="ui-border-b" @click="onPayKong()">
                     <div class="icon-list">
                         <i class="jin-icon jin-icon-pay color-ff3 font24"></i>
                         <div class="margin-l-10 font14 color-499">钱包支付</div>
                     </div>
-                    <div class="font12 color-9b">可用余额：￥100.00</div>
+                    <div class="font12 color-9b">可用余额：￥{{bankData.can_use_money}}</div>
                 </li>
-                <li class="ui-border-b" @click="onPay">
+                <li class="ui-border-b" @click="onPayWei()">
                     <div class="icon-list">
                           <i class="jin-icon jin-icon-weixinzhifu color-13B font24"></i>
                         <div class="margin-l-10 font14 color-499">微信支付</div>
@@ -49,17 +49,21 @@
     }
 </style>
 <script>
+    import {XHRPost} from './../../js/ajax';
+    import storeBank from 'components/store/store-bank.vue';
     export default{
         data(){
             return{
                 mod:false,
                 goods:this.stateId,
-                bankData:""
+                bankData:"",
+                orderId:this.stateOrderId,
+                switch:false
             }
         },
         components:{
         },
-        props:['state-bank', 'state-id'],
+        props:['state-bank', 'state-order-id'],
         created: function() {
             this.payData();
             let _this = this;
@@ -76,14 +80,13 @@
                 }, 300);
             },
             payData(){
-                var load = layer.open({ type: 2,shadeClose: false})
-                XHRPost('/api/Shop/payData',{goods_id:encrypt(this.goods)},function (response) {
-                    this.bankData=response;
-                    console.log(this.bankData)
-                    layer.close(load);
+                XHRPost('/api/Shop/payStyleData',{order_id:encrypt(String(this.orderId))},function (response) {
+                    this.bankData=response.data.data;
+                    console.log("dd", this.bankData)
                 }.bind(this));
             },
-            onPay(){
+            onPayKong(){
+                var _this = this;
                 this.close();
                 layer.open({
                     title: '请输入交易密码',
@@ -94,9 +97,24 @@
                         layer.closeAll()
                     },
                     yes: function () {
-                        XHRPost('/api/Shop/kongdianPay',{goods_id:encrypt(this.goods)},function (response) {
-                            layer.close(load);
-                            this.$router.push({path:'/store/storeOrderDetails'})
+                        if (this.switch) return false;
+                        this.switch = true;
+                        const postData = {
+                            order_id: encrypt(String(_this.orderId)),
+                            pay_password: encrypt(String(document.getElementById('password').value))
+                        };
+                        XHRPost('/api/Shop/kongdianPay',postData,function (response) {
+                              if (response.data.status == 0) {
+                                    layer.open({
+                                        content: response.data.info,
+                                        time: 2,
+                                        style: 'background-color:rgba(0,0,0,.8);color:#fff'
+                                    });
+                                } else {
+                                  layer.closeAll()
+                                  _this.$router.push({path:'/store/storeOrderDetails'})
+                                }
+                            this.switch = false;
                         }.bind(this));
                     }
                 })

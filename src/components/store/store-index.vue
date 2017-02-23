@@ -1,7 +1,7 @@
 <template>
     <div class="jin-wrap margin-b-10 top-display-n">
     <div class="banner">
-        <div class="swiper-container">
+        <div class="swiper-container swiper-detail-hook">
             <ul class="swiper-wrapper">
                 <li class="swiper-slide" style="background-image: url(http://placeholder.qiniudn.com/190x284);"></li>
                 <li class="swiper-slide" style="background-image: url(http://placeholder.qiniudn.com/190x284);"></li>
@@ -67,9 +67,16 @@
                 unfold:true,
                 buy:false,
                 goodsText:false,
-                goods_id:"1"
+                goods_id:this.$route.query.id
             }
         },
+        created() {
+			var mySwiper = new Swiper ('.swiper-detail-hook', {
+	            loop: true,
+	            // 如果需要分页器
+	            pagination: '.swiper-pagination',
+	        });
+		},
         components:{
             storeQuantity
         },
@@ -89,7 +96,7 @@
             },
             goodsDetail(){
                 var load = layer.open({ type: 2,shadeClose: false})
-                var good = encrypt(this.goods_id);
+                var good = encrypt(String(this.goods_id));
                 XHRPost('/api/Shop/goodsDetail', {goods_id:good},function (response) {
                     let _data = response.data.data[0];
                     this.goodsData=_data;
