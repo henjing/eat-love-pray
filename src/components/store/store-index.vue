@@ -3,11 +3,14 @@
     <div class="banner">
         <div class="swiper-container swiper-detail-hook">
             <ul class="swiper-wrapper">
-                <li class="swiper-slide" style="background-image: url(http://placeholder.qiniudn.com/190x284);"></li>
-                <li class="swiper-slide" style="background-image: url(http://placeholder.qiniudn.com/190x284);"></li>
+                <li class="swiper-slide" :style="{backgroundImage:'url(/static/images/pro-01.png)'}"></li>
+                <li class="swiper-slide" :style="{backgroundImage:'url(/static/images/pro-02.png)'}"></li>
+                 <li class="swiper-slide" :style="{backgroundImage:'url(/static/images/pro-03.png)'}"></li>
             </ul>
+            <div class=" twxq abs">
+                <a href="javascript:void(0)"  @click="goAnchor('#img')" class="line-h-nor font12 twxq-yuan ui-txt-info">图文<br/>详情</a>
+            </div>
             <div class="swiper-pagination"></div>
-            <div class=" twxq abs"><a href="#img" class="line-h-nor font12 twxq-yuan ui-txt-info">图文<br/>详情</a></div>
         </div>
 
     </div>
@@ -33,7 +36,7 @@
             </li>
             <li>
                 <h3 class="ui-txt-warning margin-t-10" @click="onUnfold"
-                >{{unfold? "展开" : "收起"}}</h3>
+                v-if="goodsText">{{unfold? "展开" : "收起"}}</h3>
             </li>
         </ul>
     </div>
@@ -67,26 +70,32 @@
                 unfold:true,
                 buy:false,
                 goodsText:false,
-                goods_id:this.$route.query.id
+                goods_id:this.$route.query.id,
+                ss:"#img"
             }
         },
         created() {
-			var mySwiper = new Swiper ('.swiper-detail-hook', {
-	            loop: true,
-	            // 如果需要分页器
-	            pagination: '.swiper-pagination',
-	        });
+            this.$nextTick(function () {
+                var mySwiper = new Swiper ('.swiper-detail-hook', {
+                    loop: true,
+                    // 如果需要分页器
+                    pagination: '.swiper-pagination',
+                });
+			});
+            this.goodsDetail()
 		},
         components:{
             storeQuantity
-        },
-        created(){
-            this.goodsDetail()
         },
         methods:{
             onUnfold(){
                 console.log(this.unfold)
                 this.unfold = !this.unfold;
+            },
+            goAnchor(selector) {
+                console.log(selector)
+                var anchor = this.$el.querySelector(selector)
+                document.body.scrollTop = anchor.offsetTop
             },
             onBuy(){
                 this.buy=true;
@@ -101,7 +110,7 @@
                     let _data = response.data.data[0];
                     this.goodsData=_data;
                     console.log(this.goodsData)
-                    if (_data.discription.length){
+                    if (_data.discription.length>70){
                         this.goodsText = true;
                     }
                     layer.close(load);

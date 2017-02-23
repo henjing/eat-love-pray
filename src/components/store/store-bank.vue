@@ -82,7 +82,7 @@
             payData(){
                 XHRPost('/api/Shop/payStyleData',{order_id:encrypt(String(this.orderId))},function (response) {
                     this.bankData=response.data.data;
-                    console.log("dd", this.bankData)
+
                 }.bind(this));
             },
             onPayKong(){
@@ -112,12 +112,27 @@
                                     });
                                 } else {
                                   layer.closeAll()
-                                  _this.$router.push({path:'/store/storeOrderDetails'})
+                                  _this.$router.push({path:'/store/storeOrderDetails',query: { id:this.orderId}})
                                 }
                             this.switch = false;
                         }.bind(this));
                     }
                 })
+            },
+            onPayWei(){
+                var _this = this;
+                XHRPost('/api/Shop/wechatPay',{order_id: encrypt(String(this.orderId))},function (response) {
+                    if (response.data.status == 0) {
+                        layer.open({
+                            content: response.data.info,
+                            time: 2,
+                            style: 'background-color:rgba(0,0,0,.8);color:#fff'
+                        });
+                    } else {
+                        console.log(this.orderId)
+                        _this.$router.push({path:'/store/storeOrderDetails',query: { id:this.orderId }})
+                    }
+                }.bind(this));
             }
         }
     }

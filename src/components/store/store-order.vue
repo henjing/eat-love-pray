@@ -17,7 +17,7 @@
         </ul>
         <div class="jin-justify-flex ui-whitespace padding-t-10 padding-b-10 bg-white">
             <div class="font14 color-9b">合计</div>
-            <div class="font14 ui-txt-warning">￥{{orderData.price}}</div>
+            <div class="font14 ui-txt-warning">￥{{orderData.total_price}}</div>
         </div>
         <div class="store-submit-btn jin-box-end ui-whitespace bg-white">
             <div class="">合计:<span class="ui-txt-warning">￥{{orderData.total_price}}</span></div>
