@@ -165,7 +165,7 @@
                 }
                 XHRPost('/oriental_treasure/MySeting/forgetPayPasswordVerify', data, function (response) {
                     if (response.data.status == 1) {
-                        router.push(zfmima04);
+                        _this.$router.push({ path: '/zfmima04'});
 
                     } else {
                         _this.errorTip(response.data.info);

@@ -77,7 +77,7 @@
                     content: msg,
                     btn: ['确定'],
                     yes: function () {
-                        window.location.href = 'main.html'
+                        _this.$router.push({ path: '/main'});
                     }
                 });
             },
