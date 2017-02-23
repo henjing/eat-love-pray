@@ -59,9 +59,10 @@
                     content: msg,
                     btn: ['确定'],
                     yes: function () {
-                        XHRGet('/oriental_treasure/MySeting/logOut', {}, function () {
-                            window.location.href = '/xiaojin/login_register/login.html'
-                        })
+//                        XHRGet('/oriental_treasure/MySeting/logOut', {}, function () {
+//                            window.location.href = '/xiaojin/login_register/login.html'
+//                        })
+                        layer.closeAll();
                     }
                 });
             },
@@ -74,7 +75,7 @@
                 }
                 //const _this = this;
                 if(this.info.xpwd === this.info.xpwd1) {
-                    XHRPost('/oriental_treasure/MySeting/editLoginPassword', data, function (response) {
+                    XHRPost('/api/MyCenter/editLoginPassword', data, function (response) {
                         if (response.data.status === 1) {
                             this.successTip(response.data.info);
                             //this.successTip(1111);

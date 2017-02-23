@@ -3,7 +3,7 @@
         <!--01-->
         <div class="border-b-1 border-t-1">
             <ul class="ui-list ul-all ui-list-active" >
-                <li data-href="#">
+                <li>
                     <div class="rlt width-100">
                         <label class="ui-nowrap abs top-10">手机号</label>
                         <input type="text"  class="ui-form-item input width-100 txt-color-d6" :placeholder="info.input" style="text-align:right;" readonly="readonly" id="name"/>
@@ -15,7 +15,7 @@
         <!--02-->
 
             <div class="ui-btn-wrap">
-                <router-link to="/phone01">
+                <router-link to="/phone01" class="click_a">
                 <button  class="ui-btn-kd ui-btn-yellow" >更改手机号</button>
                 </router-link>
             </div>
@@ -45,7 +45,7 @@
 
         mounted: function () {
             const _this = this;
-            XHRGet('/oriental_treasure/MySeting/index', {}, function (response) {
+            XHRGet('/api/MyCenter/mySeting', {}, function (response) {
                 _this.info.input = response.data.data.cellphone;
             })
         }

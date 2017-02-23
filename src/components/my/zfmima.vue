@@ -5,7 +5,7 @@
         </div>
         <ul class="ui-list jin-list-link ui-list-active ui-border-tb">
             <li class="ui-border-t padding-t-5 padding-b-5" >
-                <router-link to="/zfmima02">
+                <router-link to="/zfmima02" class="click_a">
                     <div class="ui-list-info">
                         <h4>我记得原支付密码</h4>
                     </div>
@@ -14,24 +14,14 @@
         </ul>
         <ul class="ui-list jin-list-link ui-list-active ui-border-tb margin-t-10">
             <li class="ui-border-t padding-t-5 padding-b-5"  v-on:click="goAuthentication">
-                <router-link :to="isZf01">
-                    <div class="ui-list-info">
-                        <h4>我忘记支付密码了</h4>
-                    </div>
-                </router-link>
+                <div class="ui-list-info">
+                    <h4>我忘记支付密码了</h4>
+                </div>
             </li>
         </ul>
     </div>
 </template>
-<style>
-    a {
-        -webkit-box-align: center;
-        color:#000;
-        display: -webkit-box;
-        width:100%;
-        height:100%;
-    }
-</style>
+
 <script type="text/jsx">
     import layer from '../../js/lib/layer.js';
     import '../../js/lib/layer.css';
@@ -42,7 +32,6 @@
     export default {
         data() {
             return {
-                isZf01:"", //to  跳转值
                 disabled:true,
                 phone:"",
                 info: {
@@ -55,7 +44,7 @@
         },
         mounted() {
             const _this = this;
-            XHRGet('/oriental_treasure/MySeting/index', {}, function (response) {
+            XHRGet('/api/MyCenter/mySeting', {}, function (response) {
                 _this.phone = response.data.data.cellphone;
             })
         },
@@ -81,7 +70,7 @@
                         this.isZf01 === "zfmima01";
                         this.errorTip("你还没绑定银行卡，无法操作此步骤");
                     } else {
-                        this.isZf01 === "zfmima02";
+                        router.push(zfmima02);
                     }
 
                 }.bind(this))

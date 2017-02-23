@@ -25,9 +25,9 @@
                 以上内容仅作为信息对比，空店将严格保密。
             </div>
             <div class="ui-btn-wrap">
-                <router-link :to="isZf04">
-                    <button class="ui-btn-lg ui-btn-primary" id="submit"  v-on:click="getNextgo" :disabled="!buttonEnable">下一步</button>
-                </router-link>
+
+                <button class="ui-btn-lg ui-btn-primary" id="submit"  v-on:click="getNextgo" :disabled="!buttonEnable">下一步</button>
+
             </div>
         </div>
         <!--选择银行弹框-->
@@ -58,9 +58,7 @@
 
 </template>
 <style>
-    a{
-        color:#000;
-    }
+
     img{
         width:100%;
         height:100%;
@@ -80,7 +78,6 @@
     export default{
         data(){
             return{
-                isZf04:"",
                 info: {
                     isA: true,
                     isB: false,
@@ -168,7 +165,8 @@
                 }
                 XHRPost('/oriental_treasure/MySeting/forgetPayPasswordVerify', data, function (response) {
                     if (response.data.status == 1) {
-                       _this.isZf04 === "zfmima04";
+                        router.push(zfmima04);
+
                     } else {
                         _this.errorTip(response.data.info);
                     }
