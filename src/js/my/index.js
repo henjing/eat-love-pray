@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import axios from 'axios';
-import '../mock/test.js';
+//import '../mock/test.js';
 import '../lib/layer.js';
 import '../lib/layer.css';
 import Index from 'components/my/index.vue';

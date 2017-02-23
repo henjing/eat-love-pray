@@ -256,7 +256,7 @@ button {
 .id-alert {
   width: 100px;
   height: 120px;
-  background: url(/static/images/id-alert.png);
+  background: url(../../images/id-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 85px;
@@ -265,7 +265,7 @@ button {
 .bank-alert {
   width: 120px;
   height: 120px;
-  background: url(/static/images/bank-alert.png);
+  background: url(../../images/bank-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 75px;
@@ -274,7 +274,7 @@ button {
 .know-alert {
   width: 120px;
   height: 120px;
-  background: url(/static/images/deve-alert.png);
+  background: url(../../images/deve-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 75px;
