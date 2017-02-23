@@ -21,7 +21,7 @@ const app = new Vue({
     data: {
         data:[
             {
-                name:'待发货',
+                name:'全部订单',
                 tabText: "/",
                 iscur:true,
             },

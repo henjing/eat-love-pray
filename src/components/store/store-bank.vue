@@ -53,12 +53,15 @@
         data(){
             return{
                 mod:false,
+                goods:this.stateId,
+                bankData:""
             }
         },
         components:{
         },
-        props:['state-bank'],
+        props:['state-bank', 'state-id'],
         created: function() {
+            this.payData();
             let _this = this;
             setTimeout(function(){
                 _this.mod =_this.stateBank;
@@ -67,27 +70,36 @@
         methods:{
             close(){
                 let _this = this;
-                 this.mod=false;
+                this.mod=false;
                 setTimeout(function(){
                     _this.$emit('on-close')
                 }, 300);
             },
+            payData(){
+                var load = layer.open({ type: 2,shadeClose: false})
+                XHRPost('/api/Shop/payData',{goods_id:encrypt(this.goods)},function (response) {
+                    this.bankData=response;
+                    console.log(this.bankData)
+                    layer.close(load);
+                }.bind(this));
+            },
             onPay(){
-                var _this = this;
                 this.close();
-                  layer.open({
-                        title: '请输入交易密码',
-                        content: '<input type="password" id="password" style="width:100%;height:40px; border:0;border-bottom:1px solid #ddd;" placeholder="输入支付密码">',
-                        shadeClose: false,
-                        btn: ['确认支付', '取消'],
-                        no: function () {
-                            layer.closeAll()
-                        },
-                        yes: function () {
-                             layer.closeAll()
-                            _this.$router.push({path:'/store/storeOrderDetails'})
-                        }
-                    })
+                layer.open({
+                    title: '请输入交易密码',
+                    content: '<input type="password" id="password" style="width:100%;height:40px; border:0;border-bottom:1px solid #ddd;" placeholder="输入支付密码">',
+                    shadeClose: false,
+                    btn: ['确认支付', '取消'],
+                    no: function () {
+                        layer.closeAll()
+                    },
+                    yes: function () {
+                        XHRPost('/api/Shop/kongdianPay',{goods_id:encrypt(this.goods)},function (response) {
+                            layer.close(load);
+                            this.$router.push({path:'/store/storeOrderDetails'})
+                        }.bind(this));
+                    }
+                })
             }
         }
     }
