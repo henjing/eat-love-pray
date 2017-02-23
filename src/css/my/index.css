@@ -256,7 +256,7 @@ button {
 .id-alert {
   width: 100px;
   height: 120px;
-  background: url(/static/images/id-alert.png);
+  background: url(../../images/id-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 85px;
@@ -265,7 +265,7 @@ button {
 .bank-alert {
   width: 120px;
   height: 120px;
-  background: url(/static/images/bank-alert.png);
+  background: url(../../images/bank-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 75px;
@@ -274,7 +274,7 @@ button {
 .know-alert {
   width: 120px;
   height: 120px;
-  background: url(/static/images/deve-alert.png);
+  background: url(../../images/deve-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 75px;
@@ -300,25 +300,25 @@ button {
   background-size: 100% 100%; }
 
 .hs_wallet {
-  background: url(/static/images/hs_wallet.png); }
+  background: url(../../images/hs_wallet.png); }
 
 .hs_inventory {
-  background: url(/static/images/hs_inventory.png); }
+  background: url(../../images/hs_inventory.png); }
 
 .hs_sales {
-  background: url(/static/images/hs_sales.png); }
+  background: url(../../images/hs_sales.png); }
 
 .hs_address {
-  background: url(/static/images/hs_address.png); }
+  background: url(../../images/hs_address.png); }
 
 .hs_Pen {
-  background: url(/static/images/hs_Pen.png); }
+  background: url(../../images/hs_Pen.png); }
 
 .hs_inviter {
-  background: url(/static/images/hs_inviter.png); }
+  background: url(../../images/hs_inviter.png); }
 
 .hs_Mobile {
-  background: url(/static/images/hs_Mobile.png); }
+  background: url(../../images/hs_Mobile.png); }
 
 .hs_time {
-  background: url(/static/images/hs_time.png); }
+  background: url(../../images/hs_time.png); }
