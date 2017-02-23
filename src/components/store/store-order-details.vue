@@ -1,9 +1,14 @@
 <template>
     <div>
-        <div class="order-details-head ui-whitespace margin-b-10 font14">
-        <div>付款成功</div>
-        <div>您的商品已入库</div>
-    </div>
+        <div class="order-details-head jin-justify-flex ui-whitespace margin-b-10 font14">
+            <div class="text">
+                <div>付款成功</div>
+                <div>您的商品已入库</div>
+            </div>
+            <div class="text">
+                <div class="order-details-bg "></div>
+            </div>
+        </div>
         <ul class="ui-list jin-list margin-b-15 ui-border-tb">
             <li>
                 <div class="ui-list-thumb" style="background-image: url('http://placeholder.qiniudn.com/190x284');"></div>
@@ -34,7 +39,6 @@
     </div>
 </template>
 <style>
-
 </style>
 <script>
     export default{

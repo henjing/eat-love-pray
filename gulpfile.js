@@ -45,7 +45,6 @@ let luYuQiu = {
 
 let targetRoute = huangEnJing;
 
-
 // 下面就是dirty work, get your hands dirty!
 var webpackConfig = {
 	resolve: {

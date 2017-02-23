@@ -2,7 +2,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <svg xmlns="http://www.w3.org/2000/svg">
 <metadata>
-Created by FontForge 20120731 at Wed Feb 22 21:00:55 2017
+Created by FontForge 20120731 at Thu Feb 23 10:17:32 2017
  By admin
 </metadata>
 <defs>
@@ -48,6 +48,8 @@ d="M544 684h-64v-352h-352v-64h352v-352h64v352h352v64h-352v352z" />
     <glyph glyph-name="user1" unicode="&#xe6a0;" 
 d="M914 9q0 -68 -41.5 -108t-110.5 -40h-500q-69 0 -110.5 40t-41.5 108q0 30 2 59t8 62.5t15 62t24.5 55.5t35.5 46.5t49 31t63 11.5q6 0 24.5 -12.5t42.5 -27.5t62 -27.5t76 -12.5t76 12.5t62 27.5t42.5 27.5t24.5 12.5q34 0 63 -11.5t49 -31t35.5 -46.5t24.5 -55.5
 t15 -62t8 -62.5t2 -59zM731 519.5q0 -90.5 -64 -155t-155 -64.5t-155 64.5t-64 155t64 155t155 64.5t155 -64.5t64 -155z" />
+    <glyph glyph-name="jian" unicode="&#xe663;" 
+d="M95 336h833v-72h-833v72z" />
     <glyph glyph-name="fanhui" unicode="&#xe632;" 
 d="M623 527h-175v142l-384 -192l384 -192v142h189q225 0 225 -188q0 -195 -232 -195h-442v-100h446q317 0 317 285q0 298 -328 298z" />
     <glyph glyph-name="home" unicode="&#xe602;" 

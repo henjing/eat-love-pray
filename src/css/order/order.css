@@ -19,6 +19,12 @@
 .color-bc {
   color: #BCBCBC; }
 
+.color-13B {
+  color: #13BF7B; }
+
+.color-ff3 {
+  color: #FF3E2A; }
+
 .k-list > li {
   margin-left: 0 !important; }
 
@@ -863,6 +869,19 @@ input[type="text"], input[type="password"] {
   color: #000;
   background-color: #fff; }
 
+.recharge-input {
+  padding: 2px 0;
+  -webkit-box-flex: 1; }
+
+.recharge-input input {
+  display: block;
+  width: 90%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  border: 0;
+  background: 0 0; }
+
 .bank-text {
   background: #F3F3F3;
   font-size: 11px;
@@ -888,12 +907,24 @@ input[type="text"], input[type="password"] {
 .btn-green {
   background: #13BE7B; }
 
+.execute-details {
+  width: 100%;
+  margin-top: 35px;
+  background: #f3f3f3;
+  -webkit-box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05); }
+
+.execute-details > li {
+  display: -webkit-box; }
+
 .order-details-head {
   width: 100%;
-  padding-top: 15px;
   height: 80px;
   color: #fff;
   background: #FF801A; }
+
+.order-details-head > .text {
+  width: 49.99%; }
 
 .order-details-btn {
   display: -webkit-box;
@@ -910,3 +941,27 @@ input[type="text"], input[type="password"] {
   color: #000;
   border: 1px solid #D0CDCD;
   border-radius: 3px; }
+
+.ui-actionsheet-cnt {
+  font-size: 21px;
+  position: fixed;
+  bottom: 0;
+  padding: 0 !important;
+  width: 100%;
+  text-align: justify;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transform: translateY(100%);
+  -webkit-transition-property: all;
+  -webkit-transition-timing-function: ease-out;
+  -webkit-transition-duration: 0.3s !important; }
+
+.order-details-bg {
+  width: 30%;
+  padding-top: 28%;
+  margin: auto;
+  background-size: cover;
+  background-image: url("/static/images/wechatI.png"); }
+
+.execute-pass {
+  font-size: 100px; }
