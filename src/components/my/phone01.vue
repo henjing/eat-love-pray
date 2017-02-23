@@ -8,7 +8,7 @@
         <!--02-->
         <div class="possword border-b-1 border-t-1">
             <ul class="ui-list ul-all ui-list-active" >
-                <li data-href="#" class="border-b-1">
+                <li class="border-b-1">
                     <div class="rlt width-100">
                         <label class="ui-nowrap abs top-10">手机号</label>
                         <input type="tel"  name="phone"  placeholder="输入手机号" class="ui-form-item input width-100 padding-l-60"  v-model="info.phone"/>
@@ -16,7 +16,7 @@
                     </div>
 
                 </li>
-                <li data-href="#">
+                <li>
                     <div class="rle width-100">
                         <label class="ui-nowrap">验证码</label>
                         <input type="text" placeholder="输入验证码" class="ui-form-item input" style="border:0;padding-left:9px;"  v-model="info.code"/>
@@ -102,7 +102,7 @@
                     //cellphone: this.info.phone,
                     exist: encrypt(0)
                 }
-                XHRPost('/oriental_treasure/register_and_login/sendPhoneCode', data, function (response) {
+                XHRPost('/api/registerAndLogin/sendPhoneCode', data, function (response) {
 
                     if (response.data.status === 1) {
                         const _this = this;
@@ -149,7 +149,7 @@
 
                 const _this = this;
                 _this.loadingShow = true;
-                axios.post('/oriental_treasure/MySeting/editCellphone', data).then(function (response) {
+                axios.post('/api/MyCenter/editCellphone', data).then(function (response) {
                     console.log(response);
                     if (response.data.status ==  1) {
                         _this.loadingShow = false;
