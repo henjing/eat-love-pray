@@ -12,7 +12,8 @@
 
                         <div class="ui-txt-warning font14">￥100</div>
                     </div>
-                    <div class="ui-txt-info padding-t-15 padding-r-10" @click="close"><span class="ui-icon-close-page font28"></span>
+                    <div class="ui-txt-info padding-t-15 padding-r-10" @click="close">
+                        <i class="jin-icon jin-icon-guanbi font28"></i>
                     </div>
                 </li>
             </ul>
@@ -20,9 +21,9 @@
             <div class="ui-form-item ui-border-b bg-white ui-txt-info">
                 <label>数量</label>
                 <div class="goods-number pull-right clearfix ui-txt-info">
-                    <span class="reduce" @click="reduce"><i class="jin-icon-quxiao"></i></span>
+                    <span class="reduce" @click="reduce"><i class="jin-icon jin-icon-jian"></i></span>
                     <input class="number padding-l-0" type="tel" v-model="number">
-                    <span class="add" @click="add"><i class="jin-icon-jiaguanzhu"></i></span>
+                    <span class="add" @click="add"><i class="jin-icon jin-icon-jia"></i></span>
                 </div>
             </div>
             <div class="ui-btn-wrap ui-list" @click="onOrder()">

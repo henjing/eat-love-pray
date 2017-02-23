@@ -6,15 +6,15 @@
             <ul class="ui-list bank-list">
                 <li class="ui-border-b" @click="onPay">
                     <div class="icon-list">
-                        <div>5</div>
-                        <div class="font14 color-499">钱包支付</div>
+                        <i class="jin-icon jin-icon-pay color-ff3 font24"></i>
+                        <div class="margin-l-10 font14 color-499">钱包支付</div>
                     </div>
                     <div class="font12 color-9b">可用余额：￥100.00</div>
                 </li>
                 <li class="ui-border-b" @click="onPay">
                     <div class="icon-list">
-                        <div>5</div>
-                        <div class="font14 color-499">微信支付</div>
+                          <i class="jin-icon jin-icon-weixinzhifu color-13B font24"></i>
+                        <div class="margin-l-10 font14 color-499">微信支付</div>
                     </div>
                 </li>
             </ul>
@@ -70,7 +70,7 @@
                  this.mod=false;
                 setTimeout(function(){
                     _this.$emit('on-close')
-                }, 500);
+                }, 300);
             },
             onPay(){
                 var _this = this;
