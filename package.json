@@ -14,7 +14,8 @@
     "v-vuerify-next": "^0.2.0",
     "vue": "^2.1.8",
     "vue-router": "^2.1.1",
-    "vuex": "^2.1.1"
+    "vuex": "^2.1.1",
+    "vuerify": "^0.3.5"
   },
   "devDependencies": {
     "autoprefixer": "^6.2.3",

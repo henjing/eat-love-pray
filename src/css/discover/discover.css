@@ -52,7 +52,11 @@
   background-size: calc(160%);
   background-repeat: no-repeat;
   box-sizing: content-box;
+<<<<<<< HEAD
   background-image: url("/static/images/icon-list.png"); }
+=======
+  background-image: url("../../images/icon-list.png"); }
+>>>>>>> 24d7a517ab0701fe62c0dfec3fd5a016d65b1708
 
 .jin-product {
   margin-left: 15px;
@@ -150,7 +154,11 @@
   background-size: calc(100%);
   background-repeat: no-repeat;
   box-sizing: content-box;
+<<<<<<< HEAD
   background-image: url("/static/images/shop-nav.png"); }
+=======
+  background-image: url("../../images/shop-nav.png"); }
+>>>>>>> 24d7a517ab0701fe62c0dfec3fd5a016d65b1708
 
 .credits-exchange-list > li {
   float: left;
@@ -194,7 +202,11 @@
   top: -30px;
   background-size: cover;
   box-sizing: content-box;
+<<<<<<< HEAD
   background-image: url("/static/images/deve-alert.png"); }
+=======
+  background-image: url("../../images/deve-alert.png"); }
+>>>>>>> 24d7a517ab0701fe62c0dfec3fd5a016d65b1708
 
 .developing-panel .text {
   width: 85%;
@@ -234,7 +246,11 @@
   margin-left: auto;
   margin-right: auto;
   background-size: cover;
+<<<<<<< HEAD
   background-image: url("/static/images/null-data.png"); }
+=======
+  background-image: url("../../images/null-data.png"); }
+>>>>>>> 24d7a517ab0701fe62c0dfec3fd5a016d65b1708
 
 .discover-credit-top .credit-lately-nav-btn {
   height: 34px;

@@ -3,7 +3,7 @@
         <!--01-->
         <div class="border-b-1 border-t-1">
             <ul class="ui-list ul-all ui-list-active">
-                <li data-href="#">
+                <li>
                     <div class="rlt width-100">
                         <label class="ui-nowrap abs top-10">常用名</label>
                         <input type="text" placeholder="输入新常用名" class="ui-form-item input width-100 padding-l-60" id="name" v-model="info.name"/>
@@ -60,7 +60,7 @@
                 const _this = this;
                 //console.log(this.info.name);
                 this.loadingShow = true;
-                XHRPost('/oriental_treasure/MySeting/editUserName', data, function (response) {
+                XHRPost('/api/MyCenter/editUserName', data, function (response) {
                     //console.log(response);
                     //console.log(data.input);
                     _this.loadingShow = false;

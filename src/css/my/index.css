@@ -192,6 +192,10 @@ button {
   -webkit-box-flex: 1; }
 
 /**/
+.bg-100 {
+  width: 100%;
+  height: 100%; }
+
 .width-100 {
   width: 100%; }
 
@@ -252,7 +256,11 @@ button {
 .id-alert {
   width: 100px;
   height: 120px;
+<<<<<<< HEAD
   background: url(/static/images/id-alert.png);
+=======
+  background: url(../../images/id-alert.png);
+>>>>>>> 24d7a517ab0701fe62c0dfec3fd5a016d65b1708
   background-size: 100% 100%;
   position: absolute;
   left: 85px;
@@ -261,7 +269,11 @@ button {
 .bank-alert {
   width: 120px;
   height: 120px;
+<<<<<<< HEAD
   background: url(/static/images/bank-alert.png);
+=======
+  background: url(../../images/bank-alert.png);
+>>>>>>> 24d7a517ab0701fe62c0dfec3fd5a016d65b1708
   background-size: 100% 100%;
   position: absolute;
   left: 75px;
@@ -270,7 +282,11 @@ button {
 .know-alert {
   width: 120px;
   height: 120px;
+<<<<<<< HEAD
   background: url(/static/images/deve-alert.png);
+=======
+  background: url(../../images/deve-alert.png);
+>>>>>>> 24d7a517ab0701fe62c0dfec3fd5a016d65b1708
   background-size: 100% 100%;
   position: absolute;
   left: 75px;
@@ -283,3 +299,38 @@ button {
   -webkit-border-radius: 200px;
   overflow: hidden;
   background-size: 100% 100%; }
+
+.click_a {
+  -webkit-box-align: center;
+  color: #000;
+  display: -webkit-box;
+  width: 100%;
+  height: 100%; }
+
+/*背景图*/
+.bg-100-g {
+  background-size: 100% 100%; }
+
+.qianbao {
+  background: url(../../images/qb.png); }
+
+.xxzc {
+  background: url(../../images/kc.png); }
+
+.dd {
+  background: url(../../images/xs.png); }
+
+.ssdz {
+  background: url(../../images/sh.png); }
+
+.cym {
+  background: url(../../images/Pen.png); }
+
+.yqr {
+  background: url(../../images/yqr.png); }
+
+.sjh {
+  background: url(../../images/Mobile.png); }
+
+.zcsj {
+  background: url(../../images/zcsj.png); }

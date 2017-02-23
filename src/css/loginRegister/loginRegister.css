@@ -43,7 +43,11 @@ header {
   position: relative;
   width: 100%;
   min-height: 100vh;
+<<<<<<< HEAD
   background-image: url(/static/images/loginRegister/wave.png);
+=======
+  background-image: url(../../images/loginRegister/wave.png);
+>>>>>>> 24d7a517ab0701fe62c0dfec3fd5a016d65b1708
   background-position: bottom;
   background-size: 100%;
   background-repeat: no-repeat; }
@@ -52,7 +56,11 @@ header {
   position: relative;
   width: 100%;
   min-height: 100vh;
+<<<<<<< HEAD
   background-image: url(/static/images/loginRegister/wave.png);
+=======
+  background-image: url(../../images/loginRegister/wave.png);
+>>>>>>> 24d7a517ab0701fe62c0dfec3fd5a016d65b1708
   background-position: bottom;
   background-size: 100%;
   background-repeat: no-repeat; }

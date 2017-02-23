@@ -77,10 +77,10 @@
         },
         mounted: function () {
             const _this = this;
-            XHRGet('/oriental_treasure/MySeting/index', {}, function (response) {
+            XHRGet('/api/MyCenter/mySeting', {}, function (response) {
                 _this.user.dqyqr_name = response.data.data.inviting_people;
                 _this.user.mephone = response.data.data.cellphone;
-                _this.user.old_yqrphone = response.data.data.inviting_cellphone;
+                _this.user.old_yqrphone = response.data.data.cellphone;
             })
         },
 
@@ -95,7 +95,7 @@
                 const data = {
                     cellphone: encrypt(curVal)
                 };
-                XHRPost('/oriental_treasure/MySeting/findInvitingPeople', data, function (response) {
+                XHRPost('/api/MyCenter/findInvitingPeople', data, function (response) {
                     if (response.data.status === 1) {
                         //_this.errorTip(response.data.info);
                         _this.user.yqr = response.data.data.user_name;
@@ -157,7 +157,7 @@
                 const _this = this;
                 _this.loadingShow = true;
                 _this.successingShow = false;
-                XHRPost('/oriental_treasure/MySeting/editInvitingPeople', data, function (response) {
+                XHRPost('/api/MyCenter/editInvitingPeople', data, function (response) {
                     console.log(response);
                     if (response.data.status === 0) {
                         _this.loadingShow = false;
