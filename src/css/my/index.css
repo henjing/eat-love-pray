@@ -256,11 +256,7 @@ button {
 .id-alert {
   width: 100px;
   height: 120px;
-<<<<<<< HEAD
   background: url(/static/images/id-alert.png);
-=======
-  background: url(../../images/id-alert.png);
->>>>>>> 24d7a517ab0701fe62c0dfec3fd5a016d65b1708
   background-size: 100% 100%;
   position: absolute;
   left: 85px;
@@ -269,11 +265,7 @@ button {
 .bank-alert {
   width: 120px;
   height: 120px;
-<<<<<<< HEAD
   background: url(/static/images/bank-alert.png);
-=======
-  background: url(../../images/bank-alert.png);
->>>>>>> 24d7a517ab0701fe62c0dfec3fd5a016d65b1708
   background-size: 100% 100%;
   position: absolute;
   left: 75px;
@@ -282,11 +274,7 @@ button {
 .know-alert {
   width: 120px;
   height: 120px;
-<<<<<<< HEAD
   background: url(/static/images/deve-alert.png);
-=======
-  background: url(../../images/deve-alert.png);
->>>>>>> 24d7a517ab0701fe62c0dfec3fd5a016d65b1708
   background-size: 100% 100%;
   position: absolute;
   left: 75px;
@@ -312,25 +300,25 @@ button {
   background-size: 100% 100%; }
 
 .qianbao {
-  background: url(../../images/qb.png); }
+  background: url(/static/images/qb.png); }
 
 .xxzc {
-  background: url(../../images/kc.png); }
+  background: url(/static/images/kc.png); }
 
 .dd {
-  background: url(../../images/xs.png); }
+  background: url(/static/images/xs.png); }
 
 .ssdz {
-  background: url(../../images/sh.png); }
+  background: url(/static/images/sh.png); }
 
 .cym {
-  background: url(../../images/Pen.png); }
+  background: url(/static/images/Pen.png); }
 
 .yqr {
-  background: url(../../images/yqr.png); }
+  background: url(/static/images/yqr.png); }
 
 .sjh {
-  background: url(../../images/Mobile.png); }
+  background: url(/static/images/Mobile.png); }
 
 .zcsj {
-  background: url(../../images/zcsj.png); }
+  background: url(/static/images/zcsj.png); }

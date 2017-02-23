@@ -1,6 +1,7 @@
 import storeIndex from 'components/store/store-index.vue';
 import storeOrder from 'components/store/store-order.vue';
 import storeOrderDetails from 'components/store/store-order-details.vue';
+import storeHome from 'components/store/store-home.vue';
 
 import '../lib/layer.js';
 import '../lib/layer.css';
@@ -8,10 +9,11 @@ import "../lib/swiper-3.3.0.min";
 import "../lib/swiper-3.3.0.min.css";
 
 const routes = [
-    {path: '/store', component: storeIndex},
+    {path: '/store', component: storeHome},
     { path: '/store/storeOrder', component: storeOrder},
     { path: '/store/storeOrderDetails', component: storeOrderDetails},
-    {path: '*', component: storeIndex},
+    { path: '/store/storeIndex', component: storeIndex},
+    {path: '*', component: storeHome},
 ]
 
 const router = new VueRouter({
@@ -20,11 +22,7 @@ const router = new VueRouter({
 
 const app = new Vue({
     mounted: function() {
-        var mySwiper = new Swiper ('.swiper-container', {
-            loop: true,
-            // 如果需要分页器
-            pagination: '.swiper-pagination',
-        });
+        
     },
     router,
     watch: {

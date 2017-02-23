@@ -1,7 +1,7 @@
 <template>
     <div class="jin-wrap margin-b-10 top-display-n">
     <div class="banner">
-        <div class="swiper-container">
+        <div class="swiper-container swiper-detail-hook">
             <ul class="swiper-wrapper">
                 <li class="swiper-slide" style="background-image: url(http://placeholder.qiniudn.com/190x284);"></li>
                 <li class="swiper-slide" style="background-image: url(http://placeholder.qiniudn.com/190x284);"></li>
@@ -66,6 +66,13 @@
                 buy:false
             }
         },
+        created() {
+			var mySwiper = new Swiper ('.swiper-detail-hook', {
+	            loop: true,
+	            // 如果需要分页器
+	            pagination: '.swiper-pagination',
+	        });	
+		},
         components:{
             storeQuantity
         },
