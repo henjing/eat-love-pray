@@ -256,7 +256,7 @@ button {
 .id-alert {
   width: 100px;
   height: 120px;
-  background: url(../../images/id-alert.png);
+  background: url(/static/images/id-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 85px;
@@ -265,7 +265,7 @@ button {
 .bank-alert {
   width: 120px;
   height: 120px;
-  background: url(../../images/bank-alert.png);
+  background: url(/static/images/bank-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 75px;
@@ -274,7 +274,7 @@ button {
 .know-alert {
   width: 120px;
   height: 120px;
-  background: url(../../images/deve-alert.png);
+  background: url(/static/images/deve-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 75px;
@@ -296,29 +296,29 @@ button {
   height: 100%; }
 
 /*背景图*/
-.bg-100-g {
+.bg-100-g, li .k-list-thumb-s > .bg-100-g {
   background-size: 100% 100%; }
 
-.qianbao {
-  background: url(../../images/qb.png); }
+.hs_wallet {
+  background: url(/static/images/hs_wallet.png); }
 
-.xxzc {
-  background: url(../../images/kc.png); }
+.hs_inventory {
+  background: url(/static/images/hs_inventory.png); }
 
-.dd {
-  background: url(../../images/xs.png); }
+.hs_sales {
+  background: url(/static/images/hs_sales.png); }
 
-.ssdz {
-  background: url(../../images/sh.png); }
+.hs_address {
+  background: url(/static/images/hs_address.png); }
 
-.cym {
-  background: url(../../images/Pen.png); }
+.hs_Pen {
+  background: url(/static/images/hs_Pen.png); }
 
-.yqr {
-  background: url(../../images/yqr.png); }
+.hs_inviter {
+  background: url(/static/images/hs_inviter.png); }
 
-.sjh {
-  background: url(../../images/Mobile.png); }
+.hs_Mobile {
+  background: url(/static/images/hs_Mobile.png); }
 
-.zcsj {
-  background: url(../../images/zcsj.png); }
+.hs_time {
+  background: url(/static/images/hs_time.png); }

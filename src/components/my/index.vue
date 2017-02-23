@@ -25,7 +25,7 @@
                 <li class="ui-border-b">
                     <router-link to="" class="click_a">
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                            <span class="bg-100-g qianbao"></span>
+                            <span class="bg-100-g hs_wallet"></span>
                         </div>
                         <div class="ui-list-info">
                             <h4 class="ui-nowrap">钱包</h4>
@@ -36,7 +36,7 @@
                 <li>
                     <router-link to="" class="click_a">
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                            <span class="bg-100-g xxzc"></span>
+                            <span class="bg-100-g hs_inventory"></span>
                         </div>
                         <div class="ui-list-info">
                             <h4 class="ui-nowrap">信息资产</h4>
@@ -51,7 +51,7 @@
                 <li class="ui-border-b">
                     <router-link to="" class="click_a">
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                            <span class="bg-100-g dd"></span>
+                            <span class="bg-100-g hs_sales"></span>
                         </div>
                         <div class="ui-list-info">
                             <h4 class="ui-nowrap">我的订单</h4>
@@ -62,7 +62,7 @@
                 <li class="ui-border-b">
                     <router-link to="" class="click_a">
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                            <span class="bg-100-g dd"></span>
+                            <span class="bg-100-g hs_sales"></span>
                         </div>
                         <div class="ui-list-info">
                             <h4 class="ui-nowrap">销售记录</h4>
@@ -73,7 +73,7 @@
                 <li>
                     <router-link to="/name" class="click_a">
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                            <span class="bg-100-g ssdz"></span>
+                            <span class="bg-100-g hs_address"></span>
                         </div>
                         <div class="ui-list-info">
                             <h4 class="ui-nowrap">库存</h4>
@@ -89,7 +89,7 @@
                 <li>
                     <router-link to="/connection" class="click_a">
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                            <span class="bg-100-g qianbao"></span>
+                            <span class="bg-100-g hs_wallet"></span>
                         </div>
                         <div class="ui-list-info">
                             <h4 class="ui-nowrap">我的会员</h4>
@@ -104,7 +104,7 @@
                 <li>
                     <router-link to="" class="click_a">
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                            <span class="bg-100-g ssdz"></span>
+                            <span class="bg-100-g hs_address"></span>
                         </div>
                         <div class="ui-list-info">
                             <h4 class="ui-nowrap">收货地址</h4>

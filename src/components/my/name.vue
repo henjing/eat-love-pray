@@ -28,12 +28,11 @@
     import Loading from '../common/loading.vue';
     import { countdown } from '../../js/tools.js';
     import { XHRPost} from '../../js/ajax.js';
-
     export default{
         data(){
             return{
                 info:{
-                    name: "" //常用名
+                    name: "", //常用名
                 },
                 loadingShow: false
             }
@@ -66,7 +65,7 @@
                     _this.loadingShow = false;
 
                     if (response.data.status === 1) {
-                        window.location.href = '/my/main.html'
+                        _this.$router.push({ path: '/main'});
                     }else{
                         _this.errorTip(response.data.info);
                     }
