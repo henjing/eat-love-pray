@@ -35,15 +35,16 @@ let huangEnJing = {
     resources: '/Users/enjing/Documents/myWebProject/heshi/heshi_api/public/static/'
 };
 let qinHaiLang = {
-    html: '',
-    resources: ''
+    html: 'F:/heshi/application/index/view/',
+    resources: 'F:/heshi/public/static/'
 };
 let luYuQiu = {
 	html: '../kongdian_hs/application/index/view/',
 	resources: '../kongdian_hs/public/static/'
 };
-// 确保是自己的路径
-let targetRoute = luYuQiu;
+
+let targetRoute = huangEnJing;
+
 
 // 下面就是dirty work, get your hands dirty!
 var webpackConfig = {
@@ -62,7 +63,7 @@ var webpackConfig = {
 	},
     externals: {
         'vue': 'Vue',
-        'axios': 'axios',
+/*        'axios': 'axios',*/
         'vue-router': 'VueRouter',
         'vuex': 'Vuex',
         'vue-infinite-scroll': 'infiniteScroll'

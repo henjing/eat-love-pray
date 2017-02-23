@@ -9,7 +9,7 @@
 			<input class="text-color-red-dark" type="password" name="rePassword" v-model="repassword" placeholder="确认新密码" />
 		</div>
 		<div class="padding-t-20">
-			<button class="jin-btn jin-btn-red-gradient" v-on:click="changePassword">保存</button>
+			<button class="ui-btn ui-btn-lg ui-btn-primary" v-on:click="changePassword">保存</button>
 		</div>
 	</div>
 </template>
@@ -54,14 +54,14 @@
 				}
 				
 				const load = layer.open({ type: 2,shadeClose: false})
-				XHRPost('/oriental_treasure/register_and_login/modifyPassword', data, function (response) {
+				XHRPost('/api/registerAndLogin/modifyPassword', data, function (response) {
 					layer.close(load);
 					if (response.data.status === 1) {
 						layer.open({
 							content: '密码修改成功!',
 							time: 2.5,
 							end: function () {
-								window.location.href = '/xiaojin/login_register/login/html';
+								window.location.href = '/index/login_register/login/html';
 							}
 						});
 					} else {

@@ -13,7 +13,7 @@
 			<input class="text-color-red-dark" type="text" name="code" v-model="code" placeholder="输入验证码"/>
 		</div>
 		<div class="padding-t-20">
-			<button class="jin-btn jin-btn-red-gradient" @click="goToNext">下一步</button>
+			<button class="ui-btn ui-btn-lg ui-btn-primary" @click="goToNext">下一步</button>
 		</div>
 	</div>
 	
@@ -60,7 +60,7 @@
 					cellphone: encrypt(this.phone),
 					exist: encrypt('1')
 				}
-				XHRPost('/oriental_treasure/register_and_login/sendPhoneCode', data, function (response) {
+				XHRPost('/api/registerAndLogin/sendPhoneCode', data, function (response) {
 					
 					if (response.data.status === 1) {
 						const _this = this;
@@ -100,7 +100,7 @@
 					this.errorTip('请输入验证码！');
 					return false;
 				}
-				XHRPost('/oriental_treasure/register_and_login/forgetPassword',data, function (response) {
+				XHRPost('/api/registerAndLogin/forgetPassword',data, function (response) {
 					console.log(response)
 					if (response.data.status === 1) {
 						this.$emit('go-to-next')
