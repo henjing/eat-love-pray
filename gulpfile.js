@@ -62,7 +62,7 @@ var webpackConfig = {
 	},
     externals: {
         'vue': 'Vue',
-/*        'axios': 'axios',*/
+        'axios': 'axios',
         'vue-router': 'VueRouter',
         'vuex': 'Vuex',
         'vue-infinite-scroll': 'infiniteScroll'

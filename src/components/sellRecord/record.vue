@@ -2,19 +2,19 @@
     <div>
         <div  class="padding-t-15 padding-b-10 bg-white ui-border-b">
             <div class="ui-whitespace jin-justify-flex margin-b-15">
-            	<router-link to="/" class="back-btn  ui-txt-white">
+            	<a href="/index/my/index.html" class="back-btn  ui-txt-white">
             		<span class="jin-icon jin-icon-fanhui"></span>
-            	</router-link>
+            	</a>
             </div>
-            <div class="ui-whitespace font35">信息资产记录</div>
+            <div class="ui-whitespace font35">销售记录</div>
         </div>
         <div
         	v-infinite-scroll="loadMore"
 	        infinite-scroll-disabled="busy"
-	        infinite-scroll-distance="0"  style="overflow: auto;height:calc(100vh - 128px );-webkit-overflow-scrolling: touch;">
+	        infinite-scroll-distance="10"  style="overflow: auto;height:calc(100vh - 128px );-webkit-overflow-scrolling: touch;">
 	        <div class="bill-border-t ui-border-b" v-for="items in info">
-	            <h4 class="time-tile ui-whitespace font14 ui-border-b">{{items.title}}</h4>
-	            <ul class="ui-list bill-list-nor" v-for="item in items.list">
+	            <h4 class="time-tile ui-whitespace font14 ui-border-b">{{items.title === 'current_month' ? '当月': items.title}}</h4>
+	            <ul class="ui-list bill-list-nor" v-for="item in items.content">
 	                <li class="ui-border-b" >
 	                    <div class="bill-list-time padding-r-10" >
 	                        <div class="line-h-nor ui-txt-muted" v-if="item.add_time.length < 8">
@@ -23,22 +23,22 @@
 	                        </div>
 	                        <div class="line-h-nor ui-txt-muted" v-else>
 	                            <div class="margin-b-5 font14">{{item.add_time.substring(0,4)}}</div>
-	                            <div class="font12">{{item.add_time.substring(5)}}</div>
+	                            <div class="font12">{{item.add_time.substring(5,10)}}</div>
 	                        </div>
 	                    </div>
 	                    <div class="bill-list-type">
-	                        <ul class="ui-list" @click="recordDetail(item.details_id)">
+	                        <ul class="ui-list" @click="recordDetail(item.order_id)">
 	                            <li class="">
 	                                <div class="ui-avatar-s">
-	                                    <span :style="{backgroundImage: 'url('+ item.fromAvatar +')'}"></span>
+	                                    <span :style="{backgroundImage: 'url('+ item.wechat_avatar +')'}"></span>
 	                                </div>
 	                                <div class="ui-list-info padding-r-0">
 	                                    <ul class="jin-justify-flex">
-	                                        <li class="font16">+{{item.money}}</li>
-	                                        <li class="font12 color-money-type">信息资产</li>
+	                                        <li class="font16">{{item.user_name}}</li>
+	                                        <li class="font12 ui-txt-warning">{{item.goods_number}}单</li>
 	                                    </ul>
-	                                    <div class="font14 ui-txt-muted line-h-nor">
-	                                    	来自<span class="ui-txt-warning">{{item.fromName}}</span>
+	                                    <div class="font14 ui-txt-muted line-h-nor ui-nowrap">
+	                                    	购买{{item.goods_name}}
 	                                    </div>
 	                                </div>
 	                            </li>
@@ -60,7 +60,7 @@
 	    </div>
         <!--空缺状态 start -->
         <div class="margin-b-15 text-center" v-if="nullData">
-            <img src="/jin2.0/images/null-data.png"/>
+            <img src="/jin2.0/images/null-data.png" width="100" height="68"/>
             <div class="margin-t-10 font14 ui-txt-muted">空旷到可以成为一片森林</div>
         </div>
         <!--空缺状态 end-->
@@ -68,56 +68,67 @@
 </template>
 
 <script>
-import { XHRGet } from '../../js/ajax.js';
+import { XHRPost } from '../../js/ajax.js';
     export default{
         data(){
             return{
                 info: [],
+                
+                //控制是否执行请求方法
                 busy: false,
-                isloadingComplete: false,
                 page: 0,
+                
+                //控制加载更多组件的显示隐藏
                 loadMoreTip: false,
+                
+                //控制加载完成组件的显示隐藏
                 loadend: false,
+                
+                //控制空数据组件的显示隐藏
                 nullData: false,
-                title: '获得记录',
+                title: '销售记录',
             }
         },
         created () {
         		document.title = this.title;
-            this.loadMore();
         },
         activated: function () {
         	document.title = this.title;
         },
         methods:{
             loadMore: function () {
-            	this.page++;
+            		this.page++;
                	this.loadMoreTip = true;
-               	XHRGet('/oriental_treasure/MyCenter/my_asset_list',{page:this.page},function (response) {
+               	XHRPost('/api/Shop/mySalesRecord',{page:encrypt(String(this.page))},function (response) {
                	    this.loadingShow = false;
                	    this.loadMoreTip = false;
                     const data = response.data.data;
-                    if (this.info.length != 0) {
-	                    	var beforeTitle = this.info[this.info.length - 1].title;
-	                    	var lastone = this.info[this.info.length - 1];
+                    console.log(data)
+                    
+                    if (this.info.length === 0) {
+                    		//如果thi.info数组为空，则直接将接收到的数组赋值给它
+                    		this.info = data;
+                    } else {
+                    		//如果thi.info数组不为空
+                    		const lastItem = this.info[this.info.length - 1];
+                    		data.forEach((value,index) => {
+                    			
+                    			//如果某项title等于this.info数组最后一项的title，则合并数组。
+                    			if (value.title === lastItem.title) {
+                    				lastItem.content = lastItem.content.concat(value.content)
+                    			} else {
+                    				this.info.push(value)
+                    			}
+                    		});
                     }
-                   
-                    for (let i = 0;i < data.data.length;i++) {
-	                    	if (data.data[i].title === beforeTitle) {
-	                    		lastone.list = lastone.list.concat(data.data[i].list)
-	                    	} else {
-	                    		this.info.push(data.data[i]);
-	                    	}
+
+                   	if (response.data.totalPage == 0) {
+                    		this.nullData = true;
+                    } else if (response.data.current_page == response.data.totalPage) {
+                    		this.loadend = true;
+					    	this.busy = true;
                     }
-                    console.log(this.info)
-                   
-                    if (data.data.length === 0) {
-				    	this.loadend = true;
-				    	this.busy = true;
-				    }
-                    if (data.total_count === 0) {
-                    	this.nullData = true;
-                    }
+                    
                	}.bind(this))
             },
             // 查看详情
@@ -172,9 +183,10 @@ import { XHRGet } from '../../js/ajax.js';
 	    padding-right: 15px;
 	}
 	.bill-list-time{
+		width: 55px;
 	    display: -webkit-box;
 	    -webkit-box-align: center;
-	    text-align: center;
+	    -webkit-box-pack: center;
 	}
 	.bill-border-b {
 	    border-bottom: 1px solid #e0e0e0;
@@ -185,6 +197,9 @@ import { XHRGet } from '../../js/ajax.js';
 	    -webkit-box-orient: vertical;
 	    -webkit-box-pack: center;
 	    padding-right: 15px;
+	}
+	.bill-list-type .ui-list {
+		background: none;
 	}
 	.color-money-type{color: #4990E2; }
 </style>
