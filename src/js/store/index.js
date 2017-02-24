@@ -6,6 +6,7 @@ import storeHome from 'components/store/store-home.vue';
 import '../lib/layer.js';
 import '../lib/layer.css';
 
+
 const routes = [
     {path: '/store', component: storeHome},
     { path: '/store/storeOrder', component: storeOrder},
@@ -19,9 +20,6 @@ const router = new VueRouter({
 })
 
 const app = new Vue({
-    mounted: function() {
-        
-    },
     router,
     watch: {
         '$route' (to, from) {
