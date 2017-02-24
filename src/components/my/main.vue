@@ -13,7 +13,7 @@
                 <li class="ui-border-b">
                     <router-link to="/name" class="click_a">
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                            <span class="bg-100-g cym"></span>
+                            <span class="bg-100-g hs_Pen"></span>
                         </div>
                         <div class="ui-list-info">
                             <h4 class="ui-nowrap">常用名</h4>
@@ -25,7 +25,7 @@
             <li class="ui-border-b">
                 <router-link to="/inviter" class="click_a">
                     <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                        <span class="bg-100-g yqr"></span>
+                        <span class="bg-100-g hs_inviter"></span>
                     </div>
                     <div class="ui-list-info">
                         <h4 class="ui-nowrap">邀请人</h4>
@@ -36,7 +36,7 @@
             <li class="ui-border-b">
                 <router-link to="/phone" class="click_a">
                     <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                        <span class="bg-100-g sjh"></span>
+                        <span class="bg-100-g hs_Mobile"></span>
                     </div>
                     <div class="ui-list-info">
                         <h4 class="ui-nowrap">手机号码</h4>
@@ -46,7 +46,7 @@
             </li>
             <li>
                 <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                    <span class="bg-100-g zcsj"></span>
+                    <span class="bg-100-g hs_time"></span>
                 </div>
                 <div class="ui-list-info">
                     <h4 class="ui-nowrap">注册时间</h4>

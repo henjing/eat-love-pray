@@ -67,10 +67,10 @@
                         window.location.href = '/xiaojin/information/authentication.html'
                     } else if(response.data.data.bank_list.length === 0){
                         //window.location.href = '/xiaojin/mine/bank_cards'
-                        this.isZf01 === "zfmima01";
+                        _this.$router.push({ path: '/zfmima01'});
                         this.errorTip("你还没绑定银行卡，无法操作此步骤");
                     } else {
-                        router.push(zfmima02);
+                        _this.$router.push({ path: '/zfmima02'});
                     }
 
                 }.bind(this))

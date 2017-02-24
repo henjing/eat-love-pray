@@ -159,7 +159,7 @@
                             yes: function () {
                                 layer.closeAll();
                                 _this.info.input=_this.info.phone ;
-                                window.location.href = '/my/main.html'
+                                _this.$router.push({ path: '/main'});
                             }
                         });
                     }else{

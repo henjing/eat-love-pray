@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import axios from 'axios';
-//import '../mock/test.js';
+import '../mock/test.js';
 import '../lib/layer.js';
 import '../lib/layer.css';
 import Index from 'components/my/index.vue';
@@ -17,7 +17,6 @@ import Zfmima02 from 'components/my/zfmima02.vue';
 import Zfmima03 from 'components/my/zfmima03.vue';
 import Zfmima04 from 'components/my/zfmima04.vue';
 import Connection from 'components/connection/connection-connection-connection.vue';
-
 import { countdown } from '../tools.js';
 
 const routes = [
@@ -37,9 +36,11 @@ const routes = [
     { path: '/connection', component: Connection}
 
 ];
+
 const router = new VueRouter({
-    // ES6缩写语法，相当于routes:routes
+     //ES6缩写语法，相当于routes:routes
     routes
+
 });
 // 最后创建vue实例并挂载
 const app = new Vue({
