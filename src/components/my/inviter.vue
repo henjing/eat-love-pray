@@ -78,7 +78,7 @@
         mounted: function () {
             const _this = this;
             XHRGet('/api/MyCenter/mySeting', {}, function (response) {
-                _this.user.dqyqr_name = response.data.data.inviting_people;
+                _this.user.dqyqr_name = response.data.data.inviting_name;
                 _this.user.mephone = response.data.data.cellphone;
                 _this.user.old_yqrphone = response.data.data.cellphone;
             })
@@ -88,7 +88,7 @@
         watch:{
             yqr_phone(curVal) {
                 const _this = this;
-                const tel = this.checkPhone(curVal);
+                 const tel = this.checkPhone(curVal);
                 if (!tel) {
                     return false;
                 }
@@ -166,7 +166,7 @@
                         _this.loadingShow = false;
                         _this.successingShow = true;
                         _this.dqyqr_name = _this.user.yqr;
-                        setInterval("window.location.href = '/my/main.html'","2000");
+                        setInterval(" _this.$router.push({ path: '/main'});'","2000");
 
                     }
                 })

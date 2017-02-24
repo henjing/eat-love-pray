@@ -1,4 +1,4 @@
-import SiteAdd from 'components/site/site-add.vue';
+import SiteAdd from '../../components/site/site-add.vue';
 import '../lib/layer.js';
 import '../lib/layer.css';
 

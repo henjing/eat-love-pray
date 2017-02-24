@@ -296,29 +296,29 @@ button {
   height: 100%; }
 
 /*背景图*/
-.bg-100-g {
+.bg-100-g, li .k-list-thumb-s > .bg-100-g {
   background-size: 100% 100%; }
 
-.qianbao {
-  background: url(/static/images/qb.png); }
+.hs_wallet {
+  background: url(/static/images/hs_wallet.png); }
 
-.xxzc {
-  background: url(/static/images/kc.png); }
+.hs_inventory {
+  background: url(/static/images/hs_inventory.png); }
 
-.dd {
-  background: url(/static/images/xs.png); }
+.hs_sales {
+  background: url(/static/images/hs_sales.png); }
 
-.ssdz {
-  background: url(/static/images/sh.png); }
+.hs_address {
+  background: url(/static/images/hs_address.png); }
 
-.cym {
-  background: url(/static/images/Pen.png); }
+.hs_Pen {
+  background: url(/static/images/hs_Pen.png); }
 
-.yqr {
-  background: url(/static/images/yqr.png); }
+.hs_inviter {
+  background: url(/static/images/hs_inviter.png); }
 
-.sjh {
-  background: url(/static/images/Mobile.png); }
+.hs_Mobile {
+  background: url(/static/images/hs_Mobile.png); }
 
-.zcsj {
-  background: url(/static/images/zcsj.png); }
+.hs_time {
+  background: url(/static/images/hs_time.png); }

@@ -11,6 +11,8 @@
 .color-4a{color: #4a4a4a; }
 .color-499{color: #4990E2;}
 .color-bc{color: #BCBCBC}
+.color-13B{color: #13BF7B;}
+.color-ff3{color: #FF3E2A}
 //重置
 .k-list>li {
 	margin-left: 0 !important;
@@ -256,7 +258,7 @@
 .twxq{
     bottom: 10px;
     right: 5px;
-    z-index: 99;
+  z-index: calc(12);
 }
 .twxq-yuan{
     background: rgba(255,255,255,0.8);
@@ -883,6 +885,20 @@ input[type="text"], input[type="password"] {
 }
 
 
+.recharge-input {
+    padding: 2px 0;
+    -webkit-box-flex: 1
+}
+
+.recharge-input input {
+    display: block;
+    width: 90%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    border: 0;
+    background: 0 0
+}
 
 //提现
 .bank-text{
@@ -904,14 +920,27 @@ input[type="text"], input[type="password"] {
 .btn-yellow{background: #FFCB00;}
 .btn-red{background: #FF3E2A;}
 .btn-green{background: #13BE7B;}
+.execute-details {
+    width: 100%;
+    margin-top: 35px;
+    background: #f3f3f3;
+    -webkit-box-shadow: 0 1px 0 0 rgba(0,0,0,.05);
+    box-shadow: 0 1px 0 0 rgba(0,0,0,.05)
+}
+
+.execute-details>li {
+    display: -webkit-box
+}
 
 //订单详情
 .order-details-head{
   width: 100%;
-  padding-top: 15px;
   height: 80px;
   color: #fff;
   background: #FF801A;
+}
+.order-details-head>.text{
+  width: 49.99%;
 }
 .order-details-btn{
   display: -webkit-box;
@@ -929,3 +958,29 @@ input[type="text"], input[type="password"] {
   border: 1px solid #D0CDCD;
   border-radius: 3px;
 }
+.ui-actionsheet-cnt {
+    font-size: 21px;
+    position: fixed;
+    bottom: 0;
+    padding: 0!important;
+    width: 100%;
+    text-align: justify;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transform: translateY(100%);
+    -webkit-transition-property: all;
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: .3s!important
+}
+
+.order-details-bg{
+  width: 45%;
+  padding-top: 40%;
+  margin: auto;
+  background-size: cover;
+  background-image: url("../../images/orderDetails.png");
+}
+.execute-pass {
+    font-size: 100px
+}
+

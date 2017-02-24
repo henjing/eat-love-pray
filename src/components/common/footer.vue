@@ -2,21 +2,13 @@
 <template>
 	<div>
 		<div class="footer container bg-white">
-			<a v-bind:class="{ current: type === 1 }" :href="indexUrl" @click="setCurrentIndex(1)">
-				<span class="jin-icon jin-icon-store font24"></span>
+			<a class="ui-border-r" :class="{ current: type === 1 }" :href="indexUrl" @click="setCurrentIndex(1)">
+				<span class="jin-icon jin-icon-home font20"></span>
 				<div class="text font10">首页</div>
 			</a>
-			<a v-bind:class="{ current: type === 2 }" :href="contactUrl" @click="setCurrentIndex(2)">
-				<span class="jin-icon jin-icon-renmai font26"></span>
-				<div class="text font10">人脉</div>
-			</a>
-			<a v-bind:class="{ current: type === 3 }" :href="foundUrl" @click="setCurrentIndex(3)">
-				<span class="jin-icon jin-icon-earth font24"></span>
-				<div class="text font10">发现</div>
-			</a>
-			<a v-bind:class="{ current: type === 4 }" :href="mineUrl" @click="setCurrentIndex(4)">
-				<span class="jin-icon jin-icon-user font24"></span>
-				<div class="text font10">我的</div>
+			<a v-bind:class="{ current: type === 2 }" :href="mineUrl" @click="setCurrentIndex(2)">
+				<span class="jin-icon jin-icon-user font20"></span>
+				<div class="text font10">个人中心</div>
 			</a>
 		</div>
 	</div>
@@ -33,10 +25,8 @@
 		data () {
 			return {
 				type: '',
-				indexUrl: '/xiaojin/index/index.html',
-				contactUrl: '/xiaojin/connection/connection.html',
-				foundUrl: '/xiaojin/discover/index.html',
-				mineUrl: '/xiaojin/my/index.html',
+				indexUrl: '/index/store/index.html',
+				mineUrl: '/index/my/index.html',
 			}
 		},
 		created: function () {
@@ -62,19 +52,22 @@
 		width: 100%;
 		display: -webkit-box;
 		width: 100%;
-		height: 55px;
-		border-top: 1px solid #DADADA;
+		height: 50px;
+		background: #F7F7F7;
+		box-shadow: 0 -1px 10px 0 rgba(0,0,0,.2) 
 	}
 	.footer a {
 		display: -webkit-box;
 		width: 100%;
-		height: 55px;
+		height: 50px;
 		-webkit-box-align: center;
 		-webkit-box-pack: center;
 		-webkit-box-orient: vertical;
 		-webkit-box-flex: 1;
 		color: #000;
 		box-sizing: border-box;
+		color: #9B9B9B;
+		letter-spacing: 0;
 	}
 	.footer a .jin-icon {
 		line-height: 1;
@@ -85,12 +78,6 @@
 	}
 	.footer a:active,
 	.footer a.current {
-		position: relative;
-		height: 60px;
-		margin-top: -5px;
-		padding-top: 5px;
-		color: #fff;
-		background: #FF3E2A;
-		box-shadow: 0 0 10px 0 rgba(255,62,41,0.70);
+		color: #58AEE8;
 	}
 </style>

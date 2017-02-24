@@ -8,21 +8,22 @@
                         <span tag='goodsImg' style="background-image:url('http://placeholder.qiniudn.com/190x284')"></span>
                     </div>
                     <div class="ui-list-info font14">
-                        <p class="ui-nowrap ui-txt-muted padding-r-15 font14">这是商品的描述，很长很长的很长很长的很长很长的</p>
+                        <p class="ui-nowrap ui-txt-muted padding-r-15 font14">{{goodsQuantity.goods_name}}</p>
 
-                        <div class="ui-txt-warning font14">￥100</div>
+                        <div class="ui-txt-warning font14">￥{{goodsQuantity.price}}</div>
                     </div>
-                    <div class="ui-txt-info padding-t-15 padding-r-10" @click="close"><span class="ui-icon-close-page font28"></span>
+                    <div class="ui-txt-info padding-t-15 padding-r-10" @click="close">
+                        <i class="jin-icon jin-icon-guanbi font28"></i>
                     </div>
                 </li>
             </ul>
 
             <div class="ui-form-item ui-border-b bg-white ui-txt-info">
-                <label>数量</label>
+                <label style="color: #000" class="font14">购买数量</label>
                 <div class="goods-number pull-right clearfix ui-txt-info">
-                    <span class="reduce" @click="reduce"><i class="jin-icon-quxiao"></i></span>
+                    <span class="reduce" @click="reduce"><i class="jin-icon jin-icon-jian"></i></span>
                     <input class="number padding-l-0" type="tel" v-model="number">
-                    <span class="add" @click="add"><i class="jin-icon-jiaguanzhu"></i></span>
+                    <span class="add" @click="add"><i class="jin-icon jin-icon-jia"></i></span>
                 </div>
             </div>
             <div class="ui-btn-wrap ui-list" @click="onOrder()">
@@ -36,15 +37,18 @@
 <style>
 </style>
 <script>
+    import { XHRPost} from './../../js/ajax';
     export default{
         data(){
             return{
                 unfold:true,
                 mod:"",
-                number:1
+                number:1,
+                goodsQuantity:this.stateData,
+                goods_id:this.stateId
             }
         },
-        props:['state-buy'],
+        props:['state-buy',"state-data", "state-id"],
         components:{
         },
         created: function() {
@@ -71,7 +75,12 @@
             },
 //            提交购买
             onOrder(){
-                this.$router.push({path:'/store/storeOrder'})
+                let data={goods_id:encrypt(String(this.goods_id)), goods_number:encrypt(String(this.number))};
+                XHRPost('/api/Shop/buyGoods',data,function (response) {
+                      if (response.status = 1){
+                           this.$router.push({path:'/store/storeOrder',query:{plan:this.number,gid:this.goods_id}})
+                      }
+                }.bind(this));
             }
         }
     }
