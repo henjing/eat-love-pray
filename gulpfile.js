@@ -44,7 +44,7 @@ let luYuQiu = {
 };
 
 
-let targetRoute = qinHaiLang;
+let targetRoute = huangEnJing;
 
 
 // 下面就是dirty work, get your hands dirty!
@@ -64,7 +64,7 @@ var webpackConfig = {
 	},
     externals: {
         'vue': 'Vue',
-        'axios': 'axios',
+//      'axios': 'axios',
         'vue-router': 'VueRouter',
         'vuex': 'Vuex',
         'vue-infinite-scroll': 'infiniteScroll'

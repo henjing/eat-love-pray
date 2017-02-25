@@ -2,9 +2,9 @@
     <div>
         <div  class="padding-t-15 padding-b-10 bg-white ui-border-b">
             <div class="ui-whitespace jin-justify-flex margin-b-15">
-            	<router-link to="/" class="back-btn  ui-txt-white">
+            	<a href="/index/my/index.html" class="back-btn  ui-txt-white">
             		<span class="jin-icon jin-icon-fanhui"></span>
-            	</router-link>
+            	</a>
             </div>
             <div class="ui-whitespace font35">信息资产记录</div>
         </div>
@@ -84,7 +84,6 @@ import { XHRGet } from '../../js/ajax.js';
         },
         created () {
         		document.title = this.title;
-            this.loadMore();
         },
         activated: function () {
         	document.title = this.title;

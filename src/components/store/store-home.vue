@@ -16,38 +16,18 @@
 	</div>
 		<ul class="k-wrap margin-t-15">
 		    <!--loop start-->
-		    <li class="commodity-list margin-b-15" @click="goToDetail('123')">
-		        <ul class="bg-white rlt">
+		    <li class="commodity-list margin-b-15" v-for="item in info">
+		        <ul class="bg-white rlt" @click="goToDetail(item.goods_id)">
 		            <li class="commodity-img-pa margin-b-10">
-		                <div class="commodity-img" :style="{backgroundImage:'url(/static/images/pro-04.png)'}"></div>
+		                <div class="commodity-img" :style="{backgroundImage:'url('+ item.goods_img_cover +')'}"></div>
 		            </li>
 		            <li class="ui-whitespace">
 		                <h3 class="ui-nowrap font14 margin-b-10">
-		                    正宗梧州六堡茶-大饼茶，统统一100元统统一100元统统一100元
+		                    {{item.goods_name}}
 		                </h3>
 		                <div class="display-box padding-b-15 line-h-12">
-		                    <div class="ui-txt-warning font16">￥<span>100</span></div>
-		                    <div class="margin-l-10 ui-txt-info font12">销量:<span>100</span></div>
-		                    <div class="shop-icon1"></div>
-		                </div>
-		            </li>
-		        </ul>
-		    </li>
-		    <!--loop end-->
-		
-		    <!--loop start-->
-		    <li class="commodity-list margin-b-15" @click="goToDetail('456')">
-		        <ul class="bg-white rlt">
-		            <li class="commodity-img-pa margin-b-10">
-		                <div class="commodity-img" :style="{backgroundImage:'url(/static/images/pro-02.png)'}"></div>
-		            </li>
-		            <li class="ui-whitespace">
-		                <h3 class="ui-nowrap font14 margin-b-10">
-		                    正宗梧州六堡茶-大饼茶，统统一100元统统一100元统统一100元
-		                </h3>
-		                <div class="display-box padding-b-15 line-h-12">
-		                    <div class="ui-txt-warning font16">￥<span>100</span></div>
-		                    <div class="margin-l-10 ui-txt-info font12">销量:<span>100</span></div>
+		                    <div class="ui-txt-warning font16">￥<span>{{item.price}}</span></div>
+		                    <div class="margin-l-10 ui-txt-info font12">销量:<span>{{item.sales}}</span></div>
 		                    <div class="shop-icon1"></div>
 		                </div>
 		            </li>
@@ -56,21 +36,26 @@
 		    <!--loop end-->
 		</ul>
 		<store-footer :current="1"></store-footer>
+		<loading v-if="loadingShow"></loading>
 	</div>
 </template>
 
 <script>
 	import StoreFooter from '../../components/common/footer.vue';
+	import Loading from '../../components/common/loading.vue';
+	import { XHRGet } from '../../js/ajax.js';
 	export default {
 		data() {
 			return {
-				
+				info: [],
+				loadingShow: true,
 			}
 		},
 		components: {
-			StoreFooter
+			StoreFooter, Loading
 		},
 		created() {
+			this.loadMore();
 			this.$nextTick(function () {
 				var mySwiper = new Swiper ('.swiper-home-hook', {
 		            loop: true,
@@ -80,6 +65,15 @@
 			})
 		},
 		methods: {
+			loadMore: function () {
+               	XHRGet('/api/Shop/goodsList',{},function (response) {
+               	    this.loadingShow = false;
+                    const data = response.data.data;
+                    console.log(data)
+                    this.info = data;
+                    
+               	}.bind(this))
+            },
 			// 查看详情
             goToDetail(id) {
                 this.$router.push({path:'/store/storeIndex',query: { id: id  }})
