@@ -59,8 +59,8 @@
                         <span class="font14 ui-txt-info"></span>
                     </router-link>
                 </li>
-                <li class="ui-border-b">
-                    <router-link to="" class="click_a">
+                <li class="ui-border-b" onclick="location.href='/index/SellRecord/index.html'">
+                    <!--<router-link to="" class="click_a">-->
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
                             <span class="bg-100-g hs_sales"></span>
                         </div>
@@ -68,7 +68,7 @@
                             <h4 class="ui-nowrap">销售记录</h4>
                         </div>
                         <span class="font14 ui-txt-info"></span>
-                    </router-link>
+                    <!--</router-link>-->
                 </li>
                 <li>
                     <router-link to="/name" class="click_a">
@@ -146,7 +146,7 @@
         XHRGet('/api/MyCenter/index', {}, function (response) {
             _this.user.user_wallet = response.data.data.can_use_money;
             _this.user.user_assets = response.data.data.info_asset;
-            _this.user.user_vip = response.data.data.level_name;
+            _this.user.user_vip = response.data.data.level;
             _this.user.user_member = response.data.data.my_children;
             _this.user.user_name = response.data.data.user_name;
             _this.user.user_avatars = response.data.data.wechat_avatar;

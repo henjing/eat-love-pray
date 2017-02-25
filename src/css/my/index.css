@@ -8,8 +8,6 @@
   .k-list-thumb-s {
     width: 22px;
     height: 22px; }
-  .bor {
-    border: 3px solid #fff; }
   .mine-header {
     padding: 10px 0; }
   .k-list-thumb-bg span {
@@ -256,7 +254,7 @@ button {
 .id-alert {
   width: 100px;
   height: 120px;
-  background: url(/static/images/id-alert.png);
+  background: url(../../images/id-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 85px;
@@ -265,7 +263,7 @@ button {
 .bank-alert {
   width: 120px;
   height: 120px;
-  background: url(/static/images/bank-alert.png);
+  background: url(../../images/bank-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 75px;
@@ -274,7 +272,7 @@ button {
 .know-alert {
   width: 120px;
   height: 120px;
-  background: url(/static/images/deve-alert.png);
+  background: url(../../images/deve-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 75px;
@@ -298,27 +296,49 @@ button {
 /*背景图*/
 .bg-100-g, li .k-list-thumb-s > .bg-100-g {
   background-size: 100% 100%; }
-
-.hs_wallet {
-  background: url(/static/images/hs_wallet.png); }
+  background: url(../../images/hs_wallet.png); }
 
 .hs_inventory {
-  background: url(/static/images/hs_inventory.png); }
+  background: url(../../images/hs_inventory.png); }
 
 .hs_sales {
-  background: url(/static/images/hs_sales.png); }
+  background: url(../../images/hs_sales.png); }
 
 .hs_address {
-  background: url(/static/images/hs_address.png); }
+  background: url(../../images/hs_address.png); }
 
 .hs_Pen {
-  background: url(/static/images/hs_Pen.png); }
+  background: url(../../images/hs_Pen.png); }
 
 .hs_inviter {
-  background: url(/static/images/hs_inviter.png); }
+  background: url(../../images/hs_inviter.png); }
 
 .hs_Mobile {
-  background: url(/static/images/hs_Mobile.png); }
+  background: url(../../images/hs_Mobile.png); }
 
 .hs_time {
-  background: url(/static/images/hs_time.png); }
+  background: url(../../images/hs_time.png); }
+
+.camera {
+  width: 22px;
+  height: 22px;
+  border-radius: 100px;
+  position: absolute;
+  border: 3px solid #fff;
+  top: 45%;
+  left: 61%;
+  background: #f1ffff;
+  color: #97dff5;
+  line-height: 22px;
+  font-weight: 800;
+  text-align: center; }
+
+.mine-header > .ui-avatar-lg, .mine-header > .ui-avatar-lg > .radius0 {
+  -webkit-border-radius: 0px; }
+
+.radius0 > .radius3 {
+  border: 3px solid #fff;
+  width: 60px;
+  height: 60px;
+  -webkit-border-radius: 200px;
+  background-size: 100% 100%; }

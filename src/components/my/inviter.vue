@@ -166,7 +166,7 @@
                         _this.loadingShow = false;
                         _this.successingShow = true;
                         _this.dqyqr_name = _this.user.yqr;
-                        setInterval(" _this.$router.push({ path: '/main'});'","2000");
+                        setInterval(" _this.$router.push({ path: '/main'})","2000");
 
                     }
                 })

@@ -4,4 +4,7 @@ import Connection from '../../components/connection/connection-connection-connec
 window.app = new Vue({
     el: '#container',
     render: h => h(Connection)
+    //render:function(h){
+    //    return h(Connection)
+    //}
 });
