@@ -961,7 +961,7 @@ input[type="text"], input[type="password"] {
   padding-top: 40%;
   margin: auto;
   background-size: cover;
-  background-image: url("../../images/orderDetails.png"); }
+  background-image: url("/static/images/orderDetails.png"); }
 
 .execute-pass {
   font-size: 100px; }

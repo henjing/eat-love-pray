@@ -25,7 +25,7 @@
 		data () {
 			return {
 				type: '',
-				indexUrl: '/index/store/index.html',
+				indexUrl: '/index/index/index.html',
 				mineUrl: '/index/my/index.html',
 			}
 		},

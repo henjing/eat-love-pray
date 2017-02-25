@@ -43,7 +43,7 @@ let luYuQiu = {
 	resources: '../kongdian_hs/public/static/'
 };
 
-let targetRoute = luYuQiu;
+let targetRoute = huangEnJing;
 
 
 // 下面就是dirty work, get your hands dirty!
@@ -63,7 +63,7 @@ var webpackConfig = {
 	},
     externals: {
         'vue': 'Vue',
-/*        'axios': 'axios',*/
+//      'axios': 'axios',
         'vue-router': 'VueRouter',
         'vuex': 'Vuex',
         'vue-infinite-scroll': 'infiniteScroll'

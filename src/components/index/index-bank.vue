@@ -50,7 +50,6 @@
 </style>
 <script>
     import {XHRPost} from './../../js/ajax';
-    import storeBank from 'components/store/store-bank.vue';
     export default{
         data(){
             return{

@@ -49,20 +49,20 @@
     <div class="ui-whitespace bottom-btn" @click="onBuy">
         立即购买
     </div>
-        <store-quantity
+        <index-quantity
                 v-if="buy"
                  v-bind:state-buy="buy"
                 v-bind:state-data="goodsData"
                 v-bind:state-id="goods_id"
                 @on-close="onSelectBuy">
-        </store-quantity>
+        </index-quantity>
 </div>
 </template>
 <style>
 </style>
 <script>
     import { XHRPost, XHRGet} from './../../js/ajax';
-    import storeQuantity from 'components/store/store-quantity.vue';
+    import indexQuantity from 'components/index/index-quantity.vue';
     export default{
         data(){
             return{
@@ -85,7 +85,7 @@
             this.goodsDetail()
 		},
         components:{
-            storeQuantity
+            indexQuantity
         },
         methods:{
             onUnfold(){
@@ -107,11 +107,20 @@
                 var load = layer.open({ type: 2,shadeClose: false})
                 var good = encrypt(String(this.goods_id));
                 XHRPost('/api/Shop/goodsDetail', {goods_id:good},function (response) {
-                    let _data = response.data.data[0];
-                    this.goodsData=_data;
-                    console.log(this.goodsData)
-                    if (_data.discription.length>70){
-                        this.goodsText = true;
+                    console.log("999", response)
+                    if (response.data.status == 1){
+                        let _data = response.data.data[0];
+                        this.goodsData=_data;
+                        console.log(this.goodsData)
+                        if (_data.discription.length>70){
+                            this.goodsText = true;
+                        }
+                    }else {
+                        layer.open({
+                            content: response.data.info,
+                            time: 2,
+                            style: 'background-color:rgba(0,0,0,.8);color:#fff'
+                        });
                     }
                     layer.close(load);
                 }.bind(this));

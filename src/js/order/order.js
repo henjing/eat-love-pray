@@ -1,16 +1,21 @@
-import OrderGoodsListWaitFahuo from 'components/order/order-goods-list-wait-fahuo.vue';
-import OrderGoodsListWaitShouhuo from 'components/order/order-goods-list-wait-shouhuo.vue';
-import OrderGoodsListHaveShouhuo from 'components/order/order-goods-list-have-shouhuo.vue';
+import OrderGoodsListNotPayment from 'components/order/order-goods-list-not-payment.vue';
+import OrderGoodsListYetPayment from 'components/order/order-goods-list-yet-payment.vue';
+import OrderGoodsListAll from 'components/order/order-goods-list-all.vue';
 import OrderGoodsLogistics from 'components/order/order-goods-logistics.vue';
+
 import '../lib/layer.js';
 import '../lib/layer.css';
 
+document.addEventListener('DOMContentLoaded', function(){
+    FastClick.attach(document.body);
+}, false);
+
 const routes = [
-    {path: '/order', component: OrderGoodsListWaitFahuo},
-    { path: '/order/waitShouhuo', component: OrderGoodsListWaitShouhuo},
-    { path: '/order/haveShouhuo', component: OrderGoodsListHaveShouhuo},
+    {path: '/order', component: OrderGoodsListAll},
+    { path: '/order/notPayment', component: OrderGoodsListNotPayment},
+    { path: '/order/yetPayment', component: OrderGoodsListYetPayment},
     { path: '/order/Logistics', component: OrderGoodsLogistics},
-    {path: '*', component: OrderGoodsListWaitFahuo},
+    {path: '*', component: OrderGoodsListAll},
 ]
 
 const router = new VueRouter({
@@ -26,13 +31,13 @@ const app = new Vue({
                 iscur:true,
             },
             {
-                name:'待收货',
-                tabText: "/order/waitShouhuo",
+                name:'待支付',
+                tabText: "/order/notPayment",
                 iscur:false,
             },
             {
-                name:'已收货',
-                tabText: "/order/haveShouhuo",
+                name:'已支付',
+                tabText: "/order/yetPayment",
                 iscur:false,
             },
         ],

@@ -6,7 +6,7 @@
                 <li>账单</li>
             </ul>
             <ul class="jin-justify-flex margin-t-20">
-                <li class="font35">66666</li>
+                <li class="font35">{{walletData.total_money}}</li>
                 <li><router-link to="/wallet/walletWithdraw" class="ui-btn jin-btn-gold">提现</router-link></li>
             </ul>
         </header>
@@ -19,7 +19,7 @@
                         </div>
                         <div class="ui-list-info">
                             <h4 class="font14 padding-b-5">上月佣金</h4>
-                            <div class="ui-txt-warning font18 line-h-nor">0</div>
+                            <div class="ui-txt-warning font18 line-h-nor">{{walletData.last_money_profit}}</div>
                         </div>
                     </li>
                 </ul>
@@ -43,12 +43,12 @@
                 <li class="ui-border-b">
                     <span class="wallet-redot wallet-redot-green"></span>
                     <div class="ui-list-info ui-txt-muted">可用余额</div>
-                    <span class="ui-txt-warning">666</span>
+                    <span class="ui-txt-warning">{{walletData.can_use_money}}</span>
                 </li>
                 <li>
                     <span class="wallet-redot wallet-redot-red"></span>
                     <div class="ui-list-info ui-txt-muted">提现冻结</div>
-                    <span class="ui-txt-warning">0</span>
+                    <span class="ui-txt-warning">{{walletData.freeze}}</span>
                 </li>
             </ul>
         </div>
@@ -105,6 +105,7 @@
     export default{
         data(){
             return {
+                walletData:""
             }
         },
         components: {},
@@ -114,8 +115,9 @@
         methods: {
             onMoney() {
                 var load = layer.open({ type: 2,shadeClose: false})
-                XHRGet('/api/Money/index', {},function (response) {
+                XHRGet('/api/Wallet/index', {},function (response) {
                     console.log(response)
+                    this.walletData = response.data.data;
                     layer.close(load);
                 }.bind(this));
             },
