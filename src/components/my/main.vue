@@ -36,7 +36,7 @@
             </li>
             <li class="ui-border-b">
                 <router-link to="/phone" class="click_a">
-                    <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
+                    <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg" style="width:18px;height:24px;">
                         <span class="bg-100-g hs_Mobile"></span>
                     </div>
                     <div class="ui-list-info">
@@ -70,7 +70,7 @@
                 <li>
                     <router-link to="/mima" class="click_a">
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                            <span style="background-position: -99px -114px"></span>
+                            <span class="bg-100-g hs_Pen"></span>
                         </div>
                         <div class="ui-list-info">
                             <h4 class="ui-nowrap">修改密码</h4>

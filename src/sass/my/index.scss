@@ -311,7 +311,7 @@ button {
   width:100%;
   height:100%;
 }
-/*背景图*/
+/*index和main页的图标背景图*/
 .bg-100-g,li .k-list-thumb-s>.bg-100-g{
   background-size: 100% 100%;
 }
@@ -364,7 +364,7 @@ button {
   -webkit-border-radius: 200px;
   background-size: 100% 100%;
 }
-/**/
+/*邀请二位码弹框*/
 .fix{
   position: fixed;
   top: 0;
@@ -385,8 +385,7 @@ button {
 .packet-user{
   background: #568cf0;
   margin-left: 10%;
-  margin-right: 10% ;
-  margin-top:40% ;
+  margin-right: 10%;
 }
 .packet-user>img {
   width: 130px;
@@ -403,4 +402,16 @@ button {
   margin: 15px auto;
   border-radius: 100px;
   background-image: -webkit-radial-gradient(#4b82e7,#5389ed);
+}
+.fix div .lines{
+  display: block;
+  width:100%;
+  height:100px;
+  background: url(../../images/share.png);
+  background-size: 100% 100%;
+  border-radius:0;
+}
+.share{
+  width:30%;
+  margin-left: 60%;
 }
