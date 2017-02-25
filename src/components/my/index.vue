@@ -18,7 +18,7 @@
             </ul>
         </div>
         <div class="user ui-whitespace ui-justify-flex box-align">
-            <div class="asset-btn">邀请好友</div>
+                <div class="asset-btn" v-on:click="GetGoInviter">邀请好友</div>
         </div>
         <div class="k-list-group">
             <ul class="ui-list jin-list-link k-list ui-list-active">
@@ -71,7 +71,7 @@
                     <!--</router-link>-->
                 </li>
                 <li>
-                    <router-link to="/name" class="click_a">
+                    <router-link to="" class="click_a">
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
                             <span class="bg-100-g hs_address"></span>
                         </div>
@@ -108,11 +108,24 @@
                         </div>
                         <div class="ui-list-info">
                             <h4 class="ui-nowrap">收货地址</h4>
-                        </div>
+                          </div>
                         <span class="font14 ui-txt-info">{{user.user_address}}</span>
                     </router-link>
                 </li>
             </ul>
+        </div>
+        <div class="fix" v-bind:class='{"dis_n":user.isA,"dsp_p":user.isB}'>
+            <div class="margin-t-20 margin-b-10 share">
+               <span class="lines"></span>
+            </div>
+            <div class="rel" >
+                <div class="abs exit" v-on:click="Getquxiao">X</div>
+                <div class="packet-user text-center">
+                    <img src="http://ok813a2du.bkt.clouddn.com/497749_inviting_qrcode2.png" alt="" />
+                    <div class="margin-b-15 packet-user-title"></div>
+                    <h4 class="margin-t-10 font14 margin-b-10 txt-color-fff padding-b-15" >点击右上角立即分享</h4>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -130,6 +143,8 @@
         data() {
         return {
             user:{
+                isA: true,
+                isB: false,
                 user_avatars: "",//用户头像
                 user_name: "", //用户名字
                 user_vip: "", //用户等级
@@ -151,6 +166,17 @@
             _this.user.user_name = response.data.data.user_name;
             _this.user.user_avatars = response.data.data.wechat_avatar;
         })
+    },
+    methods: {
+        GetGoInviter:function() {
+            this.user.isA = false;
+            this.user.isB = true;
+        },
+        Getquxiao:function() {
+            this.user.isA = true;
+            this.user.isB = false;
+        }
+
     }
     }
 

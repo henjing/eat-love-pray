@@ -63,7 +63,7 @@ var webpackConfig = {
 	},
     externals: {
         'vue': 'Vue',
-//      'axios': 'axios',
+        'axios': 'axios',
         'vue-router': 'VueRouter',
         'vuex': 'Vuex',
         'vue-infinite-scroll': 'infiniteScroll'
@@ -239,7 +239,7 @@ gulp.task('js:build', function () {
 });
 gulp.task('ugjs:build', function () {
 	return gulp.src('./src/tmp/**/*.js')
-	.pipe(ifElse(BUILD === 'PUBLIC', ugjs))
+	// .pipe(ifElse(BUILD === 'PUBLIC', ugjs))
 	// .pipe(rev())
 	.pipe(gulp.dest('./public/'))
 	// .pipe(rev.manifest())

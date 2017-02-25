@@ -63,6 +63,7 @@
 <script>
     import { XHRPost, XHRGet} from './../../js/ajax';
     import indexQuantity from 'components/index/index-quantity.vue';
+    console.log('process', arguments);
     export default{
         data(){
             return{
@@ -106,11 +107,12 @@
                 var load = layer.open({ type: 2,shadeClose: false})
                 var good = encrypt(String(this.goods_id));
                 XHRPost('/api/Shop/goodsDetail', {goods_id:good},function (response) {
-                    let _data = response.data;
-                    if (_data.status == 1){
-                        console.log(_data)
-                        this.goodsData=_data.data;
-                        if (_data.data.discription.length>70){
+                    console.log("999", response)
+                    if (response.data.status == 1){
+                        let _data = response.data.data;
+                        this.goodsData=_data;
+                        console.log(this.goodsData)
+                        if (_data.discription.length>70){
                             this.goodsText = true;
                         }
                     }else {

@@ -98,11 +98,12 @@
                     yes: function () {
                         if (this.switch) return false;
                         this.switch = true;
+                        // console.log('pay', _this);
                         const postData = {
                             order_id: encrypt(String(_this.orderId)),
                             pay_password: encrypt(String(document.getElementById('password').value))
                         };
-                        XHRPost('/api/Shop/kongdianPay',postData,function (response) {
+                        XHRPost('/api/Pay/ajaxKdPay',postData,function (response) {
                               if (response.data.status == 0) {
                                     layer.open({
                                         content: response.data.info,
@@ -111,7 +112,7 @@
                                     });
                                 } else {
                                   layer.closeAll()
-                                  _this.$router.push({path:'/store/storeOrderDetails',query: { id:this.orderId}})
+                                  _this.$router.push({path:'/index/indexOrderDetails',query: { id:this.orderId}})
                                 }
                             this.switch = false;
                         }.bind(this));
@@ -129,7 +130,7 @@
                         });
                     } else {
                         console.log(this.orderId)
-                        _this.$router.push({path:'/store/storeOrderDetails',query: { id:this.orderId }})
+                        _this.$router.push({path:'/index/indexOrderDetails',query: { id:this.orderId }})
                     }
                 }.bind(this));
             }

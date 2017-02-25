@@ -27,7 +27,7 @@
         <index-bank
                 v-if="bank"
                 v-bind:state-bank="bank"
-                v-bind:state-order-id="goods_order.order_id"
+                v-bind:state-order-id="goods_order"
                 @on-close="onSelectBank"
         >
         </index-bank>

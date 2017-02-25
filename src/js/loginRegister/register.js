@@ -91,7 +91,7 @@ var login = new Vue({
 								if (response.data.status === 1) {
 									window.location.href = response.data.data;
 								} else {
-									window.location.href = '/index/store/index.html';
+									window.location.href = '/index/index/index.html';
 								}
 							}.bind(this));
 						}

@@ -92,7 +92,7 @@ import { XHRGet } from '../../js/ajax.js';
             loadMore: function () {
             	this.page++;
                	this.loadMoreTip = true;
-               	XHRGet('/oriental_treasure/MyCenter/my_asset_list',{page:this.page},function (response) {
+               	XHRGet('/api/MyCenter/myAssetList',{page:this.page},function (response) {
                	    this.loadingShow = false;
                	    this.loadMoreTip = false;
                     const data = response.data.data;
@@ -184,6 +184,9 @@ import { XHRGet } from '../../js/ajax.js';
 	    -webkit-box-orient: vertical;
 	    -webkit-box-pack: center;
 	    padding-right: 15px;
+	}
+	.bill-list-type .ui-list {
+		background: none;
 	}
 	.color-money-type{color: #4990E2; }
 </style>
