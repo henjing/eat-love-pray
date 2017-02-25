@@ -61,7 +61,7 @@
                     yes: function () {
 //                        XHRGet('/oriental_treasure/MySeting/logOut', {}, function () {
 //                            window.location.href = '/xiaojin/login_register/login.html'
-//                        })
+//修改完登录密码后需退出登录   ToDO                        })
                         layer.closeAll();
                     }
                 });

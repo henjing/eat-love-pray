@@ -131,3 +131,39 @@ export function assignData(obj, data) {
         obj[key] = deepClone(data[key]);
     });
 }
+
+// 人脉页面定制的函数
+// 用法：if (res.data.status == 1) mergePeopleData(app.peopleData, res.data);
+export function mergePeopleData(obj, data) {
+    let objKeyArray = Object.keys(obj.data);
+    let dataKeyArray = Object.keys(data.data);
+    let finalKey = '';
+    let tmp = '';
+    let firstTime = true;
+    // 拿到finalKey
+    objKeyArray.forEach(function (objKey) {
+        dataKeyArray.forEach(function (dataKey) {
+            if (dataKey === objKey) {
+                console.log(dataKey, objKey);
+                if (!firstTime) throw new Error('在这个循环中finalKey重复赋值了');
+                firstTime = false;
+                finalKey = objKey;
+            }
+        })
+    });
+    // 拿到finalKey代表的数据
+    console.log('finalKey', finalKey);
+    if (finalKey) {
+        tmp = obj['data'][finalKey].concat(data.data[finalKey]);
+        let tmpData = Object.assign({}, data.data);
+        tmpData[finalKey] = tmp;
+        delete data.data; // 不然会覆盖的
+        assignData(obj.data, tmpData);
+        assignData(obj, data);
+    } else {
+        let tmpData = Object.assign({}, data.data);
+        delete data.data;
+        assignData(obj.data, tmpData);
+        assignData(obj, data);
+    }
+}

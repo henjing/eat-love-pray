@@ -5,7 +5,7 @@
             <form class="weui-search-bar__form">
                 <div class="weui-search-bar__box">
                     <i class="weui-icon-search"></i>
-                    <input v-model="search" type="search" v-focus class="weui-search-bar__input" @input="onSearch" placeholder="搜索"/>
+                    <input v-model="search" type="search" v-focus class="weui-search-bar__input" placeholder="搜索"/>
                     <!--如果form里只有一个input标签，就会。。。-->
                     <input type='text' style='display:none'/>
                     <a class="weui-icon-clear" @click="clearSearch"></a>
@@ -15,11 +15,11 @@
                     <span>搜索</span>
                 </label>
             </form>
-            <a class="weui-search-bar__cancel-btn search-text" @click="cancelSearch">返回</a>
+            <a class="weui-search-bar__cancel-btn search-text" @click="cancelSearchPage">返回</a>
         </div>
         <!--通讯录-->
         <div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="0" infinite-scroll-immediate-check="false" style="margin-bottom: 92px">
-            <template v-for="(items, key) in peopleList" >
+            <template v-for="(items, key) in peopleList.data" >
                 <div class="weui-cells__title">{{key}}</div>
                 <template v-for="item in items">
                     <div class="weui-cells" :key="item.user_sn">
@@ -39,103 +39,93 @@
                 <span class="weui-loadmore__tips">正在加载</span>
             </div>
             <div class="weui-loadmore weui-loadmore_line weui-loadmore_dot" v-show="!busy">
-                <span class="weui-loadmore__tips" style="background: transparent"></span>
+                <span class="weui-loadmore__tips" style="background: transparent;font-size: 12px;letter-spacing: 0.08em">{{ peopleList.totalRows }}位联系人</span>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import { connectionSearchUrl as searchUrl } from '../../js/api-config';
+    import * as tools from '../../js/tools';
+    import Vue from 'vue';
+    import axios from 'axios';
+    import infiniteScroll from 'vue-infinite-scroll';
+    Vue.use(infiniteScroll);
+
+    // 启动fastclick
+    if ('addEventListener' in document && FastClick) {
+        document.addEventListener('DOMContentLoaded', function(){
+            FastClick.attach(document.body);
+        }, false);
+    }
+    // 搜索函数 防抖动
+    let _onSearch = tools._debounce(function (self, callback) {
+        let page = (parseInt(self.peopleList.page) + 1) + '';
+        let search = self.search;
+        console.log('page333', page, 'search', search);
+        axios.post(searchUrl, {
+            page: encrypt(page),
+            search: encrypt(search)
+        }).then(function (res) {
+            if (callback) callback();
+            if (res.data.status === 1) {
+                tools.mergePeopleData(self.peopleList, res.data);
+                self.$forceUpdate();
+            }
+        }).catch(function (err) {
+            if (callback) callback();
+        })
+    }, 600);
+
+    let getInitialState = () => {
+        return {
+            data: {},
+            page: 0,
+            totalRows: 0,
+            listRows: 10,
+            status: 0
+        }
+    };
+
     export default {
         data() {
             return {
                 search: '',
                 enterSearch: false,
                 peopleList: {
-                    "G": [{
-                        "user_sn": "06e7569efe631c38da078331e0f8fe3b",
-                        "user_name": "郭银波",
-                        "initial": "G",
-                        "real_name": null,
-                        "wechat_avatar": "http:\/\/wx.qlogo.cn\/mmopen\/PiajxSqBRaEIwftkQVBzicqXYOvD0Kk88Hibh33ZWakXM0copNfEfzmQwrC65YPVvPWG6XR6uqeNuAbZEeicpibciaDg\/0",
-                        "level": "注册用户"
-                    }],
-                    "H": [{
-                        "user_sn": "e5ec96108e21b165434273d2605b3c60",
-                        "user_name": "黄永明",
-                        "initial": "H",
-                        "real_name": "黄永明",
-                        "wechat_avatar": "http:\/\/wx.qlogo.cn\/mmopen\/thfLhcllFYpnmzS6rvR7dtE5ZxtVBoEOYEseBtWV1lbBH6wvAvbXS2jheuGMYibwxic5EgHRerFmKaG8VA1D2ibW7KCibBsBNuBq\/0",
-                        "level": "注册用户"
-                    }],
-                    "L": [{
-                        "user_sn": "f08f4e901361d2139a60560be89f5a0c",
-                        "user_name": "李振威",
-                        "initial": "L",
-                        "real_name": null,
-                        "wechat_avatar": "http:\/\/ok813a2du.bkt.clouddn.com\/avatar.jpg",
-                        "level": "注册用户"
-                    }, {
-                        "user_sn": "e02d3900f3c4f655474cbfb06750627a",
-                        "user_name": "李葆洁",
-                        "initial": "L",
-                        "real_name": null,
-                        "wechat_avatar": "http:\/\/ok813a2du.bkt.clouddn.com\/avatar.jpg",
-                        "level": "注册用户"
-                    }, {
-                        "user_sn": "384bec6a43d17da66678ae8c6a453de7",
-                        "user_name": "梁大文",
-                        "initial": "L",
-                        "real_name": "梁大文",
-                        "wechat_avatar": "http:\/\/wx.qlogo.cn\/mmopen\/7wQIvr3WYNcSjrmWB86pnT1G1Cgh2PLtsicwZ6m6VxeWV6ibceOzdHTTqbf7E239riarE5768wM8XDSvibHFS7qDHBLxRNibHibvOa\/0",
-                        "level": "注册用户"
-                    }, {
-                        "user_sn": "7f414cdcec90b06acbdc30cfead2908e",
-                        "user_name": "李永威",
-                        "initial": "L",
-                        "real_name": "李永威",
-                        "wechat_avatar": "http:\/\/wx.qlogo.cn\/mmopen\/7wQIvr3WYNfxJwIyHjthdGib2Yvv7WvSqWeBTlyVQE7hqtuHHC6SLu6nlovnVyqeC8O9e3eDBFc8elX38cAgQfTvfiapBt3KuP\/0",
-                        "level": "注册用户"
-                    }, {
-                        "user_sn": "a52fc14c501d42f01923337ac67cd61a",
-                        "user_name": "罗远华",
-                        "initial": "L",
-                        "real_name": "罗远华",
-                        "wechat_avatar": "http:\/\/wx.qlogo.cn\/mmopen\/q58EK0fZ5IicEKaQibexa8RMPyDDNbs1gS1W17dHGVfnV8wia7IlxibWTibJHUD1fAhyUI6fQY1y8YbrkV7fAibCtF91Hmf4RDfO7r\/0",
-                        "level": "微股东"
-                    }, {
-                        "user_sn": "aa8e49f1008da38f948e4276ecc91765",
-                        "user_name": "李康哲",
-                        "initial": "L",
-                        "real_name": null,
-                        "wechat_avatar": "http:\/\/wx.qlogo.cn\/mmopen\/Q3auHgzwzM6ngySYxFvJ3ngcx4F0fZib9oL4CGrNicdptjxDKra9yrpHS7B5HevD7VicO5bibbyaEN1FKWpH5C2l3PJokmpKUKz60DCM2eYBgfI\/0",
-                        "level": "注册用户"
-                    }],
-                    "M": [{
-                        "user_sn": "641ee9f8462de369c19ca7f77e9f1e0a",
-                        "user_name": "麻清华",
-                        "initial": "M",
-                        "real_name": null,
-                        "wechat_avatar": "http:\/\/ok813a2du.bkt.clouddn.com\/avatar.jpg",
-                        "level": "注册用户"
-                    }, {
-                        "user_sn": "105e4a9aba105b16cf25796f45aa6ba3",
-                        "user_name": "莫志豪",
-                        "initial": "M",
-                        "real_name": null,
-                        "wechat_avatar": "http:\/\/wx.qlogo.cn\/mmopen\/BogPvlSOXxkiba7aibpKQJiaRfkSNYlga1ZeW1Vic5RTbAgctV24cb5BZNyDxwufqsu7kajzLVB3qhlyUCP4ibAogoLTmibiachicUbI\/0",
-                        "level": "注册用户"
-                    }]
+                    data: {},
+                    page: 0,
+                    totalRows: 0,
+                    listRows: 10,
+                    status: 0
                 },
                 busy: false,
             }
         },
+        created() {
+            this.fetchData();
+        },
+        computed: {
+            totalPage() {
+                if (this.peopleList.status === 0) return 1;
+                return Math.ceil(this.peopleList.totalRows / this.peopleList.listRows);
+            }
+        },
+        watch: {
+            search(val, oldVal) {
+                this.peopleList = getInitialState();
+                this.onSearch();
+            }
+        },
         methods: {
-            onSearch() {
-
+            onSearch(callback) {
+                _onSearch(this, callback);
             },
-            cancelSearch() {
+            cancelSearchPage() {
                 this.enterSearch = false;
+                this.search = '';
+                history.back();
             },
             clearSearch() {
                 this.enterSearch = false;
@@ -144,8 +134,27 @@
                 this.enterSearch = true;
             },
             loadMore() {
-
+                this.busy = true;
+                let self = this;
+                console.log('trigger');
+                this._fetchData(function () {
+                    self.busy = false;
+                });
             },
+            _fetchData(callback) {
+                let { page } = this.peopleList;
+                let { totalPage } = this;
+                if (parseInt(page) < parseInt(totalPage)) {
+                    this.fetchData(callback);
+                } else {
+                    if (callback) callback();
+                }
+            },
+            fetchData(callback){
+                let self = this;
+
+                _onSearch(self, callback);
+            }
         },
         directives: {
             focus: {
@@ -160,6 +169,8 @@
             }
         }
     }
+
+
 </script>
 
 <style lang="sass" >

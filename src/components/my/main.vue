@@ -1,9 +1,10 @@
 <template>
     <div class="jin-wrap">
         <header class="mine-header jin-box-center ">
-            <div class="ui-avatar-lg rlt bor">
-                <span>
-                    <img :src="user.user_avatars" />
+            <div class="ui-avatar-lg rlt">
+                <span class="radius0" style="position: relative;">
+                    <img :src="user.user_avatars" class="radius3"/>
+                    <i class="camera jin-icon jin-icon-xiangji font20"></i>
                 </span>
             </div>
 
