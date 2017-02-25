@@ -24,13 +24,13 @@
             <div class="order-btn margin-l-15 font14" @click="onBank">提交订单</div>
         </div>
     </div>
-        <store-bank
+        <index-bank
                 v-if="bank"
                 v-bind:state-bank="bank"
                 v-bind:state-order-id="goods_order.order_id"
                 @on-close="onSelectBank"
         >
-        </store-bank>
+        </index-bank>
     </div>
 </template>
 <style>
@@ -63,7 +63,7 @@
 </style>
 <script>
     import {XHRPost, XHRGet} from './../../js/ajax';
-    import storeBank from 'components/store/store-bank.vue';
+    import indexBank from 'components/index/index-bank.vue';
     export default{
         data(){
             return{
@@ -77,7 +77,7 @@
         },
         props:['state-buy'],
         components:{
-            storeBank
+            indexBank
         },
         created: function() {
             this.goodsDetail();
