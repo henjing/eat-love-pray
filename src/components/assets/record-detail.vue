@@ -31,7 +31,7 @@
         </ul>
         
         <div class="return-btm text-center font14">
-        	<router-link to="/record">返回</router-link >
+        	<router-link to="/">返回</router-link >
         </div>
         <loading v-if="loadingShow"></loading>
     </div>
@@ -50,19 +50,18 @@ import { XHRGet } from '../../js/ajax.js';
             }
         },
         created: function() {
-        	document.title = this.title;
-        	this.getData();
-        	
+        		document.title = this.title;
+        		this.getData();
         },
         activated: function () {
-        	document.title = this.title;
+        		document.title = this.title;
         },
         components:{
-        	Loading
+        		Loading
         },
         methods:{
         	getData: function() {
-				XHRGet('/oriental_treasure/MyCenter/my_asset_details', {id: this.id} , function (response) {
+				XHRGet('/api/MyCenter/myAssetDetails', {id: this.id} , function (response) {
 					this.loadingShow = false;
 					console.log(response.data)
 					const data = response.data.data;
