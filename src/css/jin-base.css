@@ -77,6 +77,9 @@ button {
 .jin-icon-user1:before {
   content: "\e6a0"; }
 
+.jin-icon-checked1:before {
+  content: "\e73d"; }
+
 .jin-icon-jian:before {
   content: "\e663"; }
 
@@ -100,9 +103,6 @@ button {
 
 .jin-icon-pay:before {
   content: "\e681"; }
-
-.jin-icon-chenggong:before {
-  content: "\e613"; }
 
 .jin-icon-dagou:before {
   content: "\e612"; }

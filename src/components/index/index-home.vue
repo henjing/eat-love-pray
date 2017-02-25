@@ -67,6 +67,7 @@
 		methods: {
 			loadMore: function () {
                	XHRGet('/api/Shop/goodsList',{},function (response) {
+                    console.log(response)
                	    this.loadingShow = false;
                     const data = response.data.data;
                     console.log(data)

@@ -89,11 +89,10 @@
         },
         methods:{
             onUnfold(){
-                console.log(this.unfold)
                 this.unfold = !this.unfold;
             },
+           /* 锚点*/
             goAnchor(selector) {
-                console.log(selector)
                 var anchor = this.$el.querySelector(selector)
                 document.body.scrollTop = anchor.offsetTop
             },
@@ -107,12 +106,11 @@
                 var load = layer.open({ type: 2,shadeClose: false})
                 var good = encrypt(String(this.goods_id));
                 XHRPost('/api/Shop/goodsDetail', {goods_id:good},function (response) {
-                    console.log("999", response)
-                    if (response.data.status == 1){
-                        let _data = response.data.data[0];
-                        this.goodsData=_data;
-                        console.log(this.goodsData)
-                        if (_data.discription.length>70){
+                    let _data = response.data;
+                    if (_data.status == 1){
+                        console.log(_data)
+                        this.goodsData=_data.data;
+                        if (_data.data.discription.length>70){
                             this.goodsText = true;
                         }
                     }else {
