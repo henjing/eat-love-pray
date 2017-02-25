@@ -91,7 +91,7 @@
         },
         
         created: function () {
-        	this.getUserInfo ();
+        		this.getUserInfo ();
         },
         
        	methods: {

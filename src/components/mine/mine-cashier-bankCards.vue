@@ -153,14 +153,15 @@
     // Vue.use(VueRouter);
     // Vue.use(Vuex);
 
-    document.addEventListener('DOMContentLoaded', function(){
-        FastClick.attach(document.body);
-    }, false);
+//    document.addEventListener('DOMContentLoaded', function(){
+//        FastClick.attach(document.body);
+//    }, false);
 
     let _getVerifyCode = tools._debounce(fnFactory, 100);
 
     let app = {
         created() {
+            console.log('还没进入该组件路由时会不会执行');
             let self = this;
             // 拿到银行卡列表
             this.getCard();
@@ -172,6 +173,10 @@
                 }
                 api.layerOpen(res.data);
             }, () => {});
+            // 路由跳转
+            if (self.$route.query && self.$route.query.addCard) {
+                self.goAddCard();
+            }
         },
         data() {
             return {

@@ -43,7 +43,11 @@ let luYuQiu = {
 	resources: '../kongdian_hs/public/static/'
 };
 
+<<<<<<< HEAD
 let targetRoute = luYuQiu;
+=======
+let targetRoute = huangXingBin;
+>>>>>>> 4a30f72e99d488dcae27a5d3e9c4a9394e9696d6
 
 
 // 下面就是dirty work, get your hands dirty!
@@ -239,7 +243,7 @@ gulp.task('js:build', function () {
 });
 gulp.task('ugjs:build', function () {
 	return gulp.src('./src/tmp/**/*.js')
-	.pipe(ifElse(BUILD === 'PUBLIC', ugjs))
+	// .pipe(ifElse(BUILD === 'PUBLIC', ugjs))
 	// .pipe(rev())
 	.pipe(gulp.dest('./public/'))
 	// .pipe(rev.manifest())

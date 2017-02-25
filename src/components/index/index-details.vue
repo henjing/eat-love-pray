@@ -63,6 +63,11 @@
 <script>
     import { XHRPost, XHRGet} from './../../js/ajax';
     import indexQuantity from 'components/index/index-quantity.vue';
+<<<<<<< HEAD:src/components/index/index-details.vue
+=======
+    // 判断process.env.NODE_ENV
+    console.log('process', arguments);
+>>>>>>> 4a30f72e99d488dcae27a5d3e9c4a9394e9696d6:src/components/index/index-details.vue
     export default{
         data(){
             return{
@@ -109,7 +114,11 @@
                 XHRPost('/api/Shop/goodsDetail', {goods_id:good},function (response) {
                     console.log("999", response)
                     if (response.data.status == 1){
+<<<<<<< HEAD:src/components/index/index-details.vue
                         let _data = response.data.data[0];
+=======
+                        let _data = response.data.data;
+>>>>>>> 4a30f72e99d488dcae27a5d3e9c4a9394e9696d6:src/components/index/index-details.vue
                         this.goodsData=_data;
                         console.log(this.goodsData)
                         if (_data.discription.length>70){

@@ -32,7 +32,7 @@
                         </div>
                         <div class="ui-list-info">
                             <h4 class="font14 padding-b-5">银行卡</h4>
-                            <div class="ui-txt-muted font14 line-h-nor">1张</div>
+                            <div class="ui-txt-muted font14 line-h-nor">{{ walletData.bank_count }}张</div>
                         </div>
                     </li>
                 </ul>
@@ -101,11 +101,21 @@
     }
 </style>
 <script>
-        import { XHRGet } from './../../js/ajax';
+    import { XHRGet } from './../../js/ajax';
     export default{
         data(){
             return {
+<<<<<<< HEAD
                 walletData:""
+=======
+                walletData: {
+                    bank_count: 0,
+                    can_use_money: 0,
+                    freeze: 0,
+                    last_money_profit: 0,
+                    total_money: 0
+                }
+>>>>>>> 4a30f72e99d488dcae27a5d3e9c4a9394e9696d6
             }
         },
         components: {},
@@ -114,22 +124,37 @@
         },
         methods: {
             onMoney() {
+<<<<<<< HEAD
                 var load = layer.open({ type: 2,shadeClose: false})
                 XHRGet('/api/Wallet/index', {},function (response) {
                     console.log(response)
                     this.walletData = response.data.data;
+=======
+                var load = layer.open({ type: 2,shadeClose: false});
+                XHRGet('/api/Wallet/index', {},function (response) {
+                    console.log(response);
+                    if (response.data.status == 1) this.walletData = response.data.data;
+>>>>>>> 4a30f72e99d488dcae27a5d3e9c4a9394e9696d6
                     layer.close(load);
                 }.bind(this));
             },
-            onBank: function(index) {
+            onBank() {
+                console.log('onBank');
+                if (this.walletData.bank_count > 0) {
+                    this.$router.push({path:'/wallet/BankCards'});
+                } else {
+                    this._onBank();
+                }
+            },
+            _onBank: function() {
                 var _this = this;
                 layer.open({
                     content: '使用提现功能需添加一张支持提现的储蓄卡'
                     ,btn: ['添加储蓄卡', '取消']
                     ,style:'width：250px'
-                    ,yes: function(index){
-                        layer.close(index);
-                        _this.$router.push({path:'/wallet/addBank'})
+                    ,yes: function(){
+                        layer.closeAll();
+                        _this.$router.push({path:'/wallet/BankCards', query: { addCard: true }})
                     }
                 });
             },
