@@ -25,7 +25,7 @@
             <div class="ui-whitespace padding-t-15">总价: <span class="ui-txt-warning">￥{{detailsData.total_price}}</span></div>
             <ul class="order-details-btn jin-justify-flex font12">
                 <router-link to="">查看库存</router-link>
-                <router-link to="/store">返回首页</router-link>
+                <router-link to="/index">返回首页</router-link>
             </ul>
         </div>
         <!--<ul class="ui-list ui-list-pure margin-b-20 ui-border-tb">

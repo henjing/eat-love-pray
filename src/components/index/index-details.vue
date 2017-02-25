@@ -63,6 +63,8 @@
 <script>
     import { XHRPost, XHRGet} from './../../js/ajax';
     import indexQuantity from 'components/index/index-quantity.vue';
+    // 判断process.env.NODE_ENV
+    console.log('process', arguments);
     export default{
         data(){
             return{
@@ -109,7 +111,7 @@
                 XHRPost('/api/Shop/goodsDetail', {goods_id:good},function (response) {
                     console.log("999", response)
                     if (response.data.status == 1){
-                        let _data = response.data.data[0];
+                        let _data = response.data.data;
                         this.goodsData=_data;
                         console.log(this.goodsData)
                         if (_data.discription.length>70){

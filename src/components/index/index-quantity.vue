@@ -78,7 +78,7 @@
                 let data={goods_id:encrypt(String(this.goods_id)), goods_number:encrypt(String(this.number))};
                 XHRPost('/api/Shop/buyGoods',data,function (response) {
                       if (response.status = 1){
-                           this.$router.push({path:'/store/storeOrder',query:{plan:this.number,gid:this.goods_id}})
+                           this.$router.push({path:'/index/indexOrder',query:{plan:this.number,gid:this.goods_id}})
                       }
                 }.bind(this));
             }
