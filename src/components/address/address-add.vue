@@ -13,13 +13,13 @@
                         </div>
                         <div class="ui-form-item kd-form-item ui-border-b">
                             <label class="">联系电话</label>
-                            <input type="tel" class="color-9b" name="phone" placeholder="手机或固定电话" v-model="user.phone" >
+                            <input type="tel" class="color-9b" name="phone" placeholder="手机或固定电话" v-model="user.mobile" >
                         </div>
-                        <ul class="ui-list jin-list-link select-address">
+                        <ul class="ui-list jin-list-link select-address" @click="addressSelect">
                             <li class="ui-border-b">
                                 <span class="">所在地区</span>
-                                <div class="ui-list-info line-h-12 site"></div>
-                                <div class="text-right font14 ui-txt-muted site-pl">请选择</div>
+                       <div class="ui-list-info line-h-12 site" v-if="isProvince">{{user.province}}</div>
+                                <div class="text-right font14 ui-txt-muted site-pl" v-else="">请选择</div>
                             </li>
                         </ul>
                         <input type="hidden" name="province"  v-model="user.province" />
@@ -42,7 +42,11 @@
                 </form>
             </div>
         </div>
-        <div class="submit-btn  text-center">保存</div>
+        <div class="submit-btn  text-center" @click="addressAdd">保存</div>
+        <address-select
+                v-if="select"
+                @select-data="onSelectData"
+        ></address-select>
     </div>
 </template>
 <style>
@@ -74,21 +78,25 @@
     .margin-t-35{margin-top:35px}
 </style>
 <script>
+    import {XHRPost} from '../../js/ajax.js';
+    import AddressSelect from '../../components/address/address-select.vue';
     export default{
         data(){
             return {
                 user: {
                     consignee: '',
-                    phone: '',
+                    mobile: '',
                     province: '',
                     address: '',
                     postalcode: '',
                     checkState: true,
                 },
                 isData: [],
+                select:false,
+                isProvince:false
             }
         },
-        components: {},
+        components: {AddressSelect},
         created: function () {
         },
         watch: {
@@ -107,17 +115,42 @@
         },
         vuerify: {
             'user.consignee': 'required',
-            'user.phone': 'phone',
-            'user.postalcode': 'postalcode',
+            'user.mobile': 'mobile',
+            'user.postalcode': 'required',
+            'user.province':'province',
             'user.address': 'required',
         },
         methods: {
-            onSave: function () {
+            addressAdd(){
+                let addData ={
+                    consignee:encrypt(String(this.user.addressId)),
+                    mobile: encrypt(String(this.user.mobile)),
+                    province: encrypt(String(this.user.province)),
+                    address: encrypt(String(this.user.address)),
+                    postalcode: encrypt(String(this.user.postalcode)),
+                    state: encrypt(String(this.user.checkState ? "1" :"0"))
+                };
+                let formData = JSON.stringify(this.user);
                 if (this.$vuerify.check()) {
-                    var formData = JSON.stringify(this.user);
-                    console.log(formData)
+                    XHRPost('/api/MyAddress/addAddress',addData,function (response) {
+                        console.log("打印", response)
+                        this.addressUser=response.data.data;
+                        if (response.data.data.province.length>1){
+                            this.isProvince=true;
+                        }else {
+                            this.isProvince=false;
+                        }
+                    }.bind(this))
+                }else {
                 }
             },
+             addressSelect(){
+                this.select=true;
+            },
+            onSelectData(msg){
+                this.province = msg.province+msg.city+msg.county;
+                  this.select=false;
+            }
         }
     }
 </script>

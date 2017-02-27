@@ -2,7 +2,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <svg xmlns="http://www.w3.org/2000/svg">
 <metadata>
-Created by FontForge 20120731 at Fri Feb 24 10:30:46 2017
+Created by FontForge 20120731 at Sat Feb 25 15:28:39 2017
  By admin
 </metadata>
 <defs>
@@ -19,7 +19,7 @@ Created by FontForge 20120731 at Fri Feb 24 10:30:46 2017
     bbox="0 -212 1124 896"
     underline-thickness="0"
     underline-position="0"
-    unicode-range="U+0078-E6A4"
+    unicode-range="U+0078-E73D"
   />
 <missing-glyph 
  />
@@ -52,6 +52,9 @@ d="M544 684h-64v-352h-352v-64h352v-352h64v352h352v64h-352v352z" />
     <glyph glyph-name="user1" unicode="&#xe6a0;" 
 d="M914 9q0 -68 -41.5 -108t-110.5 -40h-500q-69 0 -110.5 40t-41.5 108q0 30 2 59t8 62.5t15 62t24.5 55.5t35.5 46.5t49 31t63 11.5q6 0 24.5 -12.5t42.5 -27.5t62 -27.5t76 -12.5t76 12.5t62 27.5t42.5 27.5t24.5 12.5q34 0 63 -11.5t49 -31t35.5 -46.5t24.5 -55.5
 t15 -62t8 -62.5t2 -59zM731 519.5q0 -90.5 -64 -155t-155 -64.5t-155 64.5t-64 155t64 155t155 64.5t155 -64.5t64 -155z" />
+    <glyph glyph-name="checked1" unicode="&#xe73d;" 
+d="M512 654q-131 0 -221 -90.5t-90 -220.5q0 -86 42.5 -157.5t114 -112.5t154.5 -41t155 42t114 114t42 155t-41 154.5t-113 114t-157 42.5zM702 422l-222 -222q-10 -10 -20.5 -10t-21.5 10l-111 116q-7 8 -7 18.5t7.5 18.5t18 8t18.5 -8l95 -95l201 201q8 8 18.5 8t18.5 -8
+q8 -9 10 -19t-5 -18z" />
     <glyph glyph-name="jian" unicode="&#xe663;" 
 d="M95 336h833v-72h-833v72z" />
     <glyph glyph-name="fanhui" unicode="&#xe632;" 
@@ -78,8 +81,6 @@ t119 104.5t163.5 38q80 0 152 -33.5t117 -87.5l-320 -147q-26 -13 -51 6l-52 38q-1 2
 t-163.5 -39.5v0zM512 109z" />
     <glyph glyph-name="pay" unicode="&#xe681;" 
 d="M926 719h-828q-15 0 -25.5 -11.5t-10.5 -28.5v-88h900v88q0 17 -10.5 28.5t-25.5 11.5zM445 336h69v73h-69v-73zM176 170h339v73h-339v-73zM400 409h-224v-73h224v73zM962 527v-440q0 -16 -10.5 -27t-25.5 -11h-828q-15 0 -25.5 11t-10.5 27v440h900z" />
-    <glyph glyph-name="chenggong" unicode="&#xe613;" 
-d="M512 895q-103 0 -197 -40.5t-162 -109t-108 -163t-40 -198.5t40 -198.5t108 -163t162 -109t197 -40.5t197 40.5t162 109t108 163t40 198.5t-40 198.5t-108 163t-162 109t-197 40.5zM450 167l-226 217l83 83l142 -137l269 271l82 -83z" />
     <glyph glyph-name="dagou" unicode="&#xe612;" 
 d="M51 336l108 108l215 -215q2 5 7.5 15t27.5 41t50 63t78 78t109 89t145.5 93t184.5 94v-86q-4 -1 -12.5 -2.5t-37 -14.5t-61.5 -34t-86 -65.5t-110.5 -103t-135 -152.5t-159.5 -209l-323 301v0z" />
     <glyph glyph-name="waitlove-copy" unicode="&#xe694;" 

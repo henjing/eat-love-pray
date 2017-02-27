@@ -63,7 +63,6 @@
 <script>
     import { XHRPost, XHRGet} from './../../js/ajax';
     import indexQuantity from 'components/index/index-quantity.vue';
-    // 判断process.env.NODE_ENV
     console.log('process', arguments);
     export default{
         data(){
@@ -91,11 +90,10 @@
         },
         methods:{
             onUnfold(){
-                console.log(this.unfold)
                 this.unfold = !this.unfold;
             },
+           /* 锚点*/
             goAnchor(selector) {
-                console.log(selector)
                 var anchor = this.$el.querySelector(selector)
                 document.body.scrollTop = anchor.offsetTop
             },

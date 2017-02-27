@@ -43,7 +43,11 @@ let luYuQiu = {
 	resources: '../kongdian_hs/public/static/'
 };
 
+<<<<<<< HEAD
 let targetRoute = luYuQiu;
+=======
+let targetRoute = qinHaiLang;
+>>>>>>> a3e25fc65a2c08425f1fcc440f3a62b35d112493
 
 
 // 下面就是dirty work, get your hands dirty!
@@ -63,7 +67,7 @@ var webpackConfig = {
 	},
     externals: {
         'vue': 'Vue',
-//      'axios': 'axios',
+        'axios': 'axios',
         'vue-router': 'VueRouter',
         'vuex': 'Vuex',
         'vue-infinite-scroll': 'infiniteScroll'
