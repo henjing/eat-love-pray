@@ -114,7 +114,6 @@
                 }
             }
         },
-        components: {},
         created(){
             this.onMoney()
         },
