@@ -2,7 +2,7 @@
     <div class="jin-wrap">
         <header class="wallet-header ui-whitespace ui-txt-white">
             <ul class="jin-justify-flex padding-t-15 padding-b-15 font14">
-                <li>总资产</li>
+                <li>总资产（元）</li>
                 <li>账单</li>
             </ul>
             <ul class="jin-justify-flex margin-t-20">

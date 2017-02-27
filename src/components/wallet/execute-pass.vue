@@ -10,14 +10,14 @@
         <ul class="execute-details ui-whitespace">
             <li class="padding-t-10 padding-b-5 font14">
                 <div class="margin-r-15">银行</div>
-                 <div class=" color-9b">{{passBank.bank_name}}({{passBank.shorter_bank_no}})</div>
+                 <div class=" color-9b">{{passBank}}({{ num }})</div>
             </li>
             <li class="padding-b-10 padding-b-5 font14">
                 <div class="margin-r-15">金额</div>
                 <div class="color-9b">{{passMoney}}元</div>
             </li>
         </ul>
-        <div class="ui-whitespace padding-t-30">
+        <div class="ui-whitespace padding-t-30" @click="goBack">
             <div class="recharge-btn btn-green text-center">完成</div>
         </div>
     </div>
@@ -35,7 +35,17 @@
 
             }
         },
-        props:['pass-bank','pass-money'],
+        methods: {
+            goBack() {
+                this.$router.push({ path: '/wallet'})
+            }
+        },
+        computed: {
+            num() {
+                return this.bankNumber.slice(-4);
+            }
+        },
+        props:['pass-bank','pass-money', 'bank-number'],
         components:{
 
         }
