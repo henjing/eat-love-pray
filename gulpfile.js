@@ -43,6 +43,7 @@ let luYuQiu = {
 	resources: '../kongdian_hs/public/static/'
 };
 
+
 let targetRoute = huangEnJing;
 
 
