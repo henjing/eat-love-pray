@@ -43,7 +43,7 @@ let luYuQiu = {
 	resources: '../kongdian_hs/public/static/'
 };
 
-let targetRoute = qinHaiLang;
+let targetRoute = huangEnJing;
 
 
 // 下面就是dirty work, get your hands dirty!
