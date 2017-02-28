@@ -1,8 +1,9 @@
 <template>
     <div>
-        <!--loop start-->
+        <div class="jin-wrap">
+            <!--loop start-->
             <div class="ui-panel" v-for="key in addressData" >
-                <ul class="ui-list ui-list-text">
+                <ul class="ui-list ui-list-text" @click="onPresent(key.address_id)">
                     <li class="address-user line-h-12">
                         <div class="ui-list-info">
                             <h4>{{key.consignee}}</h4>
@@ -14,32 +15,39 @@
                     </li>
                 </ul>
                 <section class="ui-panel ui-panel-simple  ui-border-tb" >
-                        <h2 class="jin-box-align">
-                            <div   v-if="key.state == 1" >
-                                <label class="ui-checkbox-s red-checked margin-r-5 "   style="width: auto">
-                                    <input class="chooseAll margin-r-0" type="radio" name="radio" checked  />
-                                    <i class="ui-txt-warning font14">默认地址</i>
-                                </label>
+                    <h2 class="jin-box-align">
+                        <div   v-if="key.state == 1" >
+                            <label class="ui-checkbox-s red-checked margin-r-5 "   style="width: auto">
+                                <input class="chooseAll margin-r-0" type="radio" name="radio" checked  />
+                                <i class="ui-txt-warning font14">默认地址</i>
+                            </label>
+                        </div>
+                        <div v-else>
+                            &nbsp;
+                            <!--<label class="ui-checkbox-s red-checked margin-r-5 " style="width: auto">
+                               <input class="chooseAll margin-r-0" v-on:click="onChoose(key.address_id)" type="radio" name="radio" />
+                               <i class="font14">设为默认地址</i>
+                           </label>-->
+                        </div>
+                        <div class="ui-panel-title-tips display-box">
+                            <div class="display-box margin-r-20" @click="addressAlter(key.address_id)">
+                                <i class="jin-icon jin-icon-bianji margin-r-5  font14"></i>编辑
                             </div>
-                            <div v-else>
-                                &nbsp;
-                                 <!--<label class="ui-checkbox-s red-checked margin-r-5 " style="width: auto">
-                                    <input class="chooseAll margin-r-0" v-on:click="onChoose(key.address_id)" type="radio" name="radio" />
-                                    <i class="font14">设为默认地址</i>
-                                </label>-->
+                            <div class="display-box delete" v-on:click="onDelete(key)">
+                                <i class="jin-icon jin-icon-shanchu  font14"></i>删除
                             </div>
-                            <div class="ui-panel-title-tips display-box">
-                                <div class="display-box margin-r-20" @click="addressAlter(key.address_id)">
-                                    <i class="jin-icon jin-icon-bianji margin-r-5  font14"></i>编辑
-                                </div>
-                                <div class="display-box delete" v-on:click="onDelete(key)">
-                                    <i class="jin-icon jin-icon-shanchu  font14"></i>删除
-                                </div>
-                            </div>
-                            </h2>
-                    </section>
+                        </div>
+                    </h2>
+                </section>
             </div>
             <!--loop end-->
+        </div>
+        <!--空缺状态 start -->
+        <div class="jin-box-center margin-b-15 text-center" v-if="addressNull" style="min-height: 400px">
+            <img src="/static/images/null-data.png" style="width: 80%"/>
+            <div class="margin-t-10 font14 ui-txt-muted">空旷到可以成为一片森林</div>
+        </div>
+        <!--空缺状态 end-->
         <div class="mall-btn-bottom text-center container" @click="addressAdd">添加新地址</div>
     </div>
 </template>
@@ -54,6 +62,9 @@
         data(){
             return {
                 addressData: "",
+                addressNull:false,
+                number:this.$route.query.num,
+                goods_id:this.$route.query.gid
             }
         },
         components: {},
@@ -63,15 +74,17 @@
         methods: {
             addressList(){
                 XHRGet('/api/MyAddress/index',{},function (response) {
-                    console.log(response)
-                    this.addressData=response.data.data;
+                    if(response.data.status ==1){
+                        this.addressData=response.data.data;
+                    }else {
+                        this.addressNull=true;
+                    }
                 }.bind(this))
             },
             onChoose: function (index) {
                 this.addressData.map(function (v, i) {
                     v.address_id == index ? v.state = 1 : v.state = 0;
                 });
-                console.log(index)
             },
             onDelete: function (index) {
                 var dataAll = this.addressData;
@@ -97,10 +110,14 @@
                 })
             },
             addressAlter(id){
-                this.$router.push({path:'/address/addressAlter', query: { id: id  }})
+                this.$router.push({path:'/address/addressAlter', query: { id: id }})
             },
             addressAdd(){
                 this.$router.push({path:'/address/addressAdd'})
+            },
+//            确认选择收货地址
+            onPresent(msg){
+                this.$router.push({path:'/index/indexOrder', query:{num:this.number, gid:this.goods_id, addid:msg}})
             }
         }
     }

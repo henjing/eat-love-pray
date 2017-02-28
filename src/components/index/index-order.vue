@@ -1,29 +1,40 @@
 <template>
     <div>
-            <div class="apply-item margin-b-10 ui-border-b">
-        <ul class="store-list jin-list">
-            <li class="ui-border-b">
-                <div class="ui-list-thumb">
-                    <span style="background-image:url(http://placeholder.qiniudn.com/100x100)"></span>
-                </div>
-                <p class="ui-list-info padding-tb-0 ui-nowrap-multi font14 line-h-14">
-                    {{orderData.goods_name}}
-                </p>
-                <div class="text-right">
-                    <div class="font14 ui-txt-warning">￥{{orderData.price}}</div>
-                    <div class="font10 color-9b">x{{number}}</div>
-                </div>
-            </li>
-        </ul>
-        <div class="jin-justify-flex ui-whitespace padding-t-10 padding-b-10 bg-white">
-            <div class="font14 color-9b">合计</div>
-            <div class="font14 ui-txt-warning">￥{{orderData.total_price}}</div>
+        <div class="apply-item margin-b-10 ui-border-b">
+            <!--收货地址-->
+            <div class="address-border" @click="linkAddress">
+                <ul class="ui-list jin-list-link" >
+                    <li class="">
+                        <div class="ui-list-info">
+                            <h4 class="padding-b-10 ui-nowrap font14">收货地址：</h4>
+                            <p class="padding-r-15 font12 line-h-12">{{orderAddressData.province}}{{orderAddressData.address}}</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <ul class="store-list jin-list margin-t-5">
+                <li class="ui-border-b">
+                    <div class="ui-list-thumb">
+                        <span :style="{backgroundImage: 'url('+ orderData.goods_img_cover+')'}"></span>
+                    </div>
+                    <p class="ui-list-info padding-tb-0 ui-nowrap-multi font14 line-h-14">
+                        {{orderData.goods_name}}
+                    </p>
+                    <div class="text-right">
+                        <div class="font14 ui-txt-warning">￥{{orderData.price}}</div>
+                        <div class="font10 color-9b">x{{number}}</div>
+                    </div>
+                </li>
+            </ul>
+            <div class="jin-justify-flex ui-whitespace padding-t-10 padding-b-10 bg-white">
+                <div class="font14 color-9b">合计</div>
+                <div class="font14 ui-txt-warning">￥{{orderData.total_price}}</div>
+            </div>
+            <div class="store-submit-btn jin-box-end ui-whitespace bg-white">
+                <div class="">合计:<span class="ui-txt-warning">￥{{orderData.total_price}}</span></div>
+                <div class="order-btn margin-l-15 font14" @click="onBank">提交订单</div>
+            </div>
         </div>
-        <div class="store-submit-btn jin-box-end ui-whitespace bg-white">
-            <div class="">合计:<span class="ui-txt-warning">￥{{orderData.total_price}}</span></div>
-            <div class="order-btn margin-l-15 font14" @click="onBank">提交订单</div>
-        </div>
-    </div>
         <index-bank
                 v-if="bank"
                 v-bind:state-bank="bank"
@@ -42,6 +53,8 @@
     }
     .store-submit-btn{
         position: fixed;
+        left: 0;
+        right: 0;
         bottom:0;
         display: -webkit-box;
         -webkit-box-align: center;
@@ -69,10 +82,12 @@
             return{
                 mod:"",
                 bank:false,
-                number:this.$route.query.plan,
+                address_id:this.$route.query.addid,
+                number:this.$route.query.num,
+                goods_id:this.$route.query.gid,
                 orderData:"",
-                goods_order:"",
-                goods_id:this.$route.query.gid
+                orderAddressData:"",
+                goods_order:""
             }
         },
         props:['state-buy'],
@@ -96,9 +111,8 @@
             },
 //            提交订单
             onBank(){
-                var id=encrypt(String(this.goods_id));
-                var num=encrypt(String(this.number));
-                XHRPost('/api/Shop/commitOrder',{goods_id:id, goods_number:num},function (response) {
+                let bankData = {goods_id:encrypt(String(this.goods_id)), goods_number:encrypt(String(this.number)), address_id:encrypt(String(this.address_id))}
+                XHRPost('/api/Shop/commitOrder',bankData,function (response) {
                     if (response.data.status==1){
                         this.goods_order=response.data.data;
                         this.bank=true;
@@ -111,11 +125,19 @@
             },
             goodsDetail(){
                 var load = layer.open({ type: 2,shadeClose: false})
-                XHRGet('/api/Shop/getCommitOrderData',{},function (response) {
-                    this.orderData=response.data.data;
-                    console.log(this.orderData)
-                    layer.close(load);
+//                判断第一张请求address_id为空
+                let address = typeof(this.address_id) == "undefined" ? "0" : this.address_id;
+                XHRPost('/api/Shop/getCommitOrderData',{address_id:encrypt(String(address))},function (response) {
+                    if (response.data.status == 1){
+                        this.orderData=response.data.data;
+                        this.orderAddressData=response.data.data.address_info;
+                        layer.close(load);
+                    }
                 }.bind(this));
+            },
+            //        选择收货地址
+            linkAddress(){
+               this.$router.push({path:'/address', query:{num:this.number, gid:this.goods_id}})
             }
         }
     }

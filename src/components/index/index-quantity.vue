@@ -5,7 +5,7 @@
             <ul class="ui-list">
                 <li>
                     <div class="k-avatar ui-list-thumb">
-                        <span tag='goodsImg' style="background-image:url('http://placeholder.qiniudn.com/190x284')"></span>
+                        <span tag='goodsImg' style="background-image:url('http://ok813a2du.bkt.clouddn.com/hblb_cover.jpg')"></span>
                     </div>
                     <div class="ui-list-info font14">
                         <p class="ui-nowrap ui-txt-muted padding-r-15 font14">{{goodsQuantity.goods_name}}</p>
@@ -78,7 +78,7 @@
                 let data={goods_id:encrypt(String(this.goods_id)), goods_number:encrypt(String(this.number))};
                 XHRPost('/api/Shop/buyGoods',data,function (response) {
                       if (response.status = 1){
-                           this.$router.push({path:'/index/indexOrder',query:{plan:this.number,gid:this.goods_id}})
+                           this.$router.push({path:'/index/indexOrder',query:{num:this.number,gid:this.goods_id}})
                       }
                 }.bind(this));
             }
