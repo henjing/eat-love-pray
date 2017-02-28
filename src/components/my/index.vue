@@ -122,7 +122,7 @@
             <div class="rel" >
                 <div class="abs exit" v-on:click="Getquxiao">X</div>
                 <div class="packet-user text-center">
-                    <img src="http://ok813a2du.bkt.clouddn.com/497749_inviting_qrcode2.png" alt="" />
+                    <img :src="user.inviter_code" alt="" />
                     <div class="margin-b-15 packet-user-title"></div>
                     <h4 class="margin-t-10 font14 margin-b-10 txt-color-fff padding-b-15" >点击右上角立即分享</h4>
                 </div>
@@ -132,11 +132,7 @@
 </template>
 
 <script type="text/jsx">
-    import layer from '../../js/lib/layer.js';
-    import '../../js/lib/layer.css';
     import jinFooter from '../common/footer.vue';
-    import Loading from '../common/loading.vue';
-    import Successing from '../common/success.vue';
     import { countdown } from '../../js/tools.js';
     import { XHRPost, XHRGet } from '../../js/ajax.js';
 
@@ -154,7 +150,8 @@
                 user_assets: "", //用户信息资产
                 user_inventory: "500", //用户库存
                 user_member: "", //用户的会员个
-                user_address: "0" //用户收货地址个数
+                user_address: "0", //用户收货地址个数
+                inviter_code: "" //邀请二维码
             }
             }
         },
@@ -170,12 +167,17 @@
             _this.user.user_member = response.data.data.my_children;
             _this.user.user_name = response.data.data.user_name;
             _this.user.user_avatars = response.data.data.wechat_avatar;
-        })
+        });
     },
     methods: {
         GetGoInviter:function() {
             this.user.isA = false;
             this.user.isB = true;
+            const _this = this;
+            XHRGet('/api/MyCenter/createInvitingQrcode',{},function(response){
+                _this.user.inviter_code = response.data.data;
+                console.log( _this.user.inviter_code);
+            })
         },
         Getquxiao:function() {
             this.user.isA = true;

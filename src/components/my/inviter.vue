@@ -48,8 +48,6 @@
     </div>
 </template>
 <script type="text/jsx">
-    import layer from '../../js/lib/layer.js'; // TODO import声明变量
-    import '../../js/lib/layer.css';
     import Loading from '../common/loading.vue'; // TODO Vue组件大驼峰风格
     import Successing from '../common/success.vue'; // TODO 测试一下
     import { countdown } from '../../js/tools.js';

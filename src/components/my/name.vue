@@ -23,8 +23,7 @@
 </template>
 
 <script type="text/jsx">
-    import layer from '../../js/lib/layer.js';
-    import '../../js/lib/layer.css';
+
     import Loading from '../common/loading.vue';
     import { countdown } from '../../js/tools.js';
     import { XHRPost} from '../../js/ajax.js';

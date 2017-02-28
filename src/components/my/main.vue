@@ -83,11 +83,7 @@
 </template>
 
 <script type="text/jsx">
-    import Vue from 'vue';
-    import axios from 'axios';
-    import layer from '../../js/lib/layer.js';
-    import '../../js/lib/layer.css';
-    import Loading from '../common/loading.vue';
+
     import { countdown } from '../../js/tools.js';
     import { XHRPost,XHRGet } from '../../js/ajax.js';
 
