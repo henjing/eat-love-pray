@@ -71,7 +71,7 @@
                     <!--</router-link>-->
                 </li>
                 <li>
-                    <router-link to="/name" class="click_a">
+                    <router-link to="" class="click_a">
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
                             <span class="bg-100-g hs_address"></span>
                         </div>
@@ -114,7 +114,11 @@
                 </li>
             </ul>
         </div>
+        <jin-footer :current="2"></jin-footer>
         <div class="fix" v-bind:class='{"dis_n":user.isA,"dsp_p":user.isB}'>
+            <div class="margin-t-20 margin-b-10 share">
+               <span class="lines"></span>
+            </div>
             <div class="rel" >
                 <div class="abs exit" v-on:click="Getquxiao">X</div>
                 <div class="packet-user text-center">
@@ -130,6 +134,7 @@
 <script type="text/jsx">
     import layer from '../../js/lib/layer.js';
     import '../../js/lib/layer.css';
+    import jinFooter from '../common/footer.vue';
     import Loading from '../common/loading.vue';
     import Successing from '../common/success.vue';
     import { countdown } from '../../js/tools.js';
@@ -153,6 +158,9 @@
             }
             }
         },
+    components: {
+        jinFooter
+    },
     mounted: function () {
         const _this = this;
         XHRGet('/api/MyCenter/index', {}, function (response) {

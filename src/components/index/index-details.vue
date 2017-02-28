@@ -63,7 +63,6 @@
 <script>
     import { XHRPost, XHRGet} from './../../js/ajax';
     import indexQuantity from 'components/index/index-quantity.vue';
-    // 判断process.env.NODE_ENV
     console.log('process', arguments);
     export default{
         data(){
@@ -91,11 +90,10 @@
         },
         methods:{
             onUnfold(){
-                console.log(this.unfold)
                 this.unfold = !this.unfold;
             },
+           /* 锚点*/
             goAnchor(selector) {
-                console.log(selector)
                 var anchor = this.$el.querySelector(selector)
                 document.body.scrollTop = anchor.offsetTop
             },
@@ -109,11 +107,9 @@
                 var load = layer.open({ type: 2,shadeClose: false})
                 var good = encrypt(String(this.goods_id));
                 XHRPost('/api/Shop/goodsDetail', {goods_id:good},function (response) {
-                    console.log("999", response)
                     if (response.data.status == 1){
                         let _data = response.data.data;
                         this.goodsData=_data;
-                        console.log(this.goodsData)
                         if (_data.discription.length>70){
                             this.goodsText = true;
                         }

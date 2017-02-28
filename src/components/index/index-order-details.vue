@@ -8,9 +8,22 @@
                 <div class="order-details-bg"></div>
             </div>
         </div>
+        <!--收货地址-->
+        <div class="address-border margin-b-5">
+            <ul class="ui-list">
+                <li class="">
+                    <div class="ui-list-info">
+                        <h4 class="padding-b-15 ui-nowrap font14">收货人：</h4>
+                        <p class="padding-r-15 font12 line-h-12"><!--{{orderData.address}}--></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
         <ul class="ui-list jin-list margin-b-15 ui-border-tb">
             <li>
-                <div class="ui-list-thumb" :style="{backgroundImage: 'url('+ detailsData.goods_img_cover+')'}"></div>
+                <div class="ui-list-thumb" >
+                    <span :style="{backgroundImage: 'url('+ detailsData.goods_img_cover+')'}"></span>
+                </div>
                 <!--产品描述、类型-->
                 <div class="ui-list-info">
                     <div class="line-clamp description padding-r-15">{{detailsData.goods_name}}</div>
@@ -28,13 +41,12 @@
                 <router-link to="/index">返回首页</router-link>
             </ul>
         </div>
-        <!--<ul class="ui-list ui-list-pure margin-b-20 ui-border-tb">
+        <ul class="ui-list ui-list-pure margin-b-20 ui-border-tb">
             <li class="font12 color-9b line-h-12">
                 <div class="margin-b-5">订单编号：233202324504582234</div>
-                <div class="margin-b-5">创建时间：2016-09-21 17:34:19</div>
-                <div>发货时间：2016-09-21 17:34:19</div>
+                <div class="">创建时间：2016-09-21 17:34:19</div>
             </li>
-        </ul>-->
+        </ul>
     </div>
 </template>
 <style>
