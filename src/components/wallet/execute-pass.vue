@@ -23,10 +23,10 @@
     </div>
 </template>
 <style>
-.execute-pass{
-  font-size: 100px;
-  color: #13BE7B
-}
+    .execute-pass {
+      font-size: 100px;
+      color: #13BE7B
+    }
 </style>
 <script>
     export default{
