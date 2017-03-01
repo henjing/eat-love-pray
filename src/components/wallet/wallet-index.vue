@@ -2,8 +2,8 @@
     <div class="jin-wrap">
         <header class="wallet-header ui-whitespace ui-txt-white">
             <ul class="jin-justify-flex padding-t-15 padding-b-15 font14">
-                <li>总资产</li>
-                <li>账单</li>
+                <li>总资产（元）</li>
+                <!--<li @click="goRecordList">账单</li>-->
             </ul>
             <ul class="jin-justify-flex margin-t-20">
                 <li class="font35">{{walletData.total_money}}</li>
@@ -11,7 +11,7 @@
             </ul>
         </header>
         <ul class="ui-row wallet-info bg-white  margin-b-15">
-            <li class="ui-col ui-col-50">
+            <li class="ui-col">
                 <ul class="ui-list">
                     <li>
                         <div class="ui-avatar-s">
@@ -24,19 +24,19 @@
                     </li>
                 </ul>
             </li>
-            <li class="ui-col ui-col-50" @click="onBank">
-                <ul class="ui-list">
-                    <li>
-                        <div class="ui-avatar-s">
-                            <span style="background-position: 0 -100px"></span>
-                        </div>
-                        <div class="ui-list-info">
-                            <h4 class="font14 padding-b-5">银行卡</h4>
-                            <div class="ui-txt-muted font14 line-h-nor">{{ walletData.bank_count }}张</div>
-                        </div>
-                    </li>
-                </ul>
-            </li>
+            <!--<li class="ui-col ui-col-50" @click="onBank">-->
+                <!--<ul class="ui-list">-->
+                    <!--<li>-->
+                        <!--<div class="ui-avatar-s">-->
+                            <!--<span style="background-position: 0 -100px"></span>-->
+                        <!--</div>-->
+                        <!--<div class="ui-list-info">-->
+                            <!--<h4 class="font14 padding-b-5">银行卡</h4>-->
+                            <!--<div class="ui-txt-muted font14 line-h-nor">{{ walletData.bank_count }}张</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</li>-->
         </ul>
         <div class="jin-list-group">
             <ul class="ui-list jin-list">
@@ -146,6 +146,9 @@
                     }
                 });
             },
+            goRecordList() {
+                this.$router.push({path: '/wallet/recordList'});
+            }
         }
     }
 </script>

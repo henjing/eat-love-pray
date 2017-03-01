@@ -107,11 +107,9 @@
                 var load = layer.open({ type: 2,shadeClose: false})
                 var good = encrypt(String(this.goods_id));
                 XHRPost('/api/Shop/goodsDetail', {goods_id:good},function (response) {
-                    console.log("999", response)
                     if (response.data.status == 1){
                         let _data = response.data.data;
                         this.goodsData=_data;
-                        console.log(this.goodsData)
                         if (_data.discription.length>70){
                             this.goodsText = true;
                         }

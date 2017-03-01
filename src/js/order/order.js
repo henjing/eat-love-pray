@@ -31,12 +31,12 @@ const app = new Vue({
                 iscur:true,
             },
             {
-                name:'待支付',
+                name:'未发货',
                 tabText: "/order/notPayment",
                 iscur:false,
             },
             {
-                name:'已支付',
+                name:'已发货',
                 tabText: "/order/yetPayment",
                 iscur:false,
             },

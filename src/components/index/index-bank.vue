@@ -96,8 +96,8 @@
                         layer.closeAll()
                     },
                     yes: function () {
-                        if (this.switch) return false;
-                        this.switch = true;
+                        if (_this.switch) return false;
+                        _this.switch = true;
                         // console.log('pay', _this);
                         const postData = {
                             order_id: encrypt(String(_this.orderId)),
@@ -111,11 +111,11 @@
                                         style: 'background-color:rgba(0,0,0,.8);color:#fff'
                                     });
                                 } else {
-                                  layer.closeAll()
-                                  _this.$router.push({path:'/index/indexOrderDetails',query: { id:this.orderId}})
+                                  layer.closeAll();
+                                  _this.$router.push({path:'/index/indexOrderDetails',query: { id: _this.orderId}})
                                 }
-                            this.switch = false;
-                        }.bind(this));
+                            _this.switch = false;
+                        }.bind(_this));
                     }
                 })
             },
@@ -129,8 +129,8 @@
                             style: 'background-color:rgba(0,0,0,.8);color:#fff'
                         });
                     } else {
-                        console.log(this.orderId)
-                        _this.$router.push({path:'/index/indexOrderDetails',query: { id:this.orderId }})
+                        console.log(_this.orderId)
+                        _this.$router.push({path:'/index/indexOrderDetails',query: { id:_this.orderId }})
                     }
                 }.bind(this));
             }

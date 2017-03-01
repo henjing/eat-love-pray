@@ -2,7 +2,7 @@
     <div class="select-actionsheet">
         <div class="ui-txt-info padding-t-10 padding-b-10 rlt text-center">
             所在地区
-            <router-link to="/address" ><i class="jin-icon jin-icon-guanbi abs font20" style="right: 10px;top: 6px;color: #BCBCBC"></i></router-link>
+            <i class="jin-icon jin-icon-guanbi abs font20" style="right: 10px;top: 6px;color: #BCBCBC" @click="onFinish"></i>
         </div>
         <ul class="ui-whitespace  jin-box-align ui-border-tb">
             <li :class="{'margin-r-10':province.length>1}" @click="elCityData">{{province}} </li>
@@ -14,6 +14,7 @@
                     @msg-province="provinceData"
                     @msg-city="cityData"
                     @msg-county="countyData"
+                     style="overflow: auto;height:calc(105vh - 128px );-webkit-overflow-scrolling: touch;"
          ></component>
     </div>
 </template>
@@ -82,7 +83,7 @@
                     county:this.county
                 };
                  this.$emit('select-data', data);
-            }
+            },
         }
     }
 </script>
