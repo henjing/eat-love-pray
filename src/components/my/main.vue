@@ -4,7 +4,7 @@
             <div class="ui-avatar-lg rlt">
                 <span class="radius0" style="position: relative;">
                     <img :src="user.user_avatars" class="radius3"/>
-                    <i class="camera jin-icon jin-icon-xiangji font20"></i>
+                    <!--<i class="camera jin-icon jin-icon-xiangji font20"></i>-->
                 </span>
             </div>
 
@@ -70,7 +70,7 @@
                 <li>
                     <router-link to="/mima" class="click_a">
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                            <span class="bg-100-g hs_Pen"></span>
+                            <span class="bg-100-g hs_pwd"></span>
                         </div>
                         <div class="ui-list-info">
                             <h4 class="ui-nowrap">修改密码</h4>

@@ -22,8 +22,7 @@
         </div>
         <div class="k-list-group">
             <ul class="ui-list jin-list-link k-list ui-list-active">
-                <li class="ui-border-b">
-                    <router-link to="" class="click_a">
+                <li class="ui-border-b" onclick="location.href='/index/wallet/index.html'">
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
                             <span class="bg-100-g hs_wallet"></span>
                         </div>
@@ -31,61 +30,49 @@
                             <h4 class="ui-nowrap">钱包</h4>
                         </div>
                         <span class="font14 ui-txt-info">{{user.user_wallet}}</span>
-                    </router-link>
                 </li>
-                <li>
-                    <router-link to="" class="click_a">
+                <li onclick="location.href='/index/index/index.html#/'">
+                    <!--<router-link to="" class="click_a">-->
+                        <!--<div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">-->
+                            <!--<span class="bg-100-g hs_inventory"></span>-->
+                        <!--</div>-->
+                        <!--<div class="ui-list-info">-->
+                            <!--<h4 class="ui-nowrap">信息资产</h4>-->
+                        <!--</div>-->
+                        <!--<span class="font14 ui-txt-info">{{user.user_assets}}</span>-->
+                    <!--</router-link>-->
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                            <span class="bg-100-g hs_inventory"></span>
+                            <span class="bg-100-g hs_sales"></span>
                         </div>
                         <div class="ui-list-info">
-                            <h4 class="ui-nowrap">信息资产</h4>
+                            <h4 class="ui-nowrap">我的首页</h4>
                         </div>
-                        <span class="font14 ui-txt-info">{{user.user_assets}}</span>
-                    </router-link>
+                        <span class="font14 ui-txt-info"></span>
                 </li>
             </ul>
         </div>
         <div class="k-list-group">
             <ul class="ui-list jin-list-link k-list ui-list-active">
-                <li class="ui-border-b">
-                    <router-link to="" class="click_a">
-                        <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                            <span class="bg-100-g hs_sales"></span>
-                        </div>
-                        <div class="ui-list-info">
-                            <h4 class="ui-nowrap">我的订单</h4>
-                        </div>
-                        <span class="font14 ui-txt-info"></span>
-                    </router-link>
-                </li>
                 <li class="ui-border-b" onclick="location.href='/index/SellRecord/index.html'">
                     <!--<router-link to="" class="click_a">-->
-                        <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                            <span class="bg-100-g hs_sales"></span>
-                        </div>
-                        <div class="ui-list-info">
-                            <h4 class="ui-nowrap">销售记录</h4>
-                        </div>
-                        <span class="font14 ui-txt-info"></span>
+                    <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
+                        <span class="bg-100-g hs_sales"></span>
+                    </div>
+                    <div class="ui-list-info">
+                        <h4 class="ui-nowrap">销售记录</h4>
+                    </div>
+                    <span class="font14 ui-txt-info"></span>
                     <!--</router-link>-->
                 </li>
-                <li>
-                    <router-link to="" class="click_a">
+                <li class="ui-border-b" onclick="location.href='/index/order/index.html'">
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
                             <span class="bg-100-g hs_address"></span>
                         </div>
                         <div class="ui-list-info">
-                            <h4 class="ui-nowrap">库存</h4>
+                            <h4 class="ui-nowrap">我的订单</h4>
                         </div>
                         <span class="font14 ui-txt-info">{{user.user_inventory}}</span>
-                    </router-link>
                 </li>
-            </ul>
-        </div>
-
-        <div class="k-list-group">
-            <ul class="ui-list jin-list-link ui-list-active">
                 <li>
                     <router-link to="/connection" class="click_a">
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
@@ -99,21 +86,35 @@
                 </li>
             </ul>
         </div>
+
         <div class="k-list-group">
             <ul class="ui-list jin-list-link ui-list-active">
-                <li>
-                    <router-link to="" class="click_a">
-                        <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                            <span class="bg-100-g hs_address"></span>
-                        </div>
-                        <div class="ui-list-info">
-                            <h4 class="ui-nowrap">收货地址</h4>
-                          </div>
-                        <span class="font14 ui-txt-info">{{user.user_address}}</span>
-                    </router-link>
+                <li onclick="location.href='/index/address/index.html'">
+                    <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
+                        <span class="bg-100-g hs_address"></span>
+                    </div>
+                    <div class="ui-list-info">
+                        <h4 class="ui-nowrap">收货地址</h4>
+                    </div>
+                    <span class="font14 ui-txt-info">{{user.user_address}}</span>
                 </li>
             </ul>
         </div>
+        <!--<div class="k-list-group">-->
+            <!--<ul class="ui-list jin-list-link ui-list-active">-->
+                <!--<li>-->
+                    <!--<router-link to="" class="click_a">-->
+                        <!--<div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">-->
+                            <!--<span class="bg-100-g hs_address"></span>-->
+                        <!--</div>-->
+                        <!--<div class="ui-list-info">-->
+                            <!--<h4 class="ui-nowrap">收货地址</h4>-->
+                          <!--</div>-->
+                        <!--<span class="font14 ui-txt-info">{{user.user_address}}</span>-->
+                    <!--</router-link>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
         <jin-footer :current="2"></jin-footer>
         <div class="fix" v-bind:class='{"dis_n":user.isA,"dsp_p":user.isB}'>
             <div class="margin-t-20 margin-b-10 share">
@@ -148,9 +149,9 @@
                 user_vip: "", //用户等级
                 user_wallet: "", //用户钱数
                 user_assets: "", //用户信息资产
-                user_inventory: "500", //用户库存
+                //user_inventory: "500", //用户库存
                 user_member: "", //用户的会员个
-                user_address: "0", //用户收货地址个数
+                //user_address: "0", //用户收货地址个数
                 inviter_code: "" //邀请二维码
             }
             }
