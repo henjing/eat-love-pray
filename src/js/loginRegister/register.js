@@ -33,6 +33,7 @@ var login = new Vue({
 				if (response.data.status === 1) {
 					const _this = this;
 					countdown(60,function (time) {
+						
 						_this.conut_time = time + 's';
 						if (time === 0) {
 							_this.getCodeBtnDisable = true;
@@ -86,7 +87,7 @@ var login = new Vue({
 						content: response.data.info,
 						time: 1.5,
 						end: function () {
-							XHRGet('/oriental_treasure/Wechat/getUserOpenId', {}, function (response) {
+							XHRGet('/api/Wechat/getUserOpenId', {}, function (response) {
 								layer.closeAll();
 								if (response.data.status === 1) {
 									window.location.href = response.data.data;
