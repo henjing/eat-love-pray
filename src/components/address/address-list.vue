@@ -110,10 +110,10 @@
                 })
             },
             addressAlter(id){
-                this.$router.push({path:'/address/addressAlter', query: { id: id }})
+                this.$router.push({path:'/address/addressAlter', query: { id: id, num:this.number, gid:this.goods_id}})
             },
             addressAdd(){
-                this.$router.push({path:'/address/addressAdd'})
+                this.$router.push({path:'/address/addressAdd', query: {num:this.number, gid:this.goods_id}})
             },
 //            确认选择收货地址
             onPresent(msg){

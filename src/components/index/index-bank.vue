@@ -112,7 +112,7 @@
                                     });
                                 } else {
                                   layer.closeAll();
-                                  _this.$router.push({path:'/index/indexOrderDetails',query: { id: _this.orderId}})
+                                  _this.$router.push({path:'/index/indexOrderDetails',query: { oid: _this.orderId}})
                                 }
                             _this.switch = false;
                         }.bind(_this));
@@ -129,8 +129,7 @@
                             style: 'background-color:rgba(0,0,0,.8);color:#fff'
                         });
                     } else {
-                        console.log(_this.orderId)
-                        _this.$router.push({path:'/index/indexOrderDetails',query: { id:_this.orderId }})
+                        _this.$router.push({path:'/index/indexOrderDetails',query: { oid:_this.orderId }})
                     }
                 }.bind(this));
             }

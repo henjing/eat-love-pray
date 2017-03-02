@@ -13,8 +13,8 @@
             <ul class="ui-list">
                 <li class="">
                     <div class="ui-list-info">
-                        <h4 class="padding-b-15 ui-nowrap font14">收货人：</h4>
-                        <p class="padding-r-15 font12 line-h-12"><!--{{orderData.address}}--></p>
+                        <h4 class="padding-b-15 ui-nowrap font14">收货人：{{detailsData.consignee}}  {{detailsData.mobile}}</h4>
+                        <p class="padding-r-15 font12 line-h-12">{{detailsData.address}}</p>
                     </div>
                 </li>
             </ul>
@@ -36,14 +36,14 @@
         </ul>
         <div class="margin-b-15 bg-white">
             <div class="ui-whitespace padding-t-15">总价: <span class="ui-txt-warning">￥{{detailsData.total_price}}</span></div>
-            <ul class="order-details-btn jin-justify-flex font12">
-                <router-link to="">查看库存</router-link>
+            <div class="order-details-btn jin-justify-flex font12">
+                <a @click="orderUrl">订单列表</a>
                 <router-link to="/index">返回首页</router-link>
-            </ul>
+            </div>
         </div>
         <ul class="ui-list ui-list-pure margin-b-20 ui-border-tb">
             <li class="font12 color-9b line-h-12">
-                <div class="margin-b-5">订单编号：233202324504582234</div>
+                <div class="margin-b-5">订单编号：{{detailsData.express_sn}}</div>
                 <div class="">创建时间：2016-09-21 17:34:19</div>
             </li>
         </ul>
@@ -56,7 +56,7 @@
     export default{
         data(){
             return{
-                orderId:this.$route.query.id,
+                orderId:this.$route.query.oid,
                 detailsData:""
             }
         },
@@ -79,6 +79,9 @@
                         _this.detailsData = response.data.data;
                     }
                 }.bind(this));
+            },
+            orderUrl(){
+                window.location.href="/index/order"
             }
         }
     }
