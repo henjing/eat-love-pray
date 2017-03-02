@@ -254,7 +254,7 @@ button {
 .id-alert {
   width: 100px;
   height: 120px;
-  background: url(../../images/id-alert.png);
+  background: url(/static/images/id-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 85px;
@@ -263,7 +263,7 @@ button {
 .bank-alert {
   width: 120px;
   height: 120px;
-  background: url(../../images/bank-alert.png);
+  background: url(/static/images/bank-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 75px;
@@ -272,7 +272,7 @@ button {
 .know-alert {
   width: 120px;
   height: 120px;
-  background: url(../../images/deve-alert.png);
+  background: url(/static/images/deve-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 75px;
@@ -298,31 +298,31 @@ button {
   background-size: 100% 100%; }
 
 .hs_wallet {
-  background: url(../../images/hs_wallet.png); }
+  background: url(/static/images/hs_wallet.png); }
 
 .hs_inventory {
-  background: url(../../images/hs_inventory.png); }
+  background: url(/static/images/hs_inventory.png); }
 
 .hs_sales {
-  background: url(../../images/hs_sales.png); }
+  background: url(/static/images/hs_sales.png); }
 
 .hs_address {
-  background: url(../../images/hs_address.png); }
+  background: url(/static/images/hs_address.png); }
 
 .hs_Pen {
-  background: url(../../images/hs_Pen.png); }
+  background: url(/static/images/hs_Pen.png); }
 
 .hs_pwd {
-  background: url(../../images/hs_pwd.png); }
+  background: url(/static/images/hs_pwd.png); }
 
 .hs_inviter {
-  background: url(../../images/hs_inviter.png); }
+  background: url(/static/images/hs_inviter.png); }
 
 .hs_Mobile {
-  background: url(../../images/hs_Mobile.png); }
+  background: url(/static/images/hs_Mobile.png); }
 
 .hs_time {
-  background: url(../../images/hs_time.png); }
+  background: url(/static/images/hs_time.png); }
 
 .camera {
   width: 22px;
@@ -391,7 +391,7 @@ button {
   display: block;
   width: 100%;
   height: 100px;
-  background: url(../../images/share.png);
+  background: url(/static/images/share.png);
   background-size: 100% 100%;
   border-radius: 0; }
 
