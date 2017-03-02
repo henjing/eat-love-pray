@@ -41,7 +41,7 @@ var login = new Vue({
 				console.log(response)
 				layer.close(load);
 				if (response.data.status === 1) {
-					XHRGet('/oriental_treasure/Wechat/getUserOpenId', {}, function (response) {
+					XHRGet('/api/Wechat/getUserOpenId', {}, function (response) {
 						layer.close(load);
 						if (response.data.status === 1) {
 							window.location.href = response.data.data;

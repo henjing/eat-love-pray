@@ -21,8 +21,7 @@
 </template>
 
 <script type="text/jsx">
-    import layer from '../../js/lib/layer.js';
-    import '../../js/lib/layer.css';
+
     import { countdown } from '../../js/tools.js';
     import { XHRPost,XHRGet } from '../../js/ajax.js';
     export default{
@@ -55,13 +54,14 @@
             },
             //成功提示
             successTip: function (msg) {
+                const _this = this;
                 layer.open({
                     content: msg,
                     btn: ['确定'],
                     yes: function () {
-//                        XHRGet('/oriental_treasure/MySeting/logOut', {}, function () {
-//                            window.location.href = '/xiaojin/login_register/login.html'
-//修改完登录密码后需退出登录   ToDO                        })
+                        XHRGet('/api/MyCenter/logOut', {}, function () {
+                           window.location.href = '/index/login_register/login.html'
+                           })
                         layer.closeAll();
                     }
                 });

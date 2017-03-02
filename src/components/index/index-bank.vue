@@ -96,7 +96,7 @@
                         layer.closeAll()
                     },
                     yes: function () {
-                        if (this.switch) return false;
+                        if (_this.switch) return false;
                         _this.switch = true;
                         // console.log('pay', _this);
                         const postData = {
@@ -111,11 +111,11 @@
                                         style: 'background-color:rgba(0,0,0,.8);color:#fff'
                                     });
                                 } else {
-                                  layer.closeAll()
-                                  _this.$router.push({path:'/index/indexOrderDetails',query: { id:_this.orderId}})
+                                  layer.closeAll();
+                                  _this.$router.push({path:'/index/indexOrderDetails',query: { id: _this.orderId}})
                                 }
                             _this.switch = false;
-                        }.bind(this));
+                        }.bind(_this));
                     }
                 })
             },

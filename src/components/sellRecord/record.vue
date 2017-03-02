@@ -56,14 +56,13 @@
 		    <div class="ui-loading-wrap ba-wi" v-if="loadend">
 		        <p class="font14 ui-txt-muted"><span class="no-more-data">已经到底了</span></p>
 		    </div>
-	        
+	        <!--空缺状态 start -->
+	        <div class="margin-t-20 padding-t-20 text-center" v-if="nullData">
+	            <img src="/static/images/null-data.png" width="100" height="68"/>
+	            <div class="margin-t-10 font14 ui-txt-muted">暂无销售记录</div>
+	        </div>
+	        <!--空缺状态 end-->
 	    </div>
-        <!--空缺状态 start -->
-        <div class="margin-b-15 text-center" v-if="nullData">
-            <img src="/jin2.0/images/null-data.png" width="100" height="68"/>
-            <div class="margin-t-10 font14 ui-txt-muted">空旷到可以成为一片森林</div>
-        </div>
-        <!--空缺状态 end-->
     </div>
 </template>
 
@@ -93,7 +92,7 @@ import { XHRPost } from '../../js/ajax.js';
         		document.title = this.title;
         },
         activated: function () {
-        	document.title = this.title;
+        		document.title = this.title;
         },
         methods:{
             loadMore: function () {

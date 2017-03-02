@@ -1,27 +1,49 @@
 <template>
     <div>
-        <template v-if="!executePass && !executeFailure">
-            <ul class="ui-list jin-list-link margin-t-15 margin-b-15 ui-border-tb">
-                <li class="" @click="onBank">
-                    <div class="ui-list-icon">
-                        <span  :style="{backgroundImage: 'url('+ defaultBank.logo +')'}"></span>
+        <template v-if="!executeFailure && !executePass">
+            <div class="card-form">
+                <div class="weui-cells weui-cells_form my-cells">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd"><label class="weui-label">开户姓名</label></div>
+                        <div class="weui-cell__bd">
+                            <input class="weui-input" type="text" v-model="withdrawData.realName" />
+                        </div>
                     </div>
-                    <div class="ui-list-info line-h-14">
-                        <div class="font14">{{defaultBank.bank_name}}</div>
-                        <div class="font14 color-9b">尾号{{defaultBank.shorter_bank_no}}</div>
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd"><label class="weui-label">开户行</label></div>
+                        <div class="weui-cell__bd">
+                            <select style="padding-left: 0px" class="weui-select" name="select1" v-model="withdrawData.bankName">
+                                <option value="交通银行">交通银行</option>
+                                <option value="招商银行">招商银行</option>
+                                <option value="中国工商银行">中国工商银行</option>
+                                <option value="中国光大银行">中国光大银行</option>
+                                <option value="中国建设银行">中国建设银行</option>
+                                <option value="中国民生银行">中国民生银行</option>
+                                <option value="中国农业银行">中国农业银行</option>
+                                <option value="中国银行总行">中国银行总行</option>
+                                <option value="中国邮政储蓄银行">中国邮政储蓄银行</option>
+                                <option value="中信银行">中信银行</option>
+                            </select>
+                        </div>
                     </div>
-                </li>
-            </ul>
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd"><label class="weui-label">银行卡号</label></div>
+                        <div class="weui-cell__bd">
+                            <input class="weui-input" type="text" v-model="withdrawData.bankNumber" />
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="ui-whitespace margin-b-20 bg-white">
                 <div class="padding-t-15 font12 color-4a">提现金额</div>
                 <div class="jin-box-align  padding-t-15 padding-b-20 line-h-nor ">
                     <div class="margin-r-10 font30 color-4a">￥</div>
                     <div class="recharge-input  font28 color-4a">
-                        <input type="tel"  placeholder="请输入金额" v-model="withdrawAll"  />
+                        <input type="number"  placeholder="请输入金额" v-model="withdrawAll"  />
                     </div>
                 </div>
                 <div class="jin-justify-flex padding-t-10  padding-b-10 ui-border-t">
-                    <div class="font12 color-9b">可用金额 {{withdrawData.money}}元</div>
+                    <div class="font12 color-9b">可用金额 {{withdrawData.balance}}元</div>
                     <div class="font12" @click="onAll"><a>全部提现</a></div>
                 </div>
             </div>
@@ -35,22 +57,21 @@
                 </div>
             </div>
         </template>
-         <bank-card
-                v-if="bank"
-                @close="onSelectBank"
-                v-bind:bank="bank"
-                v-bind:bank-info="defaultInfo"
-        ></bank-card>
+
         <execute-failure  v-if="executeFailure" @failure="executeFailure=false"></execute-failure>
+
         <execute-pass v-if="executePass"
-                      :pass-bank="defaultBank"
+                      :pass-bank="withdrawData.bankName"
+                      :bank-number="withdrawData.bankNumber"
                       :pass-money="withdrawAll"
         ></execute-pass>
     </div>
 </template>
+
 <style>
-.padding-t-30{padding-top:30px}
+    .padding-t-30 {padding-top:30px}
 </style>
+
 <script>
     import BankCard from 'components/wallet/bank-card.vue';
     import ExecuteFailure from 'components/wallet/execute-failure.vue';
@@ -59,14 +80,16 @@
     export default{
         data(){
             return{
-                bank:false,
-                executeFailure:false,
-                executePass:false,
-                withdrawData:{},
-                defaultInfo: {},
-                defaultBank:{},
-                withdrawAll:'',
-                switch:false
+                executeFailure: false,
+                executePass: false,
+                withdrawData: {
+                    balance: '',
+                    bankName: '',
+                    bankNumber: '',
+                    realName: ''
+                },
+                withdrawAll: '', // 提现金额
+                _switch: false
             }
         },
         components:{
@@ -75,57 +98,59 @@
         created(){
             this.onWithdraw()
         },
+        computed: {
+            _balance() {
+                // type: Number
+                return parseFloat(parseFloat(this.withdrawData.balance).toFixed(2));
+            },
+            _withdrawAll() {
+                // type: Number
+                return parseFloat(parseFloat(this.withdrawAll).toFixed(2));
+            },
+            _isValid() {
+                return typeof this.withdrawAll === 'number' && this.withdrawAll > 0;
+            }
+        },
         watch: {
             withdrawAll: function (val, oldVal) {
-                var num = this.withdrawData.money;
-                var reg = /^[0-9]+$/;
-                var der = parseInt(num.replace(/,/g, ''), 10);
-                var der2 = val;
-                if (der2 > der){
-                    this.withdrawAll=der;
+                if (this._isValid && this._withdrawAll > this._balance) {
+                    this.onAll();
                 }
-                if (!reg.test(der2)){
-                    this.withdrawAll="";
+                if (this._isValid) {
+                    this.withdrawAll = parseFloat(this.withdrawAll.toFixed(2));
                 }
-            },
+            }
         },
         directives: {
         },
         methods:{
-            onBank(){
-                this.bank=true
-            },
-            onSelectBank(e){
-                this.bank=false;
-                this.defaultBank=e;
-            },
             onAll(){
-                var num = this.withdrawData.money;
-                this.withdrawAll=parseInt(num.replace(/,/g, ''), 10);
+                var num = this.withdrawData.balance;
+                this.withdrawAll = num;
             },
             onWithdraw() {
-                var load = layer.open({ type: 2,shadeClose: false})
-                XHRGet('/oriental_treasure/Wallet/withdraw', {},function (response) {
-                    const getData= response.data;
-                    if (getData.status==1){
-                        this.withdrawData=getData.data;
-                        this.defaultInfo=getData.data.bank_cards;
-                        this.defaultBank=getData.data.bank_cards[0];
-                    }else {
-                        this.isLogin=true;
+                var load = layer.open({ type: 2,shadeClose: false });
+                XHRGet('/api/Withdraw/walletInfo', {}, function (response) {
+                    console.log('res', response);
+                    const getData = response.data;
+                    if (true || getData) {
+                        this.withdrawData = Object.assign({}, getData);
+                        this.withdrawData.balance = this.withdrawData.balance + '';
+                    } else {
+
                     }
                     layer.close(load);
                 }.bind(this));
             },
             txFn() {
-                var _this=this;
-                if (this.withdrawAll.length < 1){
+                var _this = this;
+                if (!this._isValid){
                     layer.open({
                         content: '请输入正确金额!',
                         time: 2,
                         style: 'background-color:rgba(0,0,0,.8);color:#fff'
                     });
-                }else {
+                } else {
                     layer.open({
                         title: '请输入交易密码',
                         content: '<input type="password" id="password" style="width:100%;height:40px; border:0;border-bottom:1px solid #ddd;">',
@@ -135,14 +160,16 @@
                             layer.closeAll()
                         },
                         yes: function () {
-                            if (this.switch) return false;
-                            this.switch = true;
+                            if (_this._switch) return false;
+                            _this._switch = true;
                             const postData = {
-                                account: encrypt(_this.defaultBank.bank_card_no),
-                                money: encrypt(_this.withdrawAll),
-                                psw: encrypt(String(document.getElementById('password').value))
+                                realName: encrypt(_this.withdrawData.realName),
+                                bankNumber: encrypt(_this.withdrawData.bankNumber),
+                                bankName: encrypt(_this.withdrawData.bankName),
+                                money: encrypt(_this.withdrawAll + ''),
+                                pay_password: encrypt(String(document.getElementById('password').value))
                             };
-                            XHRPost('/oriental_treasure/Wallet/withdraw_apply', postData, function (msg) {
+                            XHRPost('/api/Withdraw/saveWithdraw', postData, function (msg) {
                                 if (msg.data.status == 0) {
                                     layer.open({
                                         content: msg.data.info,
@@ -150,11 +177,11 @@
                                         style: 'background-color:rgba(0,0,0,.8);color:#fff'
                                     });
                                 } else {
-                                    layer.closeAll()
+                                    layer.closeAll();
                                     _this.executePass = true;
                                 }
-                                this.switch = false;
-                            }.bind(this));
+                                _this._switch = false;
+                            }.bind(_this));
                         }
                     })
                 }
