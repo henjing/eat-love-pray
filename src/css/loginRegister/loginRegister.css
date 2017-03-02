@@ -42,20 +42,12 @@ header {
 .login {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  background-image: url(/static/images/loginRegister/wave.png);
-  background-position: bottom;
-  background-size: 100%;
-  background-repeat: no-repeat; }
+  min-height: 100vh; }
 
 .register {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  background-image: url(/static/images/loginRegister/wave.png);
-  background-position: bottom;
-  background-size: 100%;
-  background-repeat: no-repeat; }
+  min-height: 100vh; }
 
 .jin-btn {
   display: block;

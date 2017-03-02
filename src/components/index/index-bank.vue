@@ -129,7 +129,6 @@
                             style: 'background-color:rgba(0,0,0,.8);color:#fff'
                         });
                     } else {
-                        console.log(_this.orderId)
                         _this.$router.push({path:'/index/indexOrderDetails',query: { id:_this.orderId }})
                     }
                 }.bind(this));

@@ -312,6 +312,9 @@ button {
 .hs_Pen {
   background: url(/static/images/hs_Pen.png); }
 
+.hs_pwd {
+  background: url(/static/images/hs_pwd.png); }
+
 .hs_inviter {
   background: url(/static/images/hs_inviter.png); }
 

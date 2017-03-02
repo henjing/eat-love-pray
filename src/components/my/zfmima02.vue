@@ -21,10 +21,7 @@
 </template>
 
 <script type="text/jsx">
-    import layer from '../../js/lib/layer.js';
-    import '../../js/lib/layer.css';
-    import Loading from '../common/loading.vue';
-    import successing from '../common/success.vue';
+
     import { countdown } from '../../js/tools.js';
     import { XHRPost,XHRGet } from '../../js/ajax.js';
 
@@ -73,10 +70,12 @@
             },
             //成功提示
             successTip: function (msg) {
+                const _this = this;
                 layer.open({
                     content: msg,
                     btn: ['确定'],
                     yes: function () {
+                        layer.closeAll();
                         _this.$router.push({ path: '/main'});
                     }
                 });
@@ -90,7 +89,7 @@
                 }
                 if (this.xpwd === this.xpwd1) {
                     //const _this = this;
-                    XHRPost('/oriental_treasure/MySeting/editPayPassword', data, function (response) {
+                    XHRPost('/api/MyCenter/editPayPassword', data, function (response) {
                         if (response.data.status === 1) {
                             this.successTip(response.data.info);
                             //this.successTip(1111);

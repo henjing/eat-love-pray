@@ -48,8 +48,6 @@
     </div>
 </template>
 <script type="text/jsx">
-    import layer from '../../js/lib/layer.js'; // TODO import声明变量
-    import '../../js/lib/layer.css';
     import Loading from '../common/loading.vue'; // TODO Vue组件大驼峰风格
     import Successing from '../common/success.vue'; // TODO 测试一下
     import { countdown } from '../../js/tools.js';
@@ -66,9 +64,9 @@
                 user: {
                     dqyqr_name: "", //当前邀请人
                     yqr: "", //input内邀请人的名字
-                    mephone: "", //我的号码
+                    //mephone: "", //我的号码
                     old_yqrphone: "" //旧邀请人的号码
-                }
+                 }
             }
         },
         components: {
@@ -79,8 +77,8 @@
             const _this = this;
             XHRGet('/api/MyCenter/mySeting', {}, function (response) {
                 _this.user.dqyqr_name = response.data.data.inviting_name;
-                _this.user.mephone = response.data.data.cellphone;
-                _this.user.old_yqrphone = response.data.data.cellphone;
+                //_this.user.mephone = response.data.data.cellphone;
+                _this.user.old_yqrphone = response.data.data.inviting_cellphone;
             })
         },
 
@@ -133,10 +131,8 @@
                     _this.errorTip("手机号码为空");
                 }else if (/^1(3|4|5|7|8|9)\d{9}$/.test(_this.yqr_phone) === false) {
                     _this.errorTip("手机号码格式错误")
-                }else if (this.yqr_phone === this.user.old_yqrphone){
+                }else if (this.yqr_phone === this.user.old_yqrphone) {
                     _this.errorTip("不能修改旧的邀请人为新的邀请人")
-                }else if(this.yqr_phone === this.user.mephone) {
-                    _this.errorTip("邀请人不能是自己")
                 }else {
                     this.isB = false;
                     this.isA = true;
