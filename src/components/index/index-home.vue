@@ -1,19 +1,13 @@
 <template>
 	<div class="jin-wrap">
-		<!--<div class="swiper-container swiper-home-hook">
+		<div class="swiper-container swiper-home-hook">
 	    <div class="swiper-wrapper">
-	        <div class="swiper-slide">
-	            <div class="slider" :style="{backgroundImage:'url(/static/images/pro-01.png)'}" @click="goToDetail('123')"></div>
-	        </div>
-	        <div class="swiper-slide">
-	            <div class="slider" :style="{backgroundImage:'url(/static/images/pro-02.png)'}" @click="goToDetail('456')"></div>
-	        </div>
-	        <div class="swiper-slide">
-	            <div class="slider" :style="{backgroundImage:'url(/static/images/pro-03.png)'}" @click="goToDetail('789')"></div>
+	        <div class="swiper-slide" v-for="key in banners">
+	            <div class="slider"  :style="{backgroundImage:'url('+key+')'}" ></div>
 	        </div>
 	    </div>
 	    <div class="swiper-pagination"></div>
-	</div>-->
+	</div>
 		<ul class="k-wrap margin-t-15">
 		    <!--loop start-->
 		    <li class="commodity-list margin-b-15" v-for="item in info">
@@ -49,6 +43,7 @@
 			return {
 				info: [],
 				loadingShow: true,
+                banners:[]
 			}
 		},
 		components: {
@@ -56,14 +51,16 @@
 		},
 		created() {
 			this.loadMore();
-			this.$nextTick(function () {
+		},
+         beforeUpdate(){
+            this.$nextTick(function () {
 				var mySwiper = new Swiper ('.swiper-home-hook', {
 		            loop: true,
 		            // 如果需要分页器
 		            pagination: '.swiper-pagination',
-		        });	
+		        });
 			})
-		},
+        },
 		methods: {
 			loadMore: function () {
                	XHRGet('/api/Shop/goodsList',{},function (response) {
@@ -72,6 +69,7 @@
                     const data = response.data.data;
                     console.log(data)
                     this.info = data;
+                    this.banners = response.data.banners;
                	}.bind(this))
             },
 			// 查看详情

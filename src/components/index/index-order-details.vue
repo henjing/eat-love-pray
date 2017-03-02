@@ -56,7 +56,7 @@
     export default{
         data(){
             return{
-                orderId:this.$route.query.id,
+                orderId:this.$route.query.oid,
                 detailsData:""
             }
         },

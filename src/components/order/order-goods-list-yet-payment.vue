@@ -5,7 +5,7 @@
             infinite-scroll-distance="100"
     >
         <div class="apply-item margin-b-10 ui-border-b" v-for="key in yetData" >
-            <ul class="ui-list jin-list">
+            <ul class="ui-list jin-list" @click="orderDetails(key.order_id)">
                 <li class="ui-border-b">
                     <div class="ui-list-thumb">
                         <span :style="{backgroundImage: 'url('+ key.goods_img_cover+')'}"></span>
@@ -92,6 +92,10 @@
             //            查看物流
             onLogistics(msg){
                 this.$router.push({path:'/order/Logistics', query:{oid:msg.order_id}})
+            },
+            //            查看订单详情
+            orderDetails(msg){
+                this.$router.push({path:'/index/indexOrderDetails', query:{oid:msg}})
             }
         }
     }

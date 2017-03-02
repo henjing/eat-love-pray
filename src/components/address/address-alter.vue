@@ -176,6 +176,9 @@
                                 time: 2,
                                 style: 'background-color:rgba(0,0,0,.8);color:#fff'
                             });
+                            if (response.data.info == "唯一的默认地址需要保留哦"){
+                                _this.checkState = ! _this.checkState;
+                            }
                         }
                     }.bind(this))
                 }
