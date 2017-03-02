@@ -120,7 +120,7 @@
         methods: {
             onMoney() {
                 var load = layer.open({ type: 2,shadeClose: false});
-                XHRGet('/api/Wallet/index', {},function (response) {
+                XHRGet('/api/Wallet/index', {}, function (response) {
                     console.log(response);
                     if (response.data.status == 1) this.walletData = response.data.data;
                     layer.close(load);
