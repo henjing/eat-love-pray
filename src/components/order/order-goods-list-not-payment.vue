@@ -5,7 +5,7 @@
             infinite-scroll-distance="100"
     >
         <div class="apply-item margin-b-10 ui-border-b" v-for="key in notData">
-            <ul class="ui-list jin-list">
+            <ul class="ui-list jin-list" @click="orderDetails(key.order_id)">
                 <li class="ui-border-b">
                     <div class="ui-list-thumb">
                         <span :style="{backgroundImage: 'url('+ key.goods_img_cover+')'}"></span>
@@ -96,6 +96,10 @@
             goPayment(msg){
 //                默认地址为0
                 this.$router.push({path:'/index/indexOrder', query:{num:msg.goods_number, gid:msg.goods_id, addid:this.address_id}})
+            },
+            //            查看订单详情
+            orderDetails(msg){
+                this.$router.push({path:'/index/indexOrderDetails', query:{oid:msg}})
             }
         }
     }
