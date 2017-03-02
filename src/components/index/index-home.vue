@@ -1,6 +1,6 @@
 <template>
 	<div class="jin-wrap">
-		<div class="swiper-container swiper-home-hook">
+		<!--<div class="swiper-container swiper-home-hook">
 	    <div class="swiper-wrapper">
 	        <div class="swiper-slide">
 	            <div class="slider" :style="{backgroundImage:'url(/static/images/pro-01.png)'}" @click="goToDetail('123')"></div>
@@ -13,7 +13,7 @@
 	        </div>
 	    </div>
 	    <div class="swiper-pagination"></div>
-	</div>
+	</div>-->
 		<ul class="k-wrap margin-t-15">
 		    <!--loop start-->
 		    <li class="commodity-list margin-b-15" v-for="item in info">
@@ -72,7 +72,6 @@
                     const data = response.data.data;
                     console.log(data)
                     this.info = data;
-                    
                	}.bind(this))
             },
 			// 查看详情

@@ -97,7 +97,7 @@
                     },
                     yes: function () {
                         if (this.switch) return false;
-                        this.switch = true;
+                        _this.switch = true;
                         // console.log('pay', _this);
                         const postData = {
                             order_id: encrypt(String(_this.orderId)),
@@ -112,9 +112,9 @@
                                     });
                                 } else {
                                   layer.closeAll()
-                                  _this.$router.push({path:'/index/indexOrderDetails',query: { id:this.orderId}})
+                                  _this.$router.push({path:'/index/indexOrderDetails',query: { id:_this.orderId}})
                                 }
-                            this.switch = false;
+                            _this.switch = false;
                         }.bind(this));
                     }
                 })
@@ -129,8 +129,7 @@
                             style: 'background-color:rgba(0,0,0,.8);color:#fff'
                         });
                     } else {
-                        console.log(this.orderId)
-                        _this.$router.push({path:'/index/indexOrderDetails',query: { id:this.orderId }})
+                        _this.$router.push({path:'/index/indexOrderDetails',query: { id:_this.orderId }})
                     }
                 }.bind(this));
             }

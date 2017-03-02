@@ -1,35 +1,36 @@
 <template>
     <div>
         <ul class="province ui-list text-left ui-list-active ui-border-b">
-            <li class="ui-list-info ui-border-b" v-for="key in data" @click="onSelect(key.name)">{{key.name}}</li>
+            <li class="ui-list-info ui-border-b" v-for="key in data" @click="onSelect(key)">{{key.province_name}}</li>
         </ul>
+        <!--加载更多-->
+        <div class="ui-loading-wrap ba-wi" v-if="data.length<1">
+            <p class="font14 ui-txt-info">加载中</p>
+            <i class="ui-loading"></i>
+        </div>
     </div>
 </template>
 <style>
 </style>
 <script>
-    import {XHRPost} from '../../js/ajax.js';
+    import {XHRGet} from '../../js/ajax.js';
     export default{
         data(){
             return {
-              data:[
-                    {
-                        name:"第一页",
-                    },
-                    {
-                        name:"第一页"
-                    },
-                    {
-                        name:"第一页"
-                    },
-                ],
-                 type:"City",
+                data:"",
+                type:"City",
             }
         },
         components: {},
-        created: function () {
+        created() {
+            this.getProvinceList();
         },
         methods: {
+            getProvinceList(){
+                XHRGet('/api/Shop/getProvinceList', {}, function (response) {
+                    this.data=response.data.data;
+                }.bind(this))
+            },
             onSelect(msg){
                   let data = {
                     isType:this.type,
