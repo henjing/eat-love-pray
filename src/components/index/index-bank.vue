@@ -201,7 +201,7 @@
 //                    }
 //                }.bind(this));
                 // 微信支付接口
-                lay.open({
+                layer.open({
                     type: 1,
                     shadeClose: false
                 });
