@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-cloak>
         <!--搜索-->
         <div class="weui-search-bar" :class="{'weui-search-bar__focusing': enterSearch}">
             <form class="weui-search-bar__form">
@@ -104,6 +104,7 @@
             }
         },
         created() {
+            console.log('是不是每次都弄好');
             this.fetchData();
         },
         computed: {

@@ -57,20 +57,33 @@
                 goods:this.stateId,
                 bankData:"",
                 orderId:this.stateOrderId,
-                switch:false
+                switch:false,
+                payString: ''
             }
         },
         components:{
         },
         props:['state-bank', 'state-order-id'],
         created: function() {
+            console.log('微信支付created');
             this.payData();
             let _this = this;
             setTimeout(function(){
                 _this.mod =_this.stateBank;
-            }, 100)
+            }, 100);
+            // 微信支付接口
+            this.getWeiChat();
         },
         methods:{
+            // 微信接口
+            getWeiChat() {
+                let _this = this;
+                XHRPost('/api/Pay/ajaxPayInfo', {
+                    order_id: encrypt(this.orderId + '')
+                }, function (res) {
+                    console.log('res', res);
+                })
+            },
             close(){
                 let _this = this;
                 this.mod=false;
@@ -79,6 +92,7 @@
                 }, 300);
             },
             payData(){
+                console.log('orderID', this.orderId);
                 XHRPost('/api/Shop/payStyleData',{order_id:encrypt(String(this.orderId))},function (response) {
                     this.bankData=response.data.data;
 
