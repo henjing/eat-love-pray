@@ -91,7 +91,7 @@
     }
 
     .wallet-info .ui-avatar-s span {
-        /*	background-image:url(../img/home/wallet-icon.png);*/
+        background-image:url(../../images/wallet-icon.png);
     }
     .layui-m-layercont {
         padding: 20px 40px!important;

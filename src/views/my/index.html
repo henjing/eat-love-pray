@@ -17,8 +17,9 @@
 
 <body>
 <div class="container" id="container" v-cloak>
-    <router-view></router-view>
-
+    <keep-alive>
+        <router-view></router-view>
+    </keep-alive>
 </div>
 <script src="../../js/lib/vue.js"></script>
 <script src="../../js/lib/axios.js"></script>
