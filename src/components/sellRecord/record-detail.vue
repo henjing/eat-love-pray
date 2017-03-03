@@ -24,20 +24,20 @@
             </li>
             <li class="ui-border-b">
                 <div class="ui-list-info">商品说明</div>
-                <div class="font14 ui-txt-muted">{{}}</div>
+                <div class="font14 ui-txt-muted">{{info.goods_name}}</div>
             </li>
             <li class="ui-border-b">
                 <div class="ui-list-info">购买数量</div>
                 <div class="font14">X{{info.goods_number}}</div>
             </li>
-            <li class="ui-border-b">
+            <!--<li class="ui-border-b">
                 <div class="ui-list-info">获得佣金</div>
                 <div class="font14">￥{{info.profit}}</div>
-            </li>
+            </li>-->
         </ul>
-        <div class="ui-whitespace padding-t-10 padding-b-10 text-right bg-white">
+        <!--<div class="ui-whitespace padding-t-10 padding-b-10 text-right bg-white">
         		<span class="font14">合计：￥{{info.profit}}</span>
-        </div>
+        </div>-->
         
         
         <div class="return-btm text-center font14">
