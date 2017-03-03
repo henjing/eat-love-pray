@@ -85,10 +85,11 @@
                 address_id:this.$route.query.addid,
                 number:this.$route.query.num,
                 goods_id:this.$route.query.gid,
+                order_id:"",
                 orderData:"",
                 orderAddressData:"",
                 goods_order:"",
-                addressNull:true
+                addressNull:true,
             }
         },
         props:['state-buy'],
@@ -115,30 +116,38 @@
                 let _this = this;
                 let address = typeof(this.address_id) == "undefined" ? "0" : this.address_id;
                 let bankData = {goods_id:encrypt(String(this.goods_id)), goods_number:encrypt(String(this.number)), address_id:encrypt(String(address))}
-                if (this.addressNull){
-                    XHRPost('/api/Shop/commitOrder',bankData,function (response) {
-                        if (response.data.status==1){
-                            _this.goods_order=response.data.data;
-                            _this.bank=true;
-                        }
-                    }.bind(this));
+//                判断order_id是否存在，防止生成多个订单
+                if (this.order_id.length<1){
+//                    判断地址
+                    if (this.addressNull){
+                        XHRPost('/api/Shop/commitOrder',bankData,function (response) {
+                            if (response.data.status==1){
+                                _this.goods_order=response.data.data;
+                                _this.order_id=response.data.data;
+                                _this.bank=true;
+                            }
+                        }.bind(this));
+                    }else {
+                        layer.open({
+                            content: "请添加地址！",
+                            btn: ['确认'],
+                            yes: function () {
+                                _this.$router.push({path:'/address', query:{num:_this.number, gid:_this.goods_id}})
+                                layer.closeAll();
+                            },
+                        });
+                    }
                 }else {
-                    layer.open({
-                        content: "请添加地址！",
-                        btn: ['确认'],
-                        yes: function () {
-                            _this.$router.push({path:'/address', query:{num:_this.number, gid:_this.goods_id}})
-                             layer.closeAll();
-                        },
-                    });
+                    _this.bank=true;
                 }
             },
             onSelectBank(){
                 this.bank=false;
             },
             goodsDetail(){
+                let _this = this;
                 var load = layer.open({ type: 2,shadeClose: false})
-//                判断第一张请求address_id为空
+//                判断第一次请求address_id为空
                 let address = typeof(this.address_id) == "undefined" ? "0" : this.address_id;
                 XHRPost('/api/Shop/getCommitOrderData',{address_id:encrypt(String(address))},function (response) {
                     if (response.data.status == 1){
@@ -151,6 +160,7 @@
                             }
                             this.addressNull = false;
                         }else {
+                            _this.address_id=response.data.data.address_info.address_id;
                             this.addressNull = true;
                         }
                         layer.close(load);

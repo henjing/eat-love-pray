@@ -21,12 +21,19 @@
             <div class="jin-justify-flex ui-whitespace padding-t-10 padding-b-10 bg-white">
                 <div class="font14 color-9b">{{key.status}}</div>
                 <div>
-                    <button class="ui-btn ui-btn-s" style="width: 80px;color: red;border-color:red" v-if="key.status == '未付款'" @click="goPayment(key)">去付款</button>
+                    <button class="ui-btn ui-btn-s" style="width: 80px;color: red;border-color:red" v-if="key.status == '未付款'" @click="goPayment(key)">立即付款</button>
                     <button class="ui-btn ui-btn-s" style="width: 80px;color: #333;" v-if="key.status == '已收货'" @click="onLogistics()">查看物流</button>
                     <div v-if="key.status == '已付款'">&nbsp;</div>
                 </div>
             </div>
         </div>
+        <index-bank
+                v-if="bank"
+                v-bind:state-bank="bank"
+                v-bind:state-order-id="order_id"
+                @on-close="onSelectBank"
+        >
+        </index-bank>
         <order-goods-log :log-data="logData"></order-goods-log>
     </div>
 </template>
@@ -43,6 +50,7 @@
 <script>
     import OrderGoodsLog from 'components/order/order-goods-log.vue';
     import { XHRPost} from '../../js/ajax.js';
+    import indexBank from 'components/index/index-bank.vue';
     export default{
         data(){
             return{
@@ -55,13 +63,15 @@
                     bottom:false,
                 },
                 _switch:false,
-                address_id:"0"
+                address_id:"0",
+                bank:false,
+                order_id:""
             }
         },
         created(){
         },
         components:{
-            OrderGoodsLog
+            OrderGoodsLog,indexBank
         },
         methods:{
             onNot(){
@@ -94,13 +104,21 @@
                 }.bind(this));
             },
             goPayment(msg){
+/*
 //                默认地址为0
                 this.$router.push({path:'/index/indexOrder', query:{num:msg.goods_number, gid:msg.goods_id, addid:this.address_id}})
+
+*/
+                this.order_id = msg.order_id;
+                 this.bank=true;
             },
             //            查看订单详情
             orderDetails(msg){
                 this.$router.push({path:'/index/indexOrderDetails', query:{oid:msg}})
-            }
+            },
+            onSelectBank(){
+                this.bank=false;
+            },
         }
     }
 </script>

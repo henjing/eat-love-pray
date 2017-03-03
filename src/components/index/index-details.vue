@@ -3,7 +3,7 @@
     <div class="banner">
         <div class="swiper-container swiper-detail-hook">
             <ul class="swiper-wrapper">
-                <li class="swiper-slide" v-for="key in goodsData.goods_img_details"  :style="{backgroundImage: 'url('+ key+')'}"></li>
+                <li class="swiper-slide" v-for="key in goodsData.front_cover"  :style="{backgroundImage: 'url('+ key+')'}"></li>
             </ul>
             <div class=" twxq abs">
                 <a href="javascript:void(0)"  @click="goAnchor('#img')" class="line-h-nor font12 twxq-yuan ui-txt-info">图文<br/>详情</a>
@@ -41,7 +41,9 @@
 
     <div class="ui-list">
         <div class="graphic margin-t-10"  id="img">
-            <img  v-bind:src="goodsData.long_detail">
+            <div v-for="key in goodsData.goods_img_details">
+                 <img  v-bind:src="key">
+            </div>
         </div>
     </div>
     <div class="ui-whitespace bottom-btn" @click="onBuy">
@@ -57,6 +59,9 @@
 </div>
 </template>
 <style>
+    .banner .swiper-slide {
+        background-position: center;
+    }
 </style>
 <script>
     import { XHRPost, XHRGet} from './../../js/ajax';

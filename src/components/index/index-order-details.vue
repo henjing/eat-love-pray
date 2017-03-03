@@ -38,7 +38,7 @@
             <div class="ui-whitespace padding-t-15">总价: <span class="ui-txt-warning">￥{{detailsData.total_price}}</span></div>
             <div class="order-details-btn jin-justify-flex font12">
                 <a @click="orderUrl">订单列表</a>
-                <router-link to="/index">返回首页</router-link>
+                <a @click="indexUrl">返回首页</a>
             </div>
         </div>
         <ul class="ui-list ui-list-pure margin-b-20 ui-border-tb">
@@ -82,6 +82,9 @@
             },
             orderUrl(){
                 window.location.href="/index/order"
+            },
+            indexUrl(){
+                window.location.href="/index"
             }
         }
     }

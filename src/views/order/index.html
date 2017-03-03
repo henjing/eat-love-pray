@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../../css/swiper-3.3.0.min.css"/>
 </head>
 <body>
-<div id="container" class="container">
+<div id="container" class="container" v-cloak>
      <div class="ui-tab goods-List" >
         <ul class="ui-tab-nav ui-border-b font14" v-if="$route.path == '/' ||   $route.path == '/order/notPayment' ||  $route.path == '/order/yetPayment'  ||  $route.path == '/order'" >
             <li v-for='item in data'  :class="{'current': item.tabText == $route.path}" @click="toggleTabs(item.tabText)">
