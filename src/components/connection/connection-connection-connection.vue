@@ -5,7 +5,7 @@
             <form class="weui-search-bar__form">
                 <div class="weui-search-bar__box">
                     <i class="weui-icon-search"></i>
-                    <input v-model="search" type="search" v-focus class="weui-search-bar__input" placeholder="搜索"/>
+                    <input v-model="search" type="search" class="weui-search-bar__input" placeholder="搜索"/>
                     <!--如果form里只有一个input标签，就会。。。-->
                     <input type='text' style='display:none'/>
                     <a class="weui-icon-clear" @click="clearSearch"></a>
