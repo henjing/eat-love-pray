@@ -11,7 +11,7 @@
                         <div class="font14">{{key.mobile}}</div>
                     </li>
                     <li class="line-h-14 font14 color-9b" >
-                        {{key.province}}
+                        {{key.province}}{{key.address}}
                     </li>
                 </ul>
                 <section class="ui-panel ui-panel-simple  ui-border-tb" >
@@ -53,7 +53,9 @@
 </template>
 <style>
     .ui-checkbox-s input:checked:before  {
+        font-size: 26px !important;
         content: "\e73d" !important;
+        left: 0 !important;
     }
 </style>
 <script>
