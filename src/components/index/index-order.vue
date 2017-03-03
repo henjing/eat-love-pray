@@ -148,6 +148,7 @@
                 this.bank=false;
             },
             goodsDetail(){
+                alert("测试")
                 let _this = this;
                 var load = layer.open({ type: 2,shadeClose: false})
 //                判断第一次请求address_id为空
