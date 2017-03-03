@@ -38,7 +38,7 @@
         <index-bank
                 v-if="bank"
                 v-bind:state-bank="bank"
-                v-bind:state-order-id="goods_order"
+                v-bind:state-order-id="order_id"
                 @on-close="onSelectBank"
         >
         </index-bank>
@@ -85,7 +85,7 @@
                 address_id:this.$route.query.addid,
                 number:this.$route.query.num,
                 goods_id:this.$route.query.gid,
-                order_id:"",
+                order_id:this.$route.query.oid,
                 orderData:"",
                 orderAddressData:"",
                 goods_order:"",
@@ -117,7 +117,10 @@
                 let address = typeof(this.address_id) == "undefined" ? "0" : this.address_id;
                 let bankData = {goods_id:encrypt(String(this.goods_id)), goods_number:encrypt(String(this.number)), address_id:encrypt(String(address))}
 //                判断order_id是否存在，防止生成多个订单
-                if (this.order_id.length<1){
+                let isOrderId = typeof(this.order_id) == "undefined" ? "" : this.order_id;
+                console.log("打印", isOrderId.length)
+                 console.log("打印", isOrderId)
+                if (isOrderId.length<1){
 //                    判断地址
                     if (this.addressNull){
                         XHRPost('/api/Shop/commitOrder',bankData,function (response) {
@@ -178,7 +181,7 @@
             },
             //        选择收货地址
             linkAddress(){
-               this.$router.push({path:'/address', query:{num:this.number, gid:this.goods_id}})
+               this.$router.push({path:'/address', query:{num:this.number, gid:this.goods_id, oid:this.order_id}})
             }
         }
     }

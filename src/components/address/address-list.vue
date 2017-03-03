@@ -66,7 +66,8 @@
                 addressData: "",
                 addressNull:false,
                 number:this.$route.query.num,
-                goods_id:this.$route.query.gid
+                goods_id:this.$route.query.gid,
+                order_id:this.$route.query.oid
             }
         },
         components: {},
@@ -112,14 +113,14 @@
                 })
             },
             addressAlter(id){
-                this.$router.push({path:'/address/addressAlter', query: { id: id, num:this.number, gid:this.goods_id}})
+                this.$router.push({path:'/address/addressAlter', query: { id: id, num:this.number, gid:this.goods_id, oid:this.order_id}})
             },
             addressAdd(){
-                this.$router.push({path:'/address/addressAdd', query: {num:this.number, gid:this.goods_id}})
+                this.$router.push({path:'/address/addressAdd', query: {num:this.number, gid:this.goods_id, oid:this.order_id}})
             },
 //            确认选择收货地址
             onPresent(msg){
-                this.$router.push({path:'/index/indexOrder', query:{num:this.number, gid:this.goods_id, addid:msg}})
+                this.$router.push({path:'/index/indexOrder', query:{num:this.number, gid:this.goods_id, addid:msg, oid:this.order_id}})
             }
         }
     }

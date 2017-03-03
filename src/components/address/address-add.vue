@@ -93,7 +93,8 @@
                 select:false,
                 isProvince:false,
                 number:this.$route.query.num,
-                goods_id:this.$route.query.gid
+                goods_id:this.$route.query.gid,
+                order_id:this.$route.query.oid
             }
         },
         components: {AddressSelect},
@@ -138,7 +139,7 @@
                                 style: 'background-color:rgba(0,0,0,.8);color:#fff'
                             });
                             setTimeout(function(){
-                                _this.$router.push({path: '/address', query: {num:_this.number, gid:_this.goods_id}})
+                                _this.$router.push({path: '/address', query: {num:_this.number, gid:_this.goods_id, oid:_this.order_id}})
                             }, 2000)
                         }else {
                             layer.open({

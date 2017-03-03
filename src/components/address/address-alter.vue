@@ -80,7 +80,8 @@
                 select:false,
                 selectData:"",
                 number:this.$route.query.num,
-                goods_id:this.$route.query.gid
+                goods_id:this.$route.query.gid,
+                order_id:this.$route.query.oid
             }
         },
         created() {
@@ -128,7 +129,7 @@
                             if (response.data.status == 1){
                                 layer.open({content: '删除成功!', time: 1});
                                 setTimeout(function(){
-                                    _this.$router.push({path:'/address', query: {num: _this.number, gid: _this.goods_id}})
+                                    _this.$router.push({path:'/address', query: {num: _this.number, gid: _this.goods_id, oid:_this.order_id}})
                                 },1500)
                             }else {
                                 layer.open({content: response.data.info, time: 1});
