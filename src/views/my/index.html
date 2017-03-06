@@ -8,16 +8,18 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <title>我</title>
-    <link rel="stylesheet" href="../../css/frozen.css">
     <link rel="stylesheet" href="../../css/weui.css"/>
+    <link rel="stylesheet" href="../../css/frozen.css">
     <link rel="stylesheet" href="../../css/jin-base.css"/>
     <link rel="stylesheet" href="../../css/connection/connection.css">
-    <link rel="stylesheet" href="../../css/my/index.css"/>
+   <link rel="stylesheet" href="../../css/my/index.css"/>
 </head>
 
 <body>
-<div class="container" id="container" v-cloak>
-    <router-view></router-view>
+<div class="container jin-wrap" id="container" v-cloak>
+    <keep-alive>
+        <router-view></router-view>
+    </keep-alive>
 
 </div>
 <script src="../../js/lib/vue.js"></script>

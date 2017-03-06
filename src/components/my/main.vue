@@ -1,11 +1,11 @@
 <template>
     <div class="jin-wrap">
         <header class="mine-header jin-box-center ">
-            <div class="ui-avatar-lg rlt">
-                <span class="radius0" style="position: relative;">
+            <div class="ui-avatar-lg rlt" style="  border: 3px solid #fff;">
+                <!--<span class="radius0" style="position: relative;">-->
                     <img :src="user.user_avatars" class="radius3"/>
                     <!--<i class="camera jin-icon jin-icon-xiangji font20"></i>-->
-                </span>
+                <!--</span>-->
             </div>
 
             <h4 class="margin-t-5">{{user.user_name}}</h4>
@@ -45,15 +45,15 @@
                     <span class="font14 ui-txt-info">{{user.user_phone}}</span>
                 </router-link>
             </li>
-            <li>
-                <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                    <span class="bg-100-g hs_time"></span>
-                </div>
-                <div class="ui-list-info">
-                    <h4 class="ui-nowrap">注册时间</h4>
-                </div>
-                <span class="font14 ui-txt-info">{{user.reg_time}}</span>
-            </li>
+            <!--<li>-->
+                <!--<div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">-->
+                    <!--<span class="bg-100-g hs_time"></span>-->
+                <!--</div>-->
+                <!--<div class="ui-list-info">-->
+                    <!--<h4 class="ui-nowrap">注册时间</h4>-->
+                <!--</div>-->
+                <!--<span class="font14 ui-txt-info">{{user.reg_time}}</span>-->
+            <!--</li>-->
 
             <!--<li>
                 <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
@@ -65,6 +65,17 @@
                                         <span class="font14 ui-txt-info">未绑定</span>
             </li>-->
         </ul>
+            <ul class="ui-list ui-list-active">
+                <li>
+                    <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
+                        <span class="bg-100-g hs_time"></span>
+                    </div>
+                    <div class="ui-list-info">
+                        <h4 class="ui-nowrap">注册时间</h4>
+                    </div>
+                    <span class="font14 ui-txt-info margin-r-20" style="line-height:48px">{{user.reg_time}}</span>
+                </li>
+            </ul>
         <div class="k-list-group">
             <ul class="ui-list jin-list-link ui-list-active">
                 <li>
@@ -79,8 +90,27 @@
                 </li>
             </ul>
         </div>
+        <div class="goexit" v-on:click="getGoexit">
+            <span class="exit-span">退出登录</span>
+        </div>
     </div>
 </template>
+<style>
+    .goexit {
+        margin-top: 15px;
+        margin-bottom: 15px; }
+
+    .exit-span {
+        display: block;
+        background: #fff;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+</style>
 
 <script type="text/jsx">
 
@@ -109,8 +139,18 @@
             _this.user.reg_time = response.data.data.register_time;
             _this.user.user_name = response.data.data.user_name;
         })
+    },
+    methods: {
+        getGoexit:function() {
+            const _this = this;
+            XHRGet('/api/MyCenter/logOut', {}, function () {
+                window.location.href = '/index/loginRegister/login.html'
+              })
+            }
+        }
+
     }
-    }
+
 
 
 </script>
