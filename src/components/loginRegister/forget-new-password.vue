@@ -61,7 +61,7 @@
 							content: '密码修改成功!',
 							time: 2.5,
 							end: function () {
-								window.location.href = '/index/login_register/login/html';
+								window.location.href = '/index/loginRegister/login/html';
 							}
 						});
 					} else {

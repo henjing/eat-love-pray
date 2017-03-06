@@ -78,7 +78,10 @@
                 isProvince:false,
                 checkState: "",
                 select:false,
-                selectData:""
+                selectData:"",
+                number:this.$route.query.num,
+                goods_id:this.$route.query.gid,
+                order_id:this.$route.query.oid
             }
         },
         created() {
@@ -126,13 +129,10 @@
                             if (response.data.status == 1){
                                 layer.open({content: '删除成功!', time: 1});
                                 setTimeout(function(){
-                                    _this.$router.push({path:'/address'})
+                                    _this.$router.push({path:'/address', query: {num: _this.number, gid: _this.goods_id, oid:_this.order_id}})
                                 },1500)
                             }else {
                                 layer.open({content: response.data.info, time: 1});
-                                setTimeout(function(){
-                                    _this.$router.push({path:'/address'})
-                                },1500)
                             }
                         }.bind(this));
                     }
@@ -145,8 +145,8 @@
             onSelectData(msg){
                 this.isProvince = true;
                 this.select = false;
-                if(msg.county.length>1){
-                    this.addressUser.province = msg.province+msg.city+msg.county;
+                if(msg.county.county_name.length>1){
+                    this.addressUser.province = msg.province.province_name+msg.city.city_name+msg.county.county_name;
                 }else {
                 }
             },
@@ -169,7 +169,7 @@
                                 style: 'background-color:rgba(0,0,0,.8);color:#fff'
                             });
                             setTimeout(function(){
-                              _this.$router.push({path: '/address'})
+                              _this.$router.push({path: '/address', query: {num:_this.number, gid:_this.goods_id}})
                             }, 2000)
                         }else {
                             layer.open({
@@ -177,6 +177,9 @@
                                 time: 2,
                                 style: 'background-color:rgba(0,0,0,.8);color:#fff'
                             });
+                            if (response.data.info == "唯一的默认地址需要保留哦"){
+                                _this.checkState = ! _this.checkState;
+                            }
                         }
                     }.bind(this))
                 }

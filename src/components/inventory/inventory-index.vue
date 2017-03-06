@@ -86,7 +86,6 @@
                 XHRGet('/api/MyReserve/getPickUpData', { },function (response) {
                     this.unfoldAndClose = true;
                     this.invData = response.data.data;
-                    console.log(response.data.data)
                 }.bind(this))
             }
         }

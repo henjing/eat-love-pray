@@ -108,7 +108,8 @@
                 return parseFloat(parseFloat(this.withdrawAll).toFixed(2));
             },
             _isValid() {
-                return typeof this.withdrawAll === 'number' && this.withdrawAll > 0;
+//                return (typeof this.withdrawAll === 'number' && this.withdrawAll > 0) || (typeof this.withdrawAll === 'string' && parseFloat(this.withdrawAll) > 0);
+                return (typeof this.withdrawAll === 'number' && this.withdrawAll > 0) ;
             }
         },
         watch: {
@@ -125,7 +126,7 @@
         },
         methods:{
             onAll(){
-                var num = this.withdrawData.balance;
+                var num = parseFloat(this.withdrawData.balance);
                 this.withdrawAll = num;
             },
             onWithdraw() {

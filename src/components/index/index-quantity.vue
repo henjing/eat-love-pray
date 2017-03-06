@@ -5,7 +5,7 @@
             <ul class="ui-list">
                 <li>
                     <div class="k-avatar ui-list-thumb">
-                        <span tag='goodsImg' style="background-image:url('http://ok813a2du.bkt.clouddn.com/hblb_cover.jpg')"></span>
+                        <span tag='goodsImg' style="background-image:url('http://ok813a2du.bkt.clouddn.com/heshi20170303150643.png')"></span>
                     </div>
                     <div class="ui-list-info font14">
                         <p class="ui-nowrap ui-txt-muted padding-r-15 font14">{{goodsQuantity.goods_name}}</p>

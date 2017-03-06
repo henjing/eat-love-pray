@@ -91,7 +91,10 @@
                     checkState: true,
                 },
                 select:false,
-                isProvince:false
+                isProvince:false,
+                number:this.$route.query.num,
+                goods_id:this.$route.query.gid,
+                order_id:this.$route.query.oid
             }
         },
         components: {AddressSelect},
@@ -136,7 +139,7 @@
                                 style: 'background-color:rgba(0,0,0,.8);color:#fff'
                             });
                             setTimeout(function(){
-                                _this.$router.push({path: '/address'})
+                                _this.$router.push({path: '/address', query: {num:_this.number, gid:_this.goods_id, oid:_this.order_id}})
                             }, 2000)
                         }else {
                             layer.open({
@@ -153,9 +156,9 @@
             },
             onSelectData(msg){
                 this.select = false;
-                if(msg.county.length>1){
+                if(msg.county.county_name.length>1){
                     this.isProvince = true;
-                    this.user.province = msg.province+msg.city+msg.county;
+                    this.user.province = msg.province.province_name+msg.city.city_name+msg.county.county_name;
                 }else {
                     this.isProvince = false;
                 }

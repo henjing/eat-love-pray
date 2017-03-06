@@ -5,7 +5,7 @@
             infinite-scroll-distance="100"
     >
         <div class="apply-item margin-b-10 ui-border-b" v-for="key in yetData" >
-            <ul class="ui-list jin-list">
+            <ul class="ui-list jin-list" @click="orderDetails(key.order_id)">
                 <li class="ui-border-b">
                     <div class="ui-list-thumb">
                         <span :style="{backgroundImage: 'url('+ key.goods_img_cover+')'}"></span>
@@ -14,14 +14,14 @@
                         {{key.goods_name}}
                     </p>
                     <div class="text-right">
-                        <div class="font14 ui-txt-warning">x{{key.goods_number}}</div>
+                        <div class="font14 ui-txt-warning">{{key.goods_number}}单</div>
                     </div>
                 </li>
             </ul>
             <div class="jin-justify-flex ui-whitespace padding-t-10 padding-b-10 bg-white">
                 <div class="font14 color-9b">{{key.status}}</div>
                 <div>
-                    <button class="ui-btn ui-btn-s" style="width: 80px;color: #333;" @click="onLogistics()">查看物流</button>
+                    <button class="ui-btn ui-btn-s" style="width: 80px;color: #333;" @click="onLogistics(key)">查看物流</button>
                     <!--    <button class="ui-btn ui-btn-s margin-l-5" style="width: 80px;color: red;border-color:red"
                                 @click='onDete(key)'
                         >确认收货</button>-->
@@ -63,7 +63,6 @@
                     page: encrypt(String(this.pages))
                 }, function (response) {
                     let _data = response.data;
-                    console.log("已发货", _data)
                     if (_data.status == 1){
                         for (let i = 0; i < _data.data.length; i++) {
                             this.yetData.push(_data.data[i]);
@@ -91,8 +90,12 @@
                 }.bind(this));
             },
             //            查看物流
-            onLogistics(index){
-                this.$router.push({path:'/order/Logistics'})
+            onLogistics(msg){
+                this.$router.push({path:'/order/Logistics', query:{oid:msg.order_id}})
+            },
+            //            查看订单详情
+            orderDetails(msg){
+                this.$router.push({path:'/index/indexOrderDetails', query:{oid:msg}})
             }
         }
     }

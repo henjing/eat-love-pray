@@ -250,8 +250,6 @@
 }
 .banner .swiper-slide {
     padding-top: 60%;
-    background-position: center;
-    background-repeat: no-repeat;
     background-size: cover;
 }
 /*图文详情小圆按钮*/
@@ -974,8 +972,8 @@ input[type="text"], input[type="password"] {
 }
 
 .order-details-bg{
-  width: 45%;
-  padding-top: 40%;
+  width: 40%;
+  padding-top: 37%;
   margin: auto;
   background-size: cover;
   background-image: url("../../images/orderDetails.png");

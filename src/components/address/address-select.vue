@@ -5,15 +5,17 @@
             <i class="jin-icon jin-icon-guanbi abs font20" style="right: 10px;top: 6px;color: #BCBCBC" @click="onFinish"></i>
         </div>
         <ul class="ui-whitespace  jin-box-align ui-border-tb">
-            <li :class="{'margin-r-10':province.length>1}" @click="elCityData">{{province}} </li>
-            <li :class="{'margin-r-10':city.length>1}" @click="elCountyData">{{city}} </li>
-            <li :class="{'margin-r-10':county.length>1}">{{county}}</li>
+            <li :class="{'margin-r-10': province.province_name.length>1}" @click="elCityData">{{province.province_name}} </li>
+            <li :class="{'margin-r-10': city.city_name.length>1}" @click="elCountyData">{{city.city_name}} </li>
+            <li :class="{'margin-r-10': county.county_name.length>1}">{{county.county_name}}</li>
             <li class="padding-t-10 padding-b-10  color-ff3" style="border-bottom: 1px solid #ff3e2a">请选择</li>
         </ul>
          <component :is="currentView" keep-alive
                     @msg-province="provinceData"
                     @msg-city="cityData"
                     @msg-county="countyData"
+                    :props-province="province.province_id"
+                    :props-city="city.city_id"
                      style="overflow: auto;height:calc(105vh - 128px );-webkit-overflow-scrolling: touch;"
          ></component>
     </div>
@@ -38,9 +40,18 @@
     export default{
         data(){
             return {
-                province:"",
-                city:"",
-                county:"",
+                province: {
+                    province_id: "",
+                    province_name: ""
+                },
+                city: {
+                    city_id: "",
+                    city_name: ""
+                },
+                county: {
+                    county_id: "",
+                    county_name: ""
+                },
                 currentView: 'Province'
             }
         },
@@ -69,12 +80,21 @@
 //            清除数据
             elCityData(){
                 this.currentView="Province";
-                this.city=" ";
-                this.county=" ";
+                this.city = {
+                    city_id: "",
+                    city_name: ""
+                };
+                this.county = {
+                    county_id: "",
+                    county_name: ""
+                };
             },
             elCountyData(){
                 this.currentView="City";
-                this.county=" "
+                this.county = {
+                    county_id: "",
+                    county_name: ""
+                };
             },
             onFinish(){
                 let data = {
