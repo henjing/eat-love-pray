@@ -14,7 +14,7 @@
                 <li class="ui-border-b">
                     <router-link to="/name" class="click_a">
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                            <span class="bg-100-g hs_Pen"></span>
+                            <span class="bg-100-g si" style="background-position: -39px -55px"></span>
                         </div>
                         <div class="ui-list-info">
                             <h4 class="ui-nowrap">常用名</h4>
@@ -26,7 +26,7 @@
             <li class="ui-border-b">
                 <router-link to="/inviter" class="click_a">
                     <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                        <span class="bg-100-g hs_inviter"></span>
+                        <span class="bg-100-g si" style="background-position: -39px -90px"></span>
                     </div>
                     <div class="ui-list-info">
                         <h4 class="ui-nowrap">邀请人</h4>
@@ -36,8 +36,8 @@
             </li>
             <li class="ui-border-b">
                 <router-link to="/phone" class="click_a">
-                    <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg" style="width:18px;height:24px;">
-                        <span class="bg-100-g hs_Mobile"></span>
+                    <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg" >
+                        <span class="bg-100-g si" style="background-position: -38px -122px"></span>
                     </div>
                     <div class="ui-list-info">
                         <h4 class="ui-nowrap">手机号码</h4>
@@ -68,10 +68,10 @@
             <ul class="ui-list ui-list-active">
                 <li>
                     <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                        <span class="bg-100-g hs_time"></span>
+                        <span class="bg-100-g si" style="background-position: -37px -149px"></span>
                     </div>
                     <div class="ui-list-info">
-                        <h4 class="ui-nowrap">注册时间</h4>
+                        <h4 class="ui-nowrap" >注册时间</h4>
                     </div>
                     <span class="font14 ui-txt-info margin-r-20" style="line-height:48px">{{user.reg_time}}</span>
                 </li>
@@ -81,10 +81,10 @@
                 <li>
                     <router-link to="/mima" class="click_a">
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                            <span class="bg-100-g hs_pwd"></span>
+                            <span class="bg-100-g si" style="background-position: -39px -182px"></span>
                         </div>
                         <div class="ui-list-info">
-                            <h4 class="ui-nowrap">修改密码</h4>
+                            <h4 class="ui-nowrap" >修改密码</h4>
                         </div>
                     </router-link>
                 </li>
@@ -139,7 +139,8 @@
             _this.user.reg_time = response.data.data.register_time;
             _this.user.user_name = response.data.data.user_name;
         })
-    },
+
+        },
     methods: {
         getGoexit:function() {
             const _this = this;
