@@ -309,6 +309,31 @@
 
 
 
+                        wx.onMenuShareAppMessage({
+                            title: '和十素养', // 分享标题
+
+                            desc: "和十素养", // 分享描述
+
+                            link: 'https://heshi.kongdian.me' + self.go_url,
+
+
+                            imgUrl: meto.logo, // 分享图标
+
+                            type: 'link',
+                            success: function () {
+                                // 用户确认分享后执行的回调函数
+                                alert('成功');
+                            },
+                            cancel: function () {
+                                // 用户取消分享后执行的回调函数
+                                alert('失败');
+                            }
+
+                        });
+
+
+
+
 //
 //                // 分享给朋友
 //
