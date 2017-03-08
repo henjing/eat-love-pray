@@ -77,6 +77,7 @@
                 </li>
             </ul>
         </div>
+        <button id="test">用户点击</button>
 
         <!--<div class="k-list-group">-->
             <!--<ul class="ui-list jin-list-link ui-list-active">-->
@@ -192,95 +193,156 @@
     components: {
         jinFooter
     },
+
     created: function () {
+        console.log('test');
+        const _this = this;
 
-        XHRGet('/api/MyCenter/index', {}, function (response) {
-            this.user.user_wallet = response.data.data.can_use_money;
-            this.user.user_assets = response.data.data.info_asset;
-            this.user.user_vip = response.data.data.level;
-            this.user.user_member = response.data.data.my_children;
-            this.user.user_name = response.data.data.user_name;
-            //this.user.user_avatars = response.data.data.wechat_avatar;
-        }.bind(this));
-        XHRPost('/api/Wechat/getJssdkInfo', {uri:encrypt('/index/my#/main')}, function (response) {
+//        XHRGet('/api/MyCenter/index', {}, function (response) {
+//            this.user.user_wallet = response.data.data.can_use_money;
+//            this.user.user_assets = response.data.data.info_asset;
+//            this.user.user_vip = response.data.data.level;
+//            this.user.user_member = response.data.data.my_children;
+//            this.user.user_name = response.data.data.user_name;
+//            //this.user.user_avatars = response.data.data.wechat_avatar;
+//        }.bind(this));
+
+        XHRPost('/api/Wechat/getJssdkInfo', {uri:encrypt('/index/my')}, function (response) {
             var data = response.data.data;
-            console.log('data',data);
+            console.log('data', data);
             console.log(data.wechat.appId);
-            this.appId = data.wechat.appId;
-            this.timestamp = data.wechat.timestamp;
-            this.nonceStr = data.wechat.nonceStr;
-            this.signature = data.wechat.signature;
-            this.go_url = data.go_url;
-            this.logo = data.logo;
-            console.log(this.appId);
-            const _this = this;
-            wx.config({
+            _this.appId = data.wechat.appId;
+            _this.timestamp = data.wechat.timestamp;
+            _this.nonceStr = data.wechat.nonceStr;
+            _this.signature = data.wechat.signature;
+            _this.go_url = data.go_url;
+            _this.logo = data.logo;
+            console.log(_this.appId);
+            console.log(_this.go_url);
+           // this.$nexttick(function () {
+                wx.config({
 
-                debug: false,
+                    debug: false,
 
-                appId:_this.appId,
+                    appId: _this.appId,
 
-                timestamp: _this.timestamp,
+                    timestamp: _this.timestamp,
 
-                nonceStr: _this.nonceStr,
+                    nonceStr: _this.nonceStr,
 
-                signature: _this.signature,
+                    signature: _this.signature,
 
-               jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'] // 分享给朋友  分享给朋友圈
+                    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'] // 分享给朋友  分享给朋友圈
 
-            });
+                });
 
-            function s1(){
-               console.log(_this.signature);
-            }
-            s1();
 
-            wx.ready(function(){
-               // 分享到朋友
+                function s1() {
+                    //console.log(_this.signature);
+                    //const _this = _this;
+                    //_this.user.user_wallet = response.data.data.can_use_money;
+                    XHRGet('/api/MyCenter/index', {}, function (response) {
+                        _this.user.user_wallet = response.data.data.can_use_money;
+                        _this.user.user_assets = response.data.data.info_asset;
+                        _this.user.user_vip = response.data.data.level;
+                        _this.user.user_member = response.data.data.my_children;
+                        _this.user.user_name = response.data.data.user_name;
+                        _this.user.user_avatars = response.data.data.wechat_avatar;
+                    });
+                }
 
-                wx.onMenuShareTimeline({
+                setTimeout(function () {
+                    s1();
+                }, 1000);
 
-                    title: '和十素养', // 分享标题
 
-                    imgUrl: _this.logo,// 分享图标
-                   success: function () {
-                       // 用户确认分享后执行的回调函数
-                        alert('成功');
-                    },
-                   cancel: function () {
-                        // 用户取消分享后执行的回调函数
-                        alert('失败');
+                wx.ready(function () {
+                    // 分享到朋友圈
+                    const self = _this;
+//                document.querySelector('#onMenuShareAppMessage').onclick = function () {
+//                    const meto = self;
+//                    wx.onMenuShareTimeline({
+//
+//                        title: '和十素养', // 分享标题
+//
+//                        imgUrl: meto.logo,// 分享图标
+//                        success: function () {
+//                            // 用户确认分享后执行的回调函数
+//                            alert('成功');
+//                            },
+//                        cancel: function () {
+//                            // 用户取消分享后执行的回调函数
+//                            alert('失败');
+//                            }
+//                        });
+//
+//                }
+
+
+                    document.querySelector('#test').onclick = function () {
+                        const meto = self;
+                        alert(JSON.stringify(meto));
+                        alert('test');
+                        wx.onMenuShareAppMessage({
+                            title: '和十素养', // 分享标题
+
+                            desc: "和十素养", // 分享描述
+
+                            link: 'https://heshi.kongdian.me' + meto.go_url,
+//                        link: 'http://www.baidu.com',
+
+                            imgUrl: meto.logo, // 分享图标
+
+                            type: 'link',
+                            success: function () {
+                                // 用户确认分享后执行的回调函数
+                                alert('成功');
+                            },
+                            cancel: function () {
+                                // 用户取消分享后执行的回调函数
+                                alert('失败');
+                            }
+
+                        });
                     }
-                }.bind(_this));
+
+
+
 
 //
-//                // 分享给朋友圈
+//                // 分享给朋友
 //
+//                    document.querySelector('#onMenuShareAppMessage').onclick = function () {
+//                        const meto = self;
+//                        alert(JSON.stringify(meto));
+//                        alert('test');
+//                        wx.onMenuShareAppMessage({
+//                            title: '和十素养', // 分享标题
 //
-               wx.onMenuShareAppMessage({
-                    title: '和十素养', // 分享标题
+//                            desc: "和十素养", // 分享描述
+//
+//                            link: 'https://heshi.kongdian.me' + meto.go_url,
+////                        link: 'http://www.baidu.com',
+//
+//                            imgUrl: meto.logo, // 分享图标
+//
+//                            type: 'link',
+//                            success: function () {
+//                                // 用户确认分享后执行的回调函数
+//                                alert('成功');
+//                            },
+//                            cancel: function () {
+//                                // 用户取消分享后执行的回调函数
+//                                alert('失败');
+//                            }
+//
+//                        });
+//                    }
 
-                    desc: "和十素养", // 分享描述
+                })
 
-                    link: _this.go_url,
-
-                    imgUrl: _this.logo, // 分享图标
-
-                   type: 'link',
-                    success: function () {
-                        // 用户确认分享后执行的回调函数
-                        alert('成功');
-                    },
-                    cancel: function () {
-                        // 用户取消分享后执行的回调函数
-                        alert('失败');
-                   }
-
-               }.bind(_this));
-
-            });
-            console.log(8888888);
-        }.bind(this))
+            })
+        //}
 
     },
     methods: {

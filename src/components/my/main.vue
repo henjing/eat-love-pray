@@ -23,7 +23,7 @@
                     </router-link>
                 </li>
 
-            <li class="ui-border-b">
+            <li class="ui-border-b" v-if="user.yqr_name!=''">
                 <router-link to="/inviter" class="click_a">
                     <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
                         <span class="bg-100-g si" style="background-position: -39px -90px"></span>
@@ -130,20 +130,28 @@
 
             }
         },
-        mounted: function () {
+    created(){
         const _this = this;
-        XHRGet('/api/MyCenter/mySeting', {}, function (response) {
-            _this.user.user_avatars = response.data.data.wechat_avatar;
-            _this.user.yqr_name = response.data.data.inviting_name;
-            _this.user.user_phone = response.data.data.cellphone;
-            _this.user.reg_time = response.data.data.register_time;
-            _this.user.user_name = response.data.data.user_name;
-        })
+        setTimeout(function(){
+            _this._created.apply(_this);
+        },1000);
+    },
+    methods: {
+        _created: function () {
+            const _this = this;
+            XHRGet('/api/MyCenter/mySeting', {}, function (response) {
+                var data = response.data.data;
+                _this.user.user_avatars = data.wechat_avatar;
+                _this.user.yqr_name = data.inviting_name;
+                _this.user.user_phone = data.cellphone;
+                _this.user.reg_time = data.register_time;
+                _this.user.user_name = data.user_name;
+
+            })
 
         },
-    methods: {
+
         getGoexit:function() {
-            const _this = this;
             XHRGet('/api/MyCenter/logOut', {}, function () {
                 window.location.href = '/index/loginRegister/login.html'
               })
