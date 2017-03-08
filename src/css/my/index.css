@@ -254,7 +254,7 @@ button {
 .id-alert {
   width: 100px;
   height: 120px;
-  background: url(../../images/id-alert.png);
+  background: url(/static/images/id-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 85px;
@@ -263,7 +263,7 @@ button {
 .bank-alert {
   width: 120px;
   height: 120px;
-  background: url(../../images/bank-alert.png);
+  background: url(/static/images/bank-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 75px;
@@ -272,7 +272,7 @@ button {
 .know-alert {
   width: 120px;
   height: 120px;
-  background: url(../../images/deve-alert.png);
+  background: url(/static/images/deve-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 75px;
@@ -295,7 +295,7 @@ button {
 
 /*index和main页的图标背景图*/
 .bg-100-g, li .k-list-thumb-s > .bg-100-g {
-  background-image: url(../../images/icon01.jpg);
+  background-image: url(/static/images/icon01.jpg);
   display: block;
   width: 100%;
   height: 100%;
@@ -372,7 +372,7 @@ li .k-list-thumb-s > .bg-100-g {
   display: block;
   width: 100%;
   height: 100px;
-  background: url(../../images/share.png);
+  background: url(/static/images/share.png);
   background-size: 100% 100%;
   border-radius: 0; }
 

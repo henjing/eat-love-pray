@@ -193,44 +193,48 @@
         jinFooter
     },
     created: function () {
-        const _this = this;
+
         XHRGet('/api/MyCenter/index', {}, function (response) {
-            _this.user.user_wallet = response.data.data.can_use_money;
-            _this.user.user_assets = response.data.data.info_asset;
-            _this.user.user_vip = response.data.data.level;
-            _this.user.user_member = response.data.data.my_children;
-            _this.user.user_name = response.data.data.user_name;
-            _this.user.user_avatars = response.data.data.wechat_avatar;
-        });
+            this.user.user_wallet = response.data.data.can_use_money;
+            this.user.user_assets = response.data.data.info_asset;
+            this.user.user_vip = response.data.data.level;
+            this.user.user_member = response.data.data.my_children;
+            this.user.user_name = response.data.data.user_name;
+            //this.user.user_avatars = response.data.data.wechat_avatar;
+        }.bind(this));
         XHRPost('/api/Wechat/getJssdkInfo', {uri:encrypt('/index/my#/main')}, function (response) {
             var data = response.data.data;
             console.log('data',data);
             console.log(data.wechat.appId);
-            _this.appId = data.wechat.appId;
-            _this.timestamp = data.wechat.timestamp;
-            _this.nonceStr = data.wechat.nonceStr;
-            _this.signature = data.wechat.signature;
-            _this.go_url = data.go_url;
-            _this.logo = data.logo;
+            this.appId = data.wechat.appId;
+            this.timestamp = data.wechat.timestamp;
+            this.nonceStr = data.wechat.nonceStr;
+            this.signature = data.wechat.signature;
+            this.go_url = data.go_url;
+            this.logo = data.logo;
+            console.log(this.appId);
+            const _this = this;
             wx.config({
 
                 debug: false,
 
-                appId:this.appId,
+                appId:_this.appId,
 
-                timestamp: this.timestamp,
+                timestamp: _this.timestamp,
 
-                nonceStr: this.nonceStr,
+                nonceStr: _this.nonceStr,
 
-                signature: this.signature,
+                signature: _this.signature,
 
                jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'] // 分享给朋友  分享给朋友圈
 
             });
+
             function s1(){
-               console.log(_this.appId); 
+               console.log(_this.signature);
             }
             s1();
+
             wx.ready(function(){
                // 分享到朋友
 
@@ -238,44 +242,45 @@
 
                     title: '和十素养', // 分享标题
 
-                    imgUrl: this.logo// 分享图标
-//                    success: function () {
-//                       // 用户确认分享后执行的回调函数
-//                        alert('成功');
-//                    },
-//                   cancel: function () {
-//                        // 用户取消分享后执行的回调函数
-//                       alert('失败');
-//                    }
-                });
+                    imgUrl: _this.logo,// 分享图标
+                   success: function () {
+                       // 用户确认分享后执行的回调函数
+                        alert('成功');
+                    },
+                   cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                        alert('失败');
+                    }
+                }.bind(_this));
 
-                // 分享给朋友圈
-
-
+//
+//                // 分享给朋友圈
+//
+//
                wx.onMenuShareAppMessage({
                     title: '和十素养', // 分享标题
 
                     desc: "和十素养", // 分享描述
 
-                    link: this.go_url,
+                    link: _this.go_url,
 
-                    imgUrl: this.logo, // 分享图标
+                    imgUrl: _this.logo, // 分享图标
 
-                   type: 'link'
-//                    success: function () {
-//                        // 用户确认分享后执行的回调函数
-//                        alert('成功');
-//                    },
-//                    cancel: function () {
-//                        // 用户取消分享后执行的回调函数
-//                        alert('失败');
-//                   }
+                   type: 'link',
+                    success: function () {
+                        // 用户确认分享后执行的回调函数
+                        alert('成功');
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                        alert('失败');
+                   }
 
-               });
+               }.bind(_this));
 
             });
             console.log(8888888);
-        })
+        }.bind(this))
 
     },
     methods: {
