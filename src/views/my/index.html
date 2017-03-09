@@ -20,9 +20,10 @@
 <body>
 
 <div class="container" id="container" v-cloak>
-    <!--<keep-alive>-->
-        <router-view></router-view>
-    <!--</keep-alive>-->
+    <keep-alive>
+        <router-view v-if="$route.meta.keepAlive"></router-view>
+    </keep-alive>
+    <router-view v-if="!$route.meta.keepAlive"></router-view>
 </div>
 
 <script src="../../js/lib/vue.js"></script>

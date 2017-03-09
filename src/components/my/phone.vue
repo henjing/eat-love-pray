@@ -36,16 +36,42 @@
             return{
                 info: {
                     input: "" //只显示的手机号
-                }
+                },
+                switch: false
             }
         },
 
-        mounted: function () {
+        created: function () {
+//            const _this = this;
+//            setTimeout(function(){
+//                _this._created.apply(_this)
+//            },1000)
+            this.onPayKong();
+        },
+    methods: {
+//        _created(){
+//            const _this = this;
+//            XHRGet('/api/MyCenter/mySeting', {}, function (response) {
+//                _this.info.input = response.data.data.cellphone;
+//            })
+//        }
+
+        onPayKong(){
+            console.log(this.switch);
             const _this = this;
+            if (this.switch) return false;
+            console.log(this.switch);
+            this.switch = true;
+            console.log(this.switch);
             XHRGet('/api/MyCenter/mySeting', {}, function (response) {
                 _this.info.input = response.data.data.cellphone;
+                console.log(_this.switch);
+                _this.switch = false
+                console.log(_this.switch);
             })
+
         }
+    }
 
     }
 </script>

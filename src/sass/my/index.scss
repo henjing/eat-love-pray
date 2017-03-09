@@ -433,3 +433,20 @@ li .k-list-thumb-s>.bg-100-g{
   -webkit-border-radius: 200px;
   background-size: 100% 100%;
 }
+
+
+
+.jin-list-link>.exq:after {
+  font-size: 20px;
+  line-height: 44px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: .2px;
+  display: block;
+  color: #fff;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  margin-top: -21px;
+  margin-right: -10px;
+}

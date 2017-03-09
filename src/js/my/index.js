@@ -20,20 +20,20 @@ import Connection from 'components/connection/connection-connection-connection.v
 import { countdown } from '../tools.js';
 
 const routes = [
-    { path: '/', component: Index},
-    { path: '/main', component: Main},
-    { path: '/name', component: Name},
-    { path: '/phone', component: Phone},
-    { path: '/inviter', component: Inviter},
-    { path: '/phone01', component: Phone01},
-    { path: '/mima', component: Mima},
-    { path: '/dlmima', component: Dlmima},
+    { path: '/', component: Index ,meta: {keepAlive: false}},
+    { path: '/main', component: Main ,meta: {keepAlive: true}},
+    { path: '/name', component: Name ,meta: {keepAlive: false}},
+    { path: '/phone', component: Phone, meta: {keepAlive:false}},
+    { path: '/inviter', component: Inviter , meta: {keepAlive: false}},
+    { path: '/phone01', component: Phone01 , meta: {keepAlive: false}},
+    { path: '/mima', component: Mima , meta: {keepAlive: false}},
+    { path: '/dlmima', component: Dlmima , meta: {keepAlive: false}},
     //{ path: '/zfmima', component: Zfmima},
     //{ path: '/zfmima01', component: Zfmima01},
-    { path: '/zfmima02', component: Zfmima02},
+    { path: '/zfmima02', component: Zfmima02, meta: {keepAlive: false}},
     //{ path: '/zfmima03', component: Zfmima03},
     //{ path: '/zfmima04', component: Zfmima04},
-    { path: '/connection', component: Connection}
+    { path: '/connection', component: Connection,meta: {keepAlive: false}}
 
 ];
 

@@ -77,7 +77,6 @@
                 </li>
             </ul>
         </div>
-        <button id="test">用户点击</button>
 
         <!--<div class="k-list-group">-->
             <!--<ul class="ui-list jin-list-link ui-list-active">-->
@@ -119,9 +118,9 @@
                         <div class="weui-loadmore s1" v-if="loadingShow">
                             <i class="weui-loading"></i>
                         </div>
-                        <img :src="user.inviter_code" alt="" v-else />
+                        <img :src="user.inviter_code" alt="" v-else/>
                     <div class="margin-b-15 packet-user-title"></div>
-                    <h4 class="margin-t-10 font14 margin-b-10 txt-color-fff padding-b-15" >点击右上角立即分享</h4>
+                    <h4 class="margin-t-10 font14 margin-b-10 txt-color-fff padding-b-15  " >点击右上角立即分享</h4>
                 </div>
             </div>
         </div>
@@ -150,7 +149,7 @@
             padding: 10% 20px 0;
         }
     }
-</style>
+</style>s
 
 <script type="text/jsx">
     import layer from '../../js/lib/layer.js';
@@ -198,16 +197,12 @@
         console.log('test');
         const _this = this;
 
-//        XHRGet('/api/MyCenter/index', {}, function (response) {
-//            this.user.user_wallet = response.data.data.can_use_money;
-//            this.user.user_assets = response.data.data.info_asset;
-//            this.user.user_vip = response.data.data.level;
-//            this.user.user_member = response.data.data.my_children;
-//            this.user.user_name = response.data.data.user_name;
-//            //this.user.user_avatars = response.data.data.wechat_avatar;
-//        }.bind(this));
 
-        XHRPost('/api/Wechat/getJssdkInfo', {uri:encrypt('/index/my')}, function (response) {
+        setTimeout(function() {
+                _this._created.apply(_this);
+            },1000);
+
+        XHRPost('/api/Wechat/getJssdkInfo', {uri:encrypt('/index/my/index.html')}, function (response) {
             var data = response.data.data;
             console.log('data', data);
             console.log(data.wechat.appId);
@@ -236,122 +231,36 @@
 
                 });
 
-
-                function s1() {
-                    //console.log(_this.signature);
-                    //const _this = _this;
-                    //_this.user.user_wallet = response.data.data.can_use_money;
-                    XHRGet('/api/MyCenter/index', {}, function (response) {
-                        _this.user.user_wallet = response.data.data.can_use_money;
-                        _this.user.user_assets = response.data.data.info_asset;
-                        _this.user.user_vip = response.data.data.level;
-                        _this.user.user_member = response.data.data.my_children;
-                        _this.user.user_name = response.data.data.user_name;
-                        _this.user.user_avatars = response.data.data.wechat_avatar;
-                    });
-                }
-
-                setTimeout(function () {
-                    s1();
-                }, 1000);
-
-
                 wx.ready(function () {
-                    // 分享到朋友圈
+                    // 分享到朋友
                     const self = _this;
-//                document.querySelector('#onMenuShareAppMessage').onclick = function () {
-//                    const meto = self;
-//                    wx.onMenuShareTimeline({
-//
-//                        title: '和十素养', // 分享标题
-//
-//                        imgUrl: meto.logo,// 分享图标
-//                        success: function () {
-//                            // 用户确认分享后执行的回调函数
-//                            alert('成功');
+
+                    wx.onMenuShareAppMessage({
+                            title: '和十素养', // 分享标题
+
+                            desc: "和十素养", // 分享描述
+
+                            link: 'http://heshi.kongdian.me' + self.go_url,//
+
+                            imgUrl: self.logo, // 分享图标
+
+                            type: 'link'
+//                            success: function () {
+//                               // 用户确认分享后执行的回调函数
+//                                alert('成功');
 //                            },
-//                        cancel: function () {
-//                            // 用户取消分享后执行的回调函数
-//                            alert('失败');
+//                            cancel: function () {
+//                                // 用户取消分享后执行的回调函数
+//                                alert('失败');
 //                            }
-//                        });
-//
-//                }
-
-
-                    document.querySelector('#test').onclick = function () {
-                        const meto = self;
-                        alert(JSON.stringify(meto));
-                        alert('test');
-                        wx.onMenuShareAppMessage({
-                            title: '和十素养', // 分享标题
-
-                            desc: "和十素养", // 分享描述
-
-                            link: 'https://heshi.kongdian.me' + meto.go_url,
-//                        link: 'http://www.baidu.com',
-
-                            imgUrl: meto.logo, // 分享图标
-
-                            type: 'link',
-                            success: function () {
-                                // 用户确认分享后执行的回调函数
-                                alert('成功');
-                            },
-                            cancel: function () {
-                                // 用户取消分享后执行的回调函数
-                                alert('失败');
-                            }
 
                         });
-                    }
-
-
-
-
-                        wx.onMenuShareAppMessage({
+                    // 分享到朋友圈
+                        wx.onMenuShareTimeline({
                             title: '和十素养', // 分享标题
-
-                            desc: "和十素养", // 分享描述
-
-                            link: 'https://heshi.kongdian.me' + self.go_url,
-
-
-                            imgUrl: meto.logo, // 分享图标
-
-                            type: 'link',
-                            success: function () {
-                                // 用户确认分享后执行的回调函数
-                                alert('成功');
-                            },
-                            cancel: function () {
-                                // 用户取消分享后执行的回调函数
-                                alert('失败');
-                            }
-
-                        });
-
-
-
-
-//
-//                // 分享给朋友
-//
-//                    document.querySelector('#onMenuShareAppMessage').onclick = function () {
-//                        const meto = self;
-//                        alert(JSON.stringify(meto));
-//                        alert('test');
-//                        wx.onMenuShareAppMessage({
-//                            title: '和十素养', // 分享标题
-//
-//                            desc: "和十素养", // 分享描述
-//
-//                            link: 'https://heshi.kongdian.me' + meto.go_url,
-////                        link: 'http://www.baidu.com',
-//
-//                            imgUrl: meto.logo, // 分享图标
-//
-//                            type: 'link',
+                            link: 'http://heshi.kongdian.me' + self.go_url, // 分享链接
+                            imgUrl: self.logo, // 分享图标
+                            type: 'link'
 //                            success: function () {
 //                                // 用户确认分享后执行的回调函数
 //                                alert('成功');
@@ -360,9 +269,14 @@
 //                                // 用户取消分享后执行的回调函数
 //                                alert('失败');
 //                            }
-//
-//                        });
-//                    }
+
+                        });
+
+
+
+
+
+
 
                 })
 
@@ -386,7 +300,19 @@
         Getquxiao:function() {
             this.user.isA = true;
             this.user.isB = false;
-        }
+        },
+        _created: function () {
+            console.log('test');
+            const _this = this;
+            XHRGet('/api/MyCenter/index', {}, function (response) {
+                _this.user.user_wallet = response.data.data.can_use_money;
+                _this.user.user_assets = response.data.data.info_asset;
+                _this.user.user_vip = response.data.data.level;
+                _this.user.user_member = response.data.data.my_children;
+                _this.user.user_name = response.data.data.user_name;
+                _this.user.user_avatars = response.data.data.wechat_avatar;
+            });
+        },
 
     }
     }
