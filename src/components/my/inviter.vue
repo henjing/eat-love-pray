@@ -138,6 +138,17 @@
                     this.isA = true;
                 }
             },
+            //调到个人设置页
+            goTopwd:function() {
+                this.$router.push({path:'/main'});
+            },
+            //定时器2秒
+            goTOnext:function() {
+                const _this = this;
+                setInterval( function() {
+                _this.goTopwd();
+                },2000);
+            },
             //取消事件
             goQuxiao: function () {
                 this.isA = false;
@@ -162,8 +173,9 @@
                         _this.loadingShow = false;
                         _this.successingShow = true;
                         _this.dqyqr_name = _this.user.yqr;
-                        setInterval(" _this.$router.push({ path: '/main'})","2000");
-
+                        //setInterval(" _this.$router.push({ path: '/main'})","2000");
+                        //_this.$router.push({ path: '/main'});
+                        _this.goTOnext();
                     }
                 })
 

@@ -6,7 +6,7 @@
                 <ul class="ui-list jin-list-link" >
                     <li class="">
                         <div class="ui-list-info">
-                            <h4 class="padding-b-10 ui-nowrap font14">收货地址：</h4>
+                            <h4 class="padding-b-10  ui-nowrap font14">收货地址：</h4>
                             <p class="padding-r-15 font12 line-h-12">{{orderAddressData.province}}{{orderAddressData.address}}</p>
                         </div>
                     </li>
@@ -38,7 +38,7 @@
         <index-bank
                 v-if="bank"
                 v-bind:state-bank="bank"
-                v-bind:state-order-id="goods_order"
+                v-bind:state-order-id="order_id"
                 @on-close="onSelectBank"
         >
         </index-bank>
@@ -85,9 +85,11 @@
                 address_id:this.$route.query.addid,
                 number:this.$route.query.num,
                 goods_id:this.$route.query.gid,
+                order_id:this.$route.query.oid,
                 orderData:"",
                 orderAddressData:"",
-                goods_order:""
+                goods_order:"",
+                addressNull:true,
             }
         },
         props:['state-buy'],
@@ -95,7 +97,13 @@
             indexBank
         },
         created: function() {
-            this.goodsDetail();
+            let _urk = 'http://heshi.kongdian.me/index/?#/index/indexOrder?num='+ this.number +'&gid=' +this.goods_id +'&addid='+this.address_id;
+            if(window.location.href.substr(0, 50) == _urk.substr(0, 50)){
+                this.goodsDetail();
+            }else{
+                window.location.href = _urk;
+            }
+
             let _this = this;
             setTimeout(function(){
                 _this.mod =_this.stateBuy;
@@ -111,33 +119,80 @@
             },
 //            提交订单
             onBank(){
-                let bankData = {goods_id:encrypt(String(this.goods_id)), goods_number:encrypt(String(this.number)), address_id:encrypt(String(this.address_id))}
-                XHRPost('/api/Shop/commitOrder',bankData,function (response) {
-                    if (response.data.status==1){
-                        this.goods_order=response.data.data;
-                        this.bank=true;
+                let _this = this;
+                let address = this.address_id == "undefined" ? "0" : this.address_id;
+                let bankData = {goods_id:encrypt(String(this.goods_id)), goods_number:encrypt(String(this.number)), address_id:encrypt(String(address))}
+//                判断order_id是否存在，防止生成多个订单
+                let isOrderId = typeof(this.order_id) == "undefined" ? "" : this.order_id;
+                console.log("打印", isOrderId.length)
+                 console.log("打印", isOrderId)
+                if (isOrderId.length<1){
+//                    判断地址
+                    if (this.addressNull){
+                        XHRPost('/api/Shop/commitOrder',bankData,function (response) {
+                            if (response.data.status==1){
+                                _this.goods_order=response.data.data;
+                                _this.order_id=response.data.data;
+                                _this.bank=true;
+                            }
+                        }.bind(this));
+                    }else {
+                        layer.open({
+                            content: "请添加地址！",
+                            btn: ['确认'],
+                            yes: function () {
+                                _this.$router.push({path:'/address', query:{num:_this.number, gid:_this.goods_id}})
+                                layer.closeAll();
+                            },
+                        });
                     }
-                }.bind(this));
-
+                }else {
+                    _this.bank=true;
+                }
             },
             onSelectBank(){
                 this.bank=false;
             },
             goodsDetail(){
+//                alert("测试")
+                let _this = this;
                 var load = layer.open({ type: 2,shadeClose: false})
-//                判断第一张请求address_id为空
-                let address = typeof(this.address_id) == "undefined" ? "0" : this.address_id;
-                XHRPost('/api/Shop/getCommitOrderData',{address_id:encrypt(String(address))},function (response) {
+//                判断第一次请求address_id为空
+                let address = this.address_id == "undefined" ? "0" : this.address_id;
+                let goodsData = {goods_id:encrypt(String(this.goods_id)), goods_number:encrypt(String(this.number)), address_id:encrypt(String(address))};
+                XHRPost('/api/Shop/getCommitOrderData',goodsData,function (response) {
                     if (response.data.status == 1){
                         this.orderData=response.data.data;
                         this.orderAddressData=response.data.data.address_info;
+                        if(response.data.data.address_info == null){
+                            this.orderAddressData={
+                                province:null,
+                                address:"请添加地址！"
+                            }
+                            this.addressNull = false;
+                        }else {
+                            _this.address_id=response.data.data.address_info.address_id;
+                            this.addressNull = true;
+                        }
                         layer.close(load);
+                    }else {
+                        layer.open({
+                            content:response.data.info,
+                            btn: ['确认'],
+                            shadeClose: false,
+                            yes: function () {
+                                if(response.data.info == "未登录"){
+                                    window.location.href="/index/login_register/login.html"
+                                }
+                                layer.closeAll();
+                            },
+                        });
                     }
                 }.bind(this));
             },
             //        选择收货地址
             linkAddress(){
-               this.$router.push({path:'/address', query:{num:this.number, gid:this.goods_id}})
+               this.$router.push({path:'/address', query:{num:this.number, gid:this.goods_id, oid:this.order_id}})
             }
         }
     }

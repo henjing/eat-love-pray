@@ -3,9 +3,7 @@
     <div class="banner">
         <div class="swiper-container swiper-detail-hook">
             <ul class="swiper-wrapper">
-                <li class="swiper-slide" :style="{backgroundImage:'url(/static/images/pro-01.png)'}"></li>
-                <li class="swiper-slide" :style="{backgroundImage:'url(/static/images/pro-02.png)'}"></li>
-                 <li class="swiper-slide" :style="{backgroundImage:'url(/static/images/pro-03.png)'}"></li>
+                <li class="swiper-slide" v-for="key in goodsData.front_cover"  :style="{backgroundImage: 'url('+ key+')'}"></li>
             </ul>
             <div class=" twxq abs">
                 <a href="javascript:void(0)"  @click="goAnchor('#img')" class="line-h-nor font12 twxq-yuan ui-txt-info">图文<br/>详情</a>
@@ -43,7 +41,9 @@
 
     <div class="ui-list">
         <div class="graphic margin-t-10"  id="img">
-            <img v-for="key in goodsData.goods_img_details" v-bind:src="key">
+            <div v-for="key in goodsData.goods_img_details">
+                 <img  v-bind:src="key">
+            </div>
         </div>
     </div>
     <div class="ui-whitespace bottom-btn" @click="onBuy">
@@ -59,6 +59,9 @@
 </div>
 </template>
 <style>
+    .banner .swiper-slide {
+        background-position: center;
+    }
 </style>
 <script>
     import { XHRPost, XHRGet} from './../../js/ajax';
@@ -76,15 +79,17 @@
             }
         },
         created() {
+            this.goodsDetail();
+        },
+        beforeUpdate(){
             this.$nextTick(function () {
                 var mySwiper = new Swiper ('.swiper-detail-hook', {
                     loop: true,
                     // 如果需要分页器
                     pagination: '.swiper-pagination',
                 });
-			});
-            this.goodsDetail()
-		},
+            });
+        },
         components:{
             indexQuantity
         },
@@ -92,7 +97,7 @@
             onUnfold(){
                 this.unfold = !this.unfold;
             },
-           /* 锚点*/
+            /* 锚点*/
             goAnchor(selector) {
                 var anchor = this.$el.querySelector(selector)
                 document.body.scrollTop = anchor.offsetTop

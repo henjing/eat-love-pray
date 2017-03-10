@@ -35,16 +35,15 @@ let huangEnJing = {
     resources: '/Users/enjing/Documents/myWebProject/heshi/heshi_api/public/static/'
 };
 let qinHaiLang = {
-    html: 'F:/heshi/application/index/view/',
-    resources: 'F:/heshi/public/static/'
+    html: '/Users/qhl/svn/heshi/application/index/view/',
+    resources: '/Users/qhl/svn/heshi/public/static/'
 };
 let luYuQiu = {
 	html: '../kongdian_hs/application/index/view/',
 	resources: '../kongdian_hs/public/static/'
 };
 
-let targetRoute = luYuQiu;
-
+let targetRoute = qinHaiLang;
 
 // 下面就是dirty work, get your hands dirty!
 var webpackConfig = {

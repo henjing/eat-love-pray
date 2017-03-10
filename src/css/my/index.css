@@ -26,7 +26,7 @@
     text-align: center;
     color: #fff;
     border-radius: 100px;
-    box-shadow: 0 2px 5px rgba(240, 73, 72, 0.3);
+    box-shadow: 0 2px 5px #18b4ed;
     background-image: linear-gradient(90deg, #6acbfe 0%, #2377f3 100%);
     margin: 0 auto; }
   .vip {
@@ -254,7 +254,7 @@ button {
 .id-alert {
   width: 100px;
   height: 120px;
-  background: url(../../images/id-alert.png);
+  background: url(/static/images/id-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 85px;
@@ -263,7 +263,7 @@ button {
 .bank-alert {
   width: 120px;
   height: 120px;
-  background: url(../../images/bank-alert.png);
+  background: url(/static/images/bank-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 75px;
@@ -272,7 +272,7 @@ button {
 .know-alert {
   width: 120px;
   height: 120px;
-  background: url(../../images/deve-alert.png);
+  background: url(/static/images/deve-alert.png);
   background-size: 100% 100%;
   position: absolute;
   left: 75px;
@@ -295,34 +295,19 @@ button {
 
 /*index和main页的图标背景图*/
 .bg-100-g, li .k-list-thumb-s > .bg-100-g {
-  background-size: 100% 100%; }
+  background-image: url(/static/images/icon01.jpg);
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover; }
 
-.hs_wallet {
-  background: url(../../images/hs_wallet.png); }
+ul li .k-list-thumb-s > .si {
+  background-size: 940%; }
 
-.hs_inventory {
-  background: url(../../images/hs_inventory.png); }
-
-.hs_sales {
-  background: url(../../images/hs_sales.png); }
-
-.hs_address {
-  background: url(../../images/hs_address.png); }
-
-.hs_Pen {
-  background: url(../../images/hs_Pen.png); }
-
-.hs_pwd {
-  background: url(../../images/hs_pwd.png); }
-
-.hs_inviter {
-  background: url(../../images/hs_inviter.png); }
-
-.hs_Mobile {
-  background: url(../../images/hs_Mobile.png); }
-
-.hs_time {
-  background: url(../../images/hs_time.png); }
+li .k-list-thumb-s > .bg-100-g {
+  background-size: 840%; }
 
 .camera {
   width: 22px;
@@ -338,13 +323,15 @@ button {
   font-weight: 800;
   text-align: center; }
 
-.mine-header > .ui-avatar-lg, .mine-header > .ui-avatar-lg > .radius0 {
-  -webkit-border-radius: 0px; }
+.mine-header > .ui-avatar-lg {
+  width: 70px;
+  height: 70px;
+  -webkit-border-radius: 200px;
+  border: 3px solid #fff; }
 
-.radius0 > .radius3 {
-  border: 3px solid #fff;
-  width: 60px;
-  height: 60px;
+.radius3 {
+  width: 100%;
+  height: 100%;
   -webkit-border-radius: 200px;
   background-size: 100% 100%; }
 
@@ -371,12 +358,6 @@ button {
   margin-left: 10%;
   margin-right: 10%; }
 
-.packet-user > img {
-  width: 130px;
-  height: 130px;
-  border-radius: 0;
-  padding: 10% 20px 0; }
-
 .txt-color-fff {
   color: #fff; }
 
@@ -391,10 +372,16 @@ button {
   display: block;
   width: 100%;
   height: 100px;
-  background: url(../../images/share.png);
+  background: url(/static/images/share.png);
   background-size: 100% 100%;
   border-radius: 0; }
 
 .share {
   width: 30%;
   margin-left: 60%; }
+
+.radius0 img {
+  width: 100%;
+  height: 100%;
+  -webkit-border-radius: 200px;
+  background-size: 100% 100%; }

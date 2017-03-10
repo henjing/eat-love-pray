@@ -91,7 +91,7 @@
     }
 
     .wallet-info .ui-avatar-s span {
-        /*	background-image:url(../img/home/wallet-icon.png);*/
+        background-image:url(../../images/wallet-icon.png);
     }
     .layui-m-layercont {
         padding: 20px 40px!important;
@@ -120,7 +120,7 @@
         methods: {
             onMoney() {
                 var load = layer.open({ type: 2,shadeClose: false});
-                XHRGet('/api/Wallet/index', {},function (response) {
+                XHRGet('/api/Wallet/index', {}, function (response) {
                     console.log(response);
                     if (response.data.status == 1) this.walletData = response.data.data;
                     layer.close(load);

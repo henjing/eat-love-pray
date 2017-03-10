@@ -3,9 +3,11 @@
             v-infinite-scroll="onAll"
             infinite-scroll-disabled="busy"
             infinite-scroll-distance="100"
+            style="overflow: auto; height: calc(100vh - 45px);-webkit-overflow-scrolling:  touch"
+            class="jin-wrap"
     >
         <div class="apply-item margin-b-10 ui-border-b" v-for="key in allData">
-            <ul class="ui-list jin-list">
+            <ul class="ui-list jin-list" @click="orderDetails(key.order_id)">
                 <li class="ui-border-b">
                     <div class="ui-list-thumb">
                         <span :style="{backgroundImage: 'url('+ key.goods_img_cover+')'}"></span>
@@ -14,25 +16,35 @@
                         {{key.goods_name}}
                     </p>
                     <div class="text-right">
-                        <div class="font14 ui-txt-warning">x{{key.goods_number}}</div>
+                        <div class="font14 ui-txt-warning">{{key.goods_number}}单</div>
                     </div>
                 </li>
             </ul>
             <div class="jin-justify-flex ui-whitespace padding-t-10 padding-b-10 bg-white">
                 <div class="font14 color-9b">{{key.status}}</div>
                 <div>
-                    <button class="ui-btn ui-btn-s" style="width: 80px;color: red;border-color:red" v-if="key.status == '未付款'">去付款</button>
-                    <button class="ui-btn ui-btn-s" style="width: 80px;color: #333;" v-if="key.status == '已收货'" @click="onLogistics()">查看物流</button>
+                    <button class="ui-btn ui-btn-s" style="width: 80px;color: red;border-color:red" v-if="key.status == '未付款'" @click="goPayment(key)">立即付款</button>
+                    <button class="ui-btn ui-btn-s" style="width: 80px;color: #333;" v-if="key.status == '已收货'" @click="onLogistics(key)">查看物流</button>
                     <div v-if="key.status == '已付款'">&nbsp;</div>
                 </div>
             </div>
         </div>
+        <index-bank
+                v-if="bank"
+                v-bind:state-bank="bank"
+                v-bind:state-order-id="order_id"
+                @on-close="onSelectBank"
+        >
+        </index-bank>
         <order-goods-log :log-data="logData"></order-goods-log>
+         <store-footer :current="3"></store-footer>
     </div>
 </template>
 <script>
     import { XHRPost} from '../../js/ajax.js';
     import OrderGoodsLog from 'components/order/order-goods-log.vue';
+    import indexBank from 'components/index/index-bank.vue';
+    import StoreFooter from '../../components/common/footer.vue';
     export default{
         data(){
             return{
@@ -44,13 +56,16 @@
                     nullData:false,
                     bottom:false,
                 },
-                 _switch:false
+                 _switch:false,
+                address_id:"0",
+                bank:false,
+                order_id:""
             }
         },
         created(){
         },
         components:{
-            OrderGoodsLog
+            OrderGoodsLog,indexBank,StoreFooter
         },
         methods:{
             onAll(){
@@ -58,7 +73,6 @@
                 this._switch = true;
                 XHRPost('/api/MyOrder/index', {status:encrypt("2"),page:encrypt(String(this.pages))},function (response) {
                     let _data = response.data;
-                    console.log("全部订单", _data)
                     if (_data.status == 1){
                         for (let i = 0; i< _data.data.length; i++){
                             this.allData.push(_data.data[i]);
@@ -82,6 +96,23 @@
                      this._switch = false;
                 }.bind(this));
             },
-        }
+            goPayment(msg){
+/*//                默认地址为0
+                this.$router.push({path:'/index/indexOrder', query:{num:msg.goods_number, gid:msg.goods_id, addid:this.address_id}})*/
+                this.order_id = msg.order_id;
+                this.bank=true;
+            },
+            //            查看物流
+            onLogistics(msg){
+                this.$router.push({path:'/order/Logistics', query:{oid:msg.order_id}})
+            },
+//            查看订单详情
+            orderDetails(msg){
+                this.$router.push({path:'/index/indexOrderDetails', query:{oid:msg}})
+            },
+            onSelectBank(){
+                this.bank=false;
+            },
+        },
     }
 </script>

@@ -24,59 +24,17 @@
             <ul class="ui-list jin-list-link k-list ui-list-active">
                 <li class="ui-border-b" onclick="location.href='/index/wallet/index.html'">
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                            <span class="bg-100-g hs_wallet"></span>
+                            <span class="bg-100-g" style="background-position: -113px -43px"></span>
                         </div>
                         <div class="ui-list-info">
                             <h4 class="ui-nowrap">钱包</h4>
                         </div>
                         <span class="font14 ui-txt-info">{{user.user_wallet}}</span>
                 </li>
-                <li onclick="location.href='/index/index/index.html#/'">
-                    <!--<router-link to="" class="click_a">-->
-                        <!--<div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">-->
-                            <!--<span class="bg-100-g hs_inventory"></span>-->
-                        <!--</div>-->
-                        <!--<div class="ui-list-info">-->
-                            <!--<h4 class="ui-nowrap">信息资产</h4>-->
-                        <!--</div>-->
-                        <!--<span class="font14 ui-txt-info">{{user.user_assets}}</span>-->
-                    <!--</router-link>-->
-                        <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                            <span class="bg-100-g hs_sales"></span>
-                        </div>
-                        <div class="ui-list-info">
-                            <h4 class="ui-nowrap">我的首页</h4>
-                        </div>
-                        <span class="font14 ui-txt-info"></span>
-                </li>
-            </ul>
-        </div>
-        <div class="k-list-group">
-            <ul class="ui-list jin-list-link k-list ui-list-active">
-                <li class="ui-border-b" onclick="location.href='/index/SellRecord/index.html'">
-                    <!--<router-link to="" class="click_a">-->
-                    <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                        <span class="bg-100-g hs_sales"></span>
-                    </div>
-                    <div class="ui-list-info">
-                        <h4 class="ui-nowrap">销售记录</h4>
-                    </div>
-                    <span class="font14 ui-txt-info"></span>
-                    <!--</router-link>-->
-                </li>
-                <li class="ui-border-b" onclick="location.href='/index/order/index.html'">
-                        <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                            <span class="bg-100-g hs_address"></span>
-                        </div>
-                        <div class="ui-list-info">
-                            <h4 class="ui-nowrap">我的订单</h4>
-                        </div>
-                        <span class="font14 ui-txt-info">{{user.user_inventory}}</span>
-                </li>
                 <li>
                     <router-link to="/connection" class="click_a">
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                            <span class="bg-100-g hs_wallet"></span>
+                            <span class="bg-100-g" style="background-position: -114px -192px"></span>
                         </div>
                         <div class="ui-list-info">
                             <h4 class="ui-nowrap">我的会员</h4>
@@ -86,12 +44,31 @@
                 </li>
             </ul>
         </div>
-
         <div class="k-list-group">
-            <ul class="ui-list jin-list-link ui-list-active">
+            <ul class="ui-list jin-list-link k-list ui-list-active">
+                <li class="ui-border-b" onclick="location.href='/index/SellRecord/index.html'">
+                    <!--<router-link to="" class="click_a">-->
+                    <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
+                        <span class="bg-100-g" style="background-position: -115px -100px"></span>
+                    </div>
+                    <div class="ui-list-info">
+                        <h4 class="ui-nowrap">销售记录</h4>
+                    </div>
+                    <span class="font14 ui-txt-info"></span>
+                    <!--</router-link>-->
+                </li>
+                <li class="ui-border-b" onclick="location.href='/index/order/index.html'">
+                    <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
+                        <span class="bg-100-g" style="background-position: -115px -126px"></span>
+                    </div>
+                    <div class="ui-list-info">
+                        <h4 class="ui-nowrap">我的订单</h4>
+                    </div>
+                    <span class="font14 ui-txt-info">{{user.user_inventory}}</span>
+                </li>
                 <li onclick="location.href='/index/address/index.html'">
                     <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                        <span class="bg-100-g hs_address"></span>
+                        <span class="bg-100-g" style="background-position: -114px -228px"></span>
                     </div>
                     <div class="ui-list-info">
                         <h4 class="ui-nowrap">收货地址</h4>
@@ -100,6 +77,20 @@
                 </li>
             </ul>
         </div>
+
+        <!--<div class="k-list-group">-->
+            <!--<ul class="ui-list jin-list-link ui-list-active">-->
+                <!--<li onclick="location.href='/index/address/index.html'">-->
+                    <!--<div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">-->
+                        <!--<span class="bg-100-g hs_address"></span>-->
+                    <!--</div>-->
+                    <!--<div class="ui-list-info">-->
+                        <!--<h4 class="ui-nowrap">收货地址</h4>-->
+                    <!--</div>-->
+                    <!--<span class="font14 ui-txt-info">{{user.user_address}}</span>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
         <!--<div class="k-list-group">-->
             <!--<ul class="ui-list jin-list-link ui-list-active">-->
                 <!--<li>-->
@@ -116,14 +107,18 @@
             <!--</ul>-->
         <!--</div>-->
         <jin-footer :current="2"></jin-footer>
+
         <div class="fix" v-bind:class='{"dis_n":user.isA,"dsp_p":user.isB}'>
             <div class="margin-t-20 margin-b-10 share">
                <span class="lines"></span>
             </div>
-            <div class="rel" >
+            <div class="rel">
                 <div class="abs exit" v-on:click="Getquxiao">X</div>
                 <div class="packet-user text-center">
-                    <img :src="user.inviter_code" alt="" />
+                        <div class="weui-loadmore s1" v-if="loadingShow">
+                            <i class="weui-loading"></i>
+                        </div>
+                        <img :src="user.inviter_code" alt="" v-else />
                     <div class="margin-b-15 packet-user-title"></div>
                     <h4 class="margin-t-10 font14 margin-b-10 txt-color-fff padding-b-15" >点击右上角立即分享</h4>
                 </div>
@@ -131,9 +126,36 @@
         </div>
     </div>
 </template>
+<style scoped>
+    /*.inviter_code01{*/
+        /*width:130px;*/
+        /*height:130px;*/
+        /*margin:10px auto;*/
+    /*}*/
+    .s1,.packet-user>img {
+        width: 130px;
+        height: 130px;
+        border-radius: 0;
+        padding:3% 20px 0;
+    }
+    .s1 > i {
+        margin-top: 20px;
+    }
+    @media (max-width: 480px) {
+        .s1 > i {
+            margin-top: 50px;
+        }
+        .s1,.packet-user>img{
+            padding: 10% 20px 0;
+        }
+    }
+</style>
 
 <script type="text/jsx">
+    import layer from '../../js/lib/layer.js';
+    import '../../js/lib/layer.css';
     import jinFooter from '../common/footer.vue';
+   //     import { wx } from '../../js/lib/jweixin-1.0.0.js'
     import { countdown } from '../../js/tools.js';
     import { XHRPost, XHRGet } from '../../js/ajax.js';
 
@@ -152,32 +174,126 @@
                 //user_inventory: "500", //用户库存
                 user_member: "", //用户的会员个
                 //user_address: "0", //用户收货地址个数
-                inviter_code: "" //邀请二维码
-            }
+                inviter_code: ""//邀请二维码
+
+            },
+            appId:"",
+            timestamp:"",
+            nonceStr:"",
+            signature:"",
+            go_url:"",
+            logo:"",
+            user_watch:{
+
+            },
+            loadingShow:false
             }
         },
     components: {
         jinFooter
     },
-    mounted: function () {
-        const _this = this;
+    created: function () {
+
         XHRGet('/api/MyCenter/index', {}, function (response) {
-            _this.user.user_wallet = response.data.data.can_use_money;
-            _this.user.user_assets = response.data.data.info_asset;
-            _this.user.user_vip = response.data.data.level;
-            _this.user.user_member = response.data.data.my_children;
-            _this.user.user_name = response.data.data.user_name;
-            _this.user.user_avatars = response.data.data.wechat_avatar;
-        });
+            this.user.user_wallet = response.data.data.can_use_money;
+            this.user.user_assets = response.data.data.info_asset;
+            this.user.user_vip = response.data.data.level;
+            this.user.user_member = response.data.data.my_children;
+            this.user.user_name = response.data.data.user_name;
+            //this.user.user_avatars = response.data.data.wechat_avatar;
+        }.bind(this));
+        XHRPost('/api/Wechat/getJssdkInfo', {uri:encrypt('/index/my#/main')}, function (response) {
+            var data = response.data.data;
+            console.log('data',data);
+            console.log(data.wechat.appId);
+            this.appId = data.wechat.appId;
+            this.timestamp = data.wechat.timestamp;
+            this.nonceStr = data.wechat.nonceStr;
+            this.signature = data.wechat.signature;
+            this.go_url = data.go_url;
+            this.logo = data.logo;
+            console.log(this.appId);
+            const _this = this;
+            wx.config({
+
+                debug: false,
+
+                appId:_this.appId,
+
+                timestamp: _this.timestamp,
+
+                nonceStr: _this.nonceStr,
+
+                signature: _this.signature,
+
+               jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'] // 分享给朋友  分享给朋友圈
+
+            });
+
+            function s1(){
+               console.log(_this.signature);
+            }
+            s1();
+
+            wx.ready(function(){
+               // 分享到朋友
+
+                wx.onMenuShareTimeline({
+
+                    title: '和十素养', // 分享标题
+
+                    imgUrl: _this.logo,// 分享图标
+                   success: function () {
+                       // 用户确认分享后执行的回调函数
+                        alert('成功');
+                    },
+                   cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                        alert('失败');
+                    }
+                }.bind(_this));
+
+//
+//                // 分享给朋友圈
+//
+//
+               wx.onMenuShareAppMessage({
+                    title: '和十素养', // 分享标题
+
+                    desc: "和十素养", // 分享描述
+
+                    link: _this.go_url,
+
+                    imgUrl: _this.logo, // 分享图标
+
+                   type: 'link',
+                    success: function () {
+                        // 用户确认分享后执行的回调函数
+                        alert('成功');
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                        alert('失败');
+                   }
+
+               }.bind(_this));
+
+            });
+            console.log(8888888);
+        }.bind(this))
+
     },
     methods: {
         GetGoInviter:function() {
             this.user.isA = false;
             this.user.isB = true;
+            this.loadingShow = true;
             const _this = this;
             XHRGet('/api/MyCenter/createInvitingQrcode',{},function(response){
                 _this.user.inviter_code = response.data.data;
-                console.log( _this.user.inviter_code);
+                if(_this.user.inviter_code = response.data.data){
+                    _this.loadingShow = false
+                }
             })
         },
         Getquxiao:function() {

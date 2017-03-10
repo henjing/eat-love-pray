@@ -12,26 +12,34 @@
     <link rel="stylesheet" href="../../css/order/order.css">
     <link rel="stylesheet" href="../../css/jin-base.css">
     <link rel="stylesheet" href="../../css/frozen.css">
+    <link rel="stylesheet" href="../../css/swiper-3.3.0.min.css"/>
+    <script>
+        window.location.href = "http://heshi.kongdian.me/index/order/?#/";
+    </script>
 </head>
 <body>
-<div id="container" class="container">
+<div id="container" class="container" v-cloak>
      <div class="ui-tab goods-List" >
-         <div v-if="$route.path == '/order/Logistics' "></div>
-        <ul class="ui-tab-nav ui-border-b font14" v-else="">
+        <ul class="ui-tab-nav ui-border-b font14" v-if="$route.path == '/' ||   $route.path == '/order/notPayment' ||  $route.path == '/order/yetPayment'  ||  $route.path == '/order'" >
             <li v-for='item in data'  :class="{'current': item.tabText == $route.path}" @click="toggleTabs(item.tabText)">
                 {{item.name}}
             </li>
         </ul>
+         <div v-else=""></div>
     </div>
-    <router-view></router-view>
+    <!--<keep-alive>-->
+        <router-view></router-view>
+    <!--</keep-alive>-->
 </div>
 <script>
 </script>
 <script src="../../js/lib/vue.js"></script>
 <script src="../../js/lib/vue-router.js"></script>
+<script src="../../js/lib/axios.js"></script>
 <script src="../../js/lib/vue-infinite-scroll.js"></script>
 <script src="../../js/lib/jsencrypt.js"></script>
 <script src="../../js/lib/fastclick.js"></script>
+<script src="../../js/lib/swiper-3.3.0.min.js"></script>
 <script src="../../js/order/order.js"></script>
 </body>
 </html>

@@ -7,6 +7,8 @@ import AddressList from '../../components/address/address-list.vue';
 import AddressAdd from '../../components/address/address-add.vue';
 import AddressAlter from '../../components/address/address-alter.vue';
 import AddressSelect from '../../components/address/address-select.vue';
+
+import RegisterSucces from 'components/loginRegister/register-succes';
 import '../lib/layer.js';
 import '../lib/layer.css';
 
@@ -27,6 +29,7 @@ const routes = [
     { path: '/address/addressAdd', component: AddressAdd},
     { path: '/address/addressAlter', component: AddressAlter},
     { path: '/address/addressSelect', component: AddressSelect},
+    { path: '/index/registerSucces', component: RegisterSucces},
     {path: '*', component: indexHome},
 ]
 
