@@ -41,7 +41,7 @@
 </template>
 <script type="text/jsx">
 
-    import Loading from '../common/loading.vue';
+    import Loading from '../common/loadingwei.vue';
     import { countdown } from '../../js/tools.js';
     import { XHRPost,XHRGet } from '../../js/ajax.js';
     export default{
@@ -59,7 +59,6 @@
                 loadingShow: false
             }
         },
-
         mounted: function () {
             this.info.isA = true;
             this.info.isB = false;
@@ -69,6 +68,18 @@
         },
 
         methods: {
+            //跳转
+            goTopwd:function() {
+                this.$router.push({path: '/main'});
+                window.location.reload();
+            },
+            //定时器1秒
+            goTOnext:function() {
+                const _this = this;
+                setTimeout( function() {
+                    _this.goTopwd();
+                },1000);
+            },
             //正则
             checkPhone: function (phone) {
                 const tel = /^1(3|4|5|7|8|9)\d{9}$/.test(phone);
@@ -156,7 +167,7 @@
                             yes: function () {
                                 layer.closeAll();
                                 _this.info.input=_this.info.phone ;
-                                _this.$router.push({ path: '/main'});
+                                _this.goTopwd();
                             }
                         });
                     }else{

@@ -194,66 +194,56 @@
     },
 
     created: function () {
-        console.log('test');
         const _this = this;
-
-
-        setTimeout(function() {
-                _this._created.apply(_this);
-            },1000);
+        XHRGet('/api/MyCenter/index', {}, function (response) {
+          if(response.data.status != 0 ) {
+              _this.user.user_wallet = response.data.data.can_use_money;
+              _this.user.user_assets = response.data.data.info_asset;
+              _this.user.user_vip = response.data.data.level;
+              _this.user.user_member = response.data.data.my_children;
+              _this.user.user_name = response.data.data.user_name;
+              _this.user.user_avatars = response.data.data.wechat_avatar;
+          }else{
+              var load = layer.open({type: 2, shadeClose: false})
+              _this.goTOnext();
+              setTimeout(function () {
+                  layer.close(load);
+              }, 1000);
+          }
+        },function(response){
+                    console.log(response)
+                });
 
         XHRPost('/api/Wechat/getJssdkInfo', {uri:encrypt('/index/my/index.html')}, function (response) {
             var data = response.data.data;
-            console.log('data', data);
-            console.log(data.wechat.appId);
+            //console.log('data', data);
+            //console.log(data.wechat.appId);
             _this.appId = data.wechat.appId;
             _this.timestamp = data.wechat.timestamp;
             _this.nonceStr = data.wechat.nonceStr;
             _this.signature = data.wechat.signature;
             _this.go_url = data.go_url;
             _this.logo = data.logo;
-            console.log(_this.appId);
-            console.log(_this.go_url);
-           // this.$nexttick(function () {
+            //console.log(_this.appId);
+            //console.log(_this.go_url);
                 wx.config({
-
                     debug: false,
-
                     appId: _this.appId,
-
                     timestamp: _this.timestamp,
-
                     nonceStr: _this.nonceStr,
-
                     signature: _this.signature,
-
                     jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'] // 分享给朋友  分享给朋友圈
-
                 });
 
                 wx.ready(function () {
                     // 分享到朋友
                     const self = _this;
-
                     wx.onMenuShareAppMessage({
                             title: '和十素养', // 分享标题
-
                             desc: "和十素养", // 分享描述
-
                             link: 'http://heshi.kongdian.me' + self.go_url,//
-
                             imgUrl: self.logo, // 分享图标
-
                             type: 'link'
-//                            success: function () {
-//                               // 用户确认分享后执行的回调函数
-//                                alert('成功');
-//                            },
-//                            cancel: function () {
-//                                // 用户取消分享后执行的回调函数
-//                                alert('失败');
-//                            }
-
                         });
                     // 分享到朋友圈
                         wx.onMenuShareTimeline({
@@ -261,30 +251,33 @@
                             link: 'http://heshi.kongdian.me' + self.go_url, // 分享链接
                             imgUrl: self.logo, // 分享图标
                             type: 'link'
-//                            success: function () {
-//                                // 用户确认分享后执行的回调函数
-//                                alert('成功');
-//                            },
-//                            cancel: function () {
-//                                // 用户取消分享后执行的回调函数
-//                                alert('失败');
-//                            }
-
                         });
-
-
-
-
-
-
-
                 })
-
             })
-        //}
 
     },
     methods: {
+        //重复请求确定
+        goTopwd:function() {
+            const _this = this;
+            XHRGet('/api/MyCenter/index', {}, function (response) {
+                var data = response.data.data;
+                _this.user.user_wallet = data.can_use_money;
+                _this.user.user_assets = data.info_asset;
+                _this.user.user_vip = data.level;
+                _this.user.user_member = data.my_children;
+                _this.user.user_name = data.user_name;
+                _this.user.user_avatars = data.wechat_avatar;
+            })
+        },
+        //定时器1秒
+        goTOnext:function() {
+            const _this = this;
+            setTimeout( function() {
+                _this.goTopwd();
+            },1000);
+        },
+
         GetGoInviter:function() {
             this.user.isA = false;
             this.user.isB = true;
@@ -300,19 +293,7 @@
         Getquxiao:function() {
             this.user.isA = true;
             this.user.isB = false;
-        },
-        _created: function () {
-            console.log('test');
-            const _this = this;
-            XHRGet('/api/MyCenter/index', {}, function (response) {
-                _this.user.user_wallet = response.data.data.can_use_money;
-                _this.user.user_assets = response.data.data.info_asset;
-                _this.user.user_vip = response.data.data.level;
-                _this.user.user_member = response.data.data.my_children;
-                _this.user.user_name = response.data.data.user_name;
-                _this.user.user_avatars = response.data.data.wechat_avatar;
-            });
-        },
+        }
 
     }
     }

@@ -1,6 +1,16 @@
 <template>
-
     <div class="jin-wrap">
+        <!--<div class="page_ _">-->
+            <!--<div class="weui-loadmore" v-if="loadingShow">-->
+                <!--<i class="weui-loading"></i>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="ui-loading-block show" v-if="loadingShow">-->
+            <!--<div class="ui-loading-cnt">-->
+                <!--<i class="weui-loading" style="margin:30px 10px auto;display: block;font-size:25px;"></i>-->
+               <!--<span class="weui-loadmore__tips">正在加载</span>-->
+            <!--</div>-->
+        <!--</div>-->
             <header class="mine-header jin-box-center ">
                 <div class="ui-avatar-lg rlt" style="  border: 3px solid #fff;">
                     <!--<span class="radius0" style="position: relative;">-->
@@ -114,6 +124,10 @@
 
 </style>
 
+
+
+
+
 <script type="text/jsx">
 
     import { countdown } from '../../js/tools.js';
@@ -121,70 +135,88 @@
 
     export default{
         data() {
-        return {
-            user:{
-                user_avatars: "",//用户头像
-                user_name: "", //用户名字
-                yqr_name: "", //邀请人名字
-                user_phone: "", //用户钱数
-                reg_time: ""//用户注册时间
+            return {
+                user:{
+                    user_avatars: "",//用户头像
+                    user_name: "", //用户名字
+                    yqr_name: "", //邀请人名字
+                    user_phone: "", //用户钱数
+                    reg_time: ""//用户注册时间
                 },
-            switch: false
+                //switch: false
+                //loadingShow:true
             }
         },
-    created(){
-//        const _this = this;
-//        setTimeout(function(){
-//            _this._created.apply(_this);
-//        },1000);
-        this.onPayKong();
-    },
-    methods: {
-//        _created: function () {
-//            const _this = this;
-//            XHRGet('/api/MyCenter/mySeting', {}, function (response) {
-//                var data = response.data.data;
-//                _this.user.user_avatars = data.wechat_avatar;
-//                _this.user.yqr_name = data.inviting_name;
-//                _this.user.user_phone = data.cellphone;
-//                _this.user.reg_time = data.register_time;
-//                _this.user.user_name = data.user_name;
-//
-//            })
-//
-//        },
-
-        onPayKong(){
+        created(){
             const _this = this;
-            console.log(this.switch);
-            if (this.switch) return false;
-            this.switch = true;
-            console.log(this.switch);
-            XHRGet('/api/MyCenter/mySeting', {}, function (response) {
+        XHRGet('/api/MyCenter/mySeting', Math.random(), function (response) {
+            if(response.data.status != 0 ) {
                 var data = response.data.data;
                 _this.user.user_avatars = data.wechat_avatar;
                 _this.user.yqr_name = data.inviting_name;
                 _this.user.user_phone = data.cellphone;
                 _this.user.reg_time = data.register_time;
                 _this.user.user_name = data.user_name;
-                console.log(_this.switch);
-                _this.switch = false;
-                console.log(_this.switch);
 
-//                setTimeout(function() {
-//                    _this._switch = false
-//                },1000)
-//                console.log(55555); console.log(_this.switch);
-                })
-
-        },
-
-        getGoexit:function() {
-            XHRGet('/api/MyCenter/logOut', {}, function () {
-                window.location.href = '/index/loginRegister/login.html'
-              })
-            }
+        }else {
+            //console.log(1585255001);
+            _this.goTOnext();
+            var load = layer.open({type: 2, shadeClose: false})
+            setTimeout(function () {
+                layer.close(load);
+            }, 1000);
         }
+        },function(response){
+            console.log(response)
+        })
+    },
+        methods: {
+            //重复请求确定
+            goTopwd:function() {
+                const _this = this;
+                XHRGet('/api/MyCenter/mySeting', {}, function (response) {
+                    if(response.data.status != 0){
+                    var data = response.data.data;
+                    _this.user.user_avatars = data.wechat_avatar;
+                    _this.user.yqr_name = data.inviting_name;
+                    _this.user.user_phone = data.cellphone;
+                    _this.user.reg_time = data.register_time;
+                    _this.user.user_name = data.user_name;
+                    }else {
+                        _this.goTOnext();
+                        var load = layer.open({type: 2, shadeClose: false})
+                        setTimeout(function () {
+                            layer.close(load);
+                        }, 1000);
+                    }
+                },function(response){
+                    console.log(response)
+                })
+            },
+            //定时器1秒
+            goTOnext:function() {
+                const _this = this;
+                setTimeout( function() {
+                    _this.goTopwd();
+                },1000);
+            },
+            //错误提示
+            errorTip: function (msg) {
+                layer.open({
+                    content: msg,
+                    btn: ['确定'],
+                    yes: function () {
+                        layer.closeAll();
+                    }
+                });
+            },
+
+            getGoexit:function() {
+                XHRGet('/api/MyCenter/logOut', {}, function () {
+                    window.location.href = '/index/loginRegister/login.html'
+                })
+            }
+        },
 
     }
 
