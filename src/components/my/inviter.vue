@@ -73,14 +73,13 @@
             Loading,
             Successing
         },
-        mounted: function () {
+        created() {
             const _this = this;
-            XHRGet('/api/MyCenter/mySeting', {}, function (response) {
-                _this.user.dqyqr_name = response.data.data.inviting_name;
-                //_this.user.mephone = response.data.data.cellphone;
-                _this.user.old_yqrphone = response.data.data.inviting_cellphone;
-            })
+            setTimeout(function() {
+                _this._created.apply(_this);
+            },1000);
         },
+
 
     //监听yqr_phone的值
         watch:{
@@ -112,6 +111,15 @@
             checkPhone: function (phone) {
                 const tel = /^1(3|4|5|7|8|9)\d{9}$/.test(phone);
                 return tel;
+            },
+            _created: function () {
+                console.log('test');
+                const _this = this;
+                XHRGet('/api/MyCenter/mySeting', {}, function (response) {
+                    _this.user.dqyqr_name = response.data.data.inviting_name;
+                    //_this.user.mephone = response.data.data.cellphone;
+                    _this.user.old_yqrphone = response.data.data.inviting_cellphone;
+                })
             },
             //错误提示方法
             errorTip: function (msg) {

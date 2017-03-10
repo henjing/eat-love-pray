@@ -28,7 +28,7 @@
 </template>
 <script type="text/jsx">
 
-    import Loading from '../common/loading.vue';
+    import Loading from '../common/loadingwei.vue';
     import { countdown } from '../../js/tools.js';
     import { XHRPost,XHRGet } from '../../js/ajax.js';
     export default{
@@ -36,16 +36,92 @@
             return{
                 info: {
                     input: "" //只显示的手机号
-                }
+                },
+                switch: false
             }
         },
 
-        mounted: function () {
+        created: function () {
+//            const _this = this;
+//            setTimeout(function(){
+//                _this._created.apply(_this)
+//            },1000)
+            //this.onPayKong();
+            this._created.apply(this);
+        },
+    methods: {
+        //错误提示
+        errorTip: function (msg) {
+            const _this = this;
+            layer.open({
+                content: msg,
+                btn: ['确定'],
+                yes: function () {
+                    layer.closeAll();
+                    _this. goTOnext();
+                }
+            });
+        },
+        //重复请求确定
+        goTopwd:function() {
             const _this = this;
             XHRGet('/api/MyCenter/mySeting', {}, function (response) {
-                _this.info.input = response.data.data.cellphone;
+              if(response.data.status != 0) {
+                  _this.info.input = response.data.data.cellphone;
+              }else{
+                  _this.goTOnext();
+                  var load = layer.open({type: 2, shadeClose: false})
+                  setTimeout(function () {
+                      layer.close(load);
+                  }, 1000);
+              }
+            },function(response){
+                console.log(response)
             })
+        },
+        //定时器1秒
+        goTOnext:function() {
+            const _this = this;
+            setTimeout( function() {
+                _this.goTopwd();
+            },1000);
+        },
+        _created(){
+            const _this = this;
+            XHRGet('/api/MyCenter/mySeting', {}, function (response) {
+                    if(response.data.status != 0 ) {
+                        _this.info.input = response.data.data.cellphone;
+                    }else {
+                        console.log(1585255001);
+                        //_this.errorTip('请勿重复请求')
+                        var load = layer.open({type: 2, shadeClose: false})
+                        _this.goTOnext();
+                        setTimeout(function () {
+                            layer.close(load);
+                        }, 1000);
+                    }
+                },function(response){
+                console.log(response);
+            })
+
         }
+
+//        onPayKong(){
+//            console.log(this.switch);
+//            const _this = this;
+//            if (this.switch) return false;
+//            console.log(this.switch);
+//            this.switch = true;
+//            console.log(this.switch);
+//            XHRGet('/api/MyCenter/mySeting', {}, function (response) {
+//                _this.info.input = response.data.data.cellphone;
+//                console.log(_this.switch);
+//                _this.switch = false
+//                console.log(_this.switch);
+//            })
+//
+//        }
+    }
 
     }
 </script>

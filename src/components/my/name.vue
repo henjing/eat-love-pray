@@ -24,7 +24,7 @@
 
 <script type="text/jsx">
 
-    import Loading from '../common/loading.vue';
+    import Loading from '../common/loadingwei.vue';
     import { countdown } from '../../js/tools.js';
     import { XHRPost} from '../../js/ajax.js';
     export default{
@@ -40,6 +40,18 @@
             Loading
         },
         methods: {
+
+            goTopwd:function() {
+                this.$router.push({path: '/main'});
+                window.location.reload();
+            },
+            //定时器1秒
+            goTOnext:function() {
+                const _this = this;
+                setTimeout( function() {
+                    _this.goTopwd();
+                },2000);
+            },
             //错误提示
             errorTip: function (msg) {
                 layer.open({
@@ -50,27 +62,24 @@
                     }
                 });
             },
-            //更改事件
-            goToLogin: function() {
+            goToLogin:function() {
                 const data = {
-                    user_name:encrypt(this.info.name)
+                    user_name: encrypt(this.info.name)
                 };
                 const _this = this;
-                //console.log(this.info.name);
                 this.loadingShow = true;
                 XHRPost('/api/MyCenter/editUserName', data, function (response) {
-                    //console.log(response);
-                    //console.log(data.input);
                     _this.loadingShow = false;
-
                     if (response.data.status === 1) {
-                        _this.$router.push({ path: '/main'});
-                    }else{
+                        //_this.$router.push({path: '/main'});
+                        _this.goTopwd();
+                    } else {
                         _this.errorTip(response.data.info);
                     }
                 });
-
-            }
+            },
         }
+
+
     }
 </script>
