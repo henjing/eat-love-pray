@@ -89,6 +89,9 @@ button {
 .jin-icon-home:before {
   content: "\e602"; }
 
+.jin-icon-daifu1:before {
+  content: "\e689"; }
+
 .jin-icon-guanbi:before {
   content: "\e614"; }
 

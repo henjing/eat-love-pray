@@ -97,7 +97,9 @@
             indexBank
         },
         created: function() {
-            let _urk = 'http://heshi.kongdian.me/index/?#/index/indexOrder?num='+ this.number +'&gid=' +this.goods_id +'&addid='+this.address_id;
+//            let _urk = 'http://heshi.kongdian.me/index/?#/index/indexOrder?num='+ this.number +'&gid=' +this.goods_id +'&addid='+this.address_id;
+            let _href = location.href.split("/index");
+            let _urk = _href[0] + '/index/?#/index/indexOrder?num='+ this.number +'&gid=' +this.goods_id +'&addid='+this.address_id;
             if(window.location.href.substr(0, 50) == _urk.substr(0, 50)){
                 this.goodsDetail();
             }else{

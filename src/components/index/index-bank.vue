@@ -17,6 +17,12 @@
                         <div class="margin-l-10 font14 color-499">微信支付</div>
                     </div>
                 </li>
+                <li class="ui-border-b" @click="onPayDai()">
+                    <div class="icon-list">
+                          <i class="jin-icon jin-icon-daifu1 color-129 font24"></i>
+                        <div class="margin-l-10 font14 color-499">代付</div>
+                    </div>
+                </li>
             </ul>
             <div class="close-bank-btn text-center color-4a" @click="close">取消</div>
         </div>
@@ -46,6 +52,9 @@
     }
     .close-bank-btn{
         padding: 15px 0;
+    }
+    .color-129{
+        color: #1296db;
     }
 </style>
 <script>
@@ -206,6 +215,27 @@
                     shadeClose: false
                 });
                 this.getWeiChat();
+            },
+            onPayDai(){
+                var loed = layer.open({type: 2, shadeClose: false});
+                XHRPost('/api/Pay/ajaxToPay',{order_id: encrypt(String(this.orderId))},function (response) {
+                    layer.close(loed);
+                    if (response.data.status == 0) {
+                        layer.open({
+                            content: response.data.info,
+                            time: 2,
+                            style: 'background-color:rgba(0,0,0,.8);color:#fff'
+                        });
+                    } else {
+                        console.log(response.data)
+                        var ImgUrl = response.data.data;
+                        layer.open({
+                            style: ' width:80%; max-width: 460px; max-height: 600px '
+                            ,anim: 'up'
+                            ,content: '<img src="'+ImgUrl+'" width="100%" height="100%">'
+                        });
+                    }
+                }.bind(this));
             }
         }
     }
