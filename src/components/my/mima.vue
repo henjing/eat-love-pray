@@ -9,7 +9,7 @@
                                 <h4>重置支付密码</h4>
                             </div>
                         </router-link>
-                    </li>
+                      </li>
                     <li class="ui-border-t padding-t-5 padding-b-5">
                         <router-link to="/dlmima" class="click_a">
                             <div class="ui-list-info">

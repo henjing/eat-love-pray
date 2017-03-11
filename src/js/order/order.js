@@ -2,15 +2,15 @@ import OrderGoodsListNotPayment from 'components/order/order-goods-list-not-paym
 import OrderGoodsListYetPayment from 'components/order/order-goods-list-yet-payment.vue';
 import OrderGoodsListAll from 'components/order/order-goods-list-all.vue';
 import OrderGoodsLogistics from 'components/order/order-goods-logistics.vue';
-
+import StoreFooter from '../../components/common/footer.vue';
 import indexHome from 'components/index/index-home.vue';
 import indexOrder from 'components/index/index-order.vue';
 import indexOrderDetails from 'components/index/index-order-details.vue';
 
-import AddressList from '../../components/address/address-list.vue';
-import AddressAdd from '../../components/address/address-add.vue';
-import AddressAlter from '../../components/address/address-alter.vue';
-import AddressSelect from '../../components/address/address-select.vue';
+// import AddressList from '../../components/address/address-list.vue';
+// import AddressAdd from '../../components/address/address-add.vue';
+// import AddressAlter from '../../components/address/address-alter.vue';
+// import AddressSelect from '../../components/address/address-select.vue';
 
 import '../lib/layer.js';
 import '../lib/layer.css';
@@ -26,19 +26,19 @@ document.addEventListener('DOMContentLoaded', function(){
 }, false);
 
 const routes = [
-    {path: '/order', component: OrderGoodsListAll},
+    { path: '/order', component: OrderGoodsListAll},
     { path: '/order/notPayment', component: OrderGoodsListNotPayment},
     { path: '/order/yetPayment', component: OrderGoodsListYetPayment},
     { path: '/order/Logistics', component: OrderGoodsLogistics},
 
-    {path: '/index', component: indexHome},
+    { path: '/index', component: indexHome},
     { path: '/index/indexOrder', component: indexOrder},
     { path: '/index/indexOrderDetails', component: indexOrderDetails},
 
-    {path: '/address', component: AddressList},
-    { path: '/address/addressAdd', component: AddressAdd},
-    { path: '/address/addressAlter', component: AddressAlter},
-    { path: '/address/addressSelect', component: AddressSelect},
+    // {path: '/address', component: AddressList},
+    // { path: '/address/addressAdd', component: AddressAdd},
+    // { path: '/address/addressAlter', component: AddressAlter},
+    // { path: '/address/addressSelect', component: AddressSelect},
 
     {path: '*', component: OrderGoodsListAll},
 ]
@@ -66,6 +66,9 @@ const app = new Vue({
                 iscur:false,
             },
         ],
+    },
+    components: {
+        StoreFooter
     },
     methods: {
         billDetails(key){

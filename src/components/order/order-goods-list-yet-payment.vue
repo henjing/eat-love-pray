@@ -3,6 +3,8 @@
             v-infinite-scroll="onYet"
             infinite-scroll-disabled="busy"
             infinite-scroll-distance="100"
+            style="overflow: auto; height: calc(100vh - 45px);-webkit-overflow-scrolling:  touch"
+            class="jin-wrap"
     >
         <div class="apply-item margin-b-10 ui-border-b" v-for="key in yetData" >
             <ul class="ui-list jin-list" @click="orderDetails(key.order_id)">
@@ -29,12 +31,14 @@
                 </div>
             </div>
         </div>
-         <order-goods-log :log-data="logData"></order-goods-log>
+        <order-goods-log :log-data="logData"></order-goods-log>
+        <store-footer :current="3"></store-footer>
     </div>
 </template>
 <script>
     import { XHRPost} from '../../js/ajax.js';
     import OrderGoodsLog from 'components/order/order-goods-log.vue';
+    import StoreFooter from '../../components/common/footer.vue';
     export default{
         data(){
             return{
@@ -52,7 +56,7 @@
         created(){
         },
         components:{
-            OrderGoodsLog
+            OrderGoodsLog,StoreFooter
         },
         methods:{
             onYet(){

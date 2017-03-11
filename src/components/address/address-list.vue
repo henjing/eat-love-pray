@@ -11,7 +11,7 @@
                         <div class="font14">{{key.mobile}}</div>
                     </li>
                     <li class="line-h-14 font14 color-9b" >
-                        {{key.province}}
+                        {{key.province}}{{key.address}}
                     </li>
                 </ul>
                 <section class="ui-panel ui-panel-simple  ui-border-tb" >
@@ -53,7 +53,9 @@
 </template>
 <style>
     .ui-checkbox-s input:checked:before  {
+        font-size: 26px !important;
         content: "\e73d" !important;
+        left: 0 !important;
     }
 </style>
 <script>
@@ -64,7 +66,8 @@
                 addressData: "",
                 addressNull:false,
                 number:this.$route.query.num,
-                goods_id:this.$route.query.gid
+                goods_id:this.$route.query.gid,
+                order_id:this.$route.query.oid
             }
         },
         components: {},
@@ -110,14 +113,14 @@
                 })
             },
             addressAlter(id){
-                this.$router.push({path:'/address/addressAlter', query: { id: id, num:this.number, gid:this.goods_id}})
+                this.$router.push({path:'/address/addressAlter', query: { id: id, num:this.number, gid:this.goods_id, oid:this.order_id}})
             },
             addressAdd(){
-                this.$router.push({path:'/address/addressAdd', query: {num:this.number, gid:this.goods_id}})
+                this.$router.push({path:'/address/addressAdd', query: {num:this.number, gid:this.goods_id, oid:this.order_id}})
             },
 //            确认选择收货地址
             onPresent(msg){
-                this.$router.push({path:'/index/indexOrder', query:{num:this.number, gid:this.goods_id, addid:msg}})
+                this.$router.push({path:'/index/indexOrder', query:{num:this.number, gid:this.goods_id, addid:msg, oid:this.order_id}})
             }
         }
     }

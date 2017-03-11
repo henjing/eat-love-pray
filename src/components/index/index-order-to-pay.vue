@@ -1,88 +1,85 @@
 <template>
-        <!--选择支付方式弹框-->
-    <div class="de-actionsheet container opacity">
-        <div  class="actionsheet-cnt c-up-before payment container " :class="{'c-up-move':mod}">
-            <div class="bank-title text-center font12">选择支付方式</div>
-            <ul class="ui-list bank-list">
-                <li class="ui-border-b" @click="onPayKong()">
-                    <div class="icon-list">
-                        <i class="jin-icon jin-icon-pay color-ff3 font24"></i>
-                        <div class="margin-l-10 font14 color-499">钱包支付</div>
-                    </div>
-                    <div class="font12 color-9b">可用余额：￥{{bankData.can_use_money}}</div>
-                </li>
-                <li class="ui-border-b" @click="onPayWei()">
-                    <div class="icon-list">
-                          <i class="jin-icon jin-icon-weixinzhifu color-13B font24"></i>
-                        <div class="margin-l-10 font14 color-499">微信支付</div>
-                    </div>
-                </li>
-                <li class="ui-border-b" @click="onPayDai()">
-                    <div class="icon-list">
-                          <i class="jin-icon jin-icon-daifu1 color-129 font24"></i>
-                        <div class="margin-l-10 font14 color-499">代付</div>
+    <div>
+        <div class="order-details-head jin-justify-flex ui-whitespace margin-b-10 font14">
+            <div class="text">
+                <div>{{detailsData.status}}</div>
+            </div>
+            <div class="text">
+                <div class="order-details-bg"></div>
+            </div>
+        </div>
+        <!--收货地址-->
+        <div class="address-border margin-b-5">
+            <ul class="ui-list">
+                <li class="">
+                    <div class="ui-list-info">
+                        <h4 class="padding-b-15 ui-nowrap font14">收货人：{{detailsData.consignee}}  {{detailsData.mobile}}</h4>
+                        <p class="padding-r-15 font12 line-h-12">{{detailsData.address}}</p>
                     </div>
                 </li>
             </ul>
-            <div class="close-bank-btn text-center color-4a" @click="close">取消</div>
         </div>
+        <ul class="ui-list jin-list margin-b-15 ui-border-tb">
+            <li>
+                <div class="ui-list-thumb" >
+                    <span :style="{backgroundImage: 'url('+ detailsData.goods_img_cover+')'}"></span>
+                </div>
+                <!--产品描述、类型-->
+                <div class="ui-list-info">
+                    <div class="line-clamp description padding-r-15">{{detailsData.goods_name}}</div>
+                </div>
+                <!--数量-->
+                <div class="text-right ui-txt-warning">
+                    <span>{{detailsData.goods_number}}</span>单
+                </div>
+            </li>
+        </ul>
+        <div class="margin-b-15 bg-white">
+            <div class="ui-whitespace padding-t-15">总价: <span class="ui-txt-warning">￥{{detailsData.total_price}}</span></div>
+            <div class="order-details-btn jin-justify-flex font12">
+                <a @click="onPayWei">微信支付</a>
+                <a @click="onPayKong">微股东支付</a>
+            </div>
+        </div>
+        <ul class="ui-list ui-list-pure margin-b-20 ui-border-tb">
+            <li class="font12 color-9b line-h-12">
+                <div class="margin-b-5">订单编号：{{ detailsData.express_sn }}</div>
+                <div class="">创建时间：{{ detailsData.add_time }}</div>
+            </li>
+        </ul>
     </div>
 </template>
-<style scoped>
-    .bank-title{
-        padding: 2px 0;
-        background-color: #f8f8f8;
-    }
-    .bank-list>li{
-        width: 100%;
-        display: -webkit-box;
-        -webkit-box-pack: justify;
-        -webkit-box-align: center;
-        margin-left: 0;
-        padding: 10px 15px;
-    }
-    @media (max-width: 320px){
-        .bank-list>li{
-            padding: 10px;
-        }
-    }
-    .icon-list{
-        display: -webkit-box;
-        -webkit-box-flex:1;
-    }
-    .close-bank-btn{
-        padding: 15px 0;
-    }
-    .color-129{
-        color: #1296db;
-    }
+<style>
 </style>
 <script>
     import {XHRPost} from './../../js/ajax';
-    window.wePayObj = {};
     export default{
         data(){
             return{
-                mod:false,
-                goods:this.stateId,
-                bankData:"",
-                orderId:this.stateOrderId,
-                switch:false,
-                payString: ''
+                orderId:this.$route.query.oid,
+                detailsData:""
             }
+        },
+        created(){
+            this.orderDetail()
         },
         components:{
         },
-        props:['state-bank', 'state-order-id'],
-        created: function() {
-            console.log('微信支付created');
-            this.payData();
-            let _this = this;
-            setTimeout(function(){
-                _this.mod =_this.stateBank;
-            }, 100);
-        },
         methods:{
+            orderDetail(){
+                var _this = this;
+                XHRPost('/api/MyOrder/orderDetail',{order_id: encrypt(String(this.orderId))},function (response) {
+                    if (response.data.status == 0) {
+                        layer.open({
+                            content: response.data.info,
+                            time: 2,
+                            style: 'background-color:rgba(0,0,0,.8);color:#fff'
+                        });
+                    } else {
+                        _this.detailsData = response.data.data;
+                    }
+                }.bind(this));
+            },
             // 微信接口
             getWeiChat() {
                 let _this = this;
@@ -147,23 +144,17 @@
                     }
                 );
             },
-            close(){
-                let _this = this;
-                this.mod=false;
-                setTimeout(function(){
-                    _this.$emit('on-close')
-                }, 300);
-            },
-            payData(){
-                console.log('orderID', this.orderId);
-                XHRPost('/api/Shop/payStyleData',{order_id:encrypt(String(this.orderId))},function (response) {
-                    this.bankData=response.data.data;
-
-                }.bind(this));
-            },
+//            payData(){
+//                console.log('orderID', this.orderId);
+//                XHRPost('/api/Shop/payStyleData',{order_id:encrypt(String(this.orderId))},function (response) {
+//                    this.bankData=response.data.data;
+//
+//                }.bind(this));
+//            },
+            // 微股东支付
             onPayKong(){
                 var _this = this;
-                this.close();
+                // this.close();
                 layer.open({
                     title: '请输入交易密码',
                     content: '<input type="password" id="password" style="width:100%;height:40px; border:0;border-bottom:1px solid #ddd;" placeholder="输入支付密码">',
@@ -198,44 +189,11 @@
             },
             onPayWei(){
                 var _this = this;
-//                XHRPost('/api/Shop/wechatPay',{order_id: encrypt(String(this.orderId))},function (response) {
-//                    if (response.data.status == 0) {
-//                        layer.open({
-//                            content: response.data.info,
-//                            time: 2,
-//                            style: 'background-color:rgba(0,0,0,.8);color:#fff'
-//                        });
-//                    } else {
-//                        _this.$router.push({path:'/index/indexOrderDetails',query: { oid:_this.orderId }})
-//                    }
-//                }.bind(this));
-                // 微信支付接口
                 layer.open({
-                    type: 2,
+                    type: 1,
                     shadeClose: false
                 });
                 this.getWeiChat();
-            },
-            onPayDai(){
-                var loed = layer.open({type: 2, shadeClose: false});
-                XHRPost('/api/Pay/ajaxToPay',{order_id: encrypt(String(this.orderId))},function (response) {
-                    layer.close(loed);
-                    if (response.data.status == 0) {
-                        layer.open({
-                            content: response.data.info,
-                            time: 2,
-                            style: 'background-color:rgba(0,0,0,.8);color:#fff'
-                        });
-                    } else {
-                        console.log(response.data)
-                        var ImgUrl = response.data.data;
-                        layer.open({
-                            style: ' width:80%; max-width: 460px; max-height: 600px '
-                            ,anim: 'up'
-                            ,content: '<img src="'+ImgUrl+'" width="100%" height="100%">'
-                        });
-                    }
-                }.bind(this));
             }
         }
     }

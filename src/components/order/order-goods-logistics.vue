@@ -65,7 +65,7 @@
                     <li class="font12 txt-color2 line-h-12">
                         <div class="margin-b-5">物流公司：{{detailsData.express_company}}</div>
                         <div class="margin-b-5">订单编号：{{detailsData.express_sn}}</div>
-                        <div>发货时间：2016-09-21 17:34:19</div>
+                        <!--<div>发货时间：2016-09-21 17:34:19</div>-->
                     </li>
                 </ul>
             </div>

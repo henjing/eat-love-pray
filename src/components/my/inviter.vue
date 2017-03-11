@@ -73,14 +73,13 @@
             Loading,
             Successing
         },
-        mounted: function () {
+        created() {
             const _this = this;
-            XHRGet('/api/MyCenter/mySeting', {}, function (response) {
-                _this.user.dqyqr_name = response.data.data.inviting_name;
-                //_this.user.mephone = response.data.data.cellphone;
-                _this.user.old_yqrphone = response.data.data.inviting_cellphone;
-            })
+            setTimeout(function() {
+                _this._created.apply(_this);
+            },1000);
         },
+
 
     //监听yqr_phone的值
         watch:{
@@ -113,6 +112,16 @@
                 const tel = /^1(3|4|5|7|8|9)\d{9}$/.test(phone);
                 return tel;
             },
+            _created: function () {
+                console.log('test');
+                const _this = this;
+                XHRGet('/api/MyCenter/mySeting', {}, function (response) {
+                    var data = response.data.data;
+                    _this.user.dqyqr_name = data.inviting_name;
+                    //_this.user.mephone = response.data.data.cellphone;
+                    _this.user.old_yqrphone = data.inviting_cellphone;
+                })
+            },
             //错误提示方法
             errorTip: function (msg) {
                 layer.open({
@@ -138,6 +147,17 @@
                     this.isA = true;
                 }
             },
+            //调到个人设置页
+            goTopwd:function() {
+                this.$router.push({path:'/main'});
+            },
+            //定时器2秒
+            goTOnext:function() {
+                const _this = this;
+                setInterval( function() {
+                _this.goTopwd();
+                },2000);
+            },
             //取消事件
             goQuxiao: function () {
                 this.isA = false;
@@ -162,8 +182,9 @@
                         _this.loadingShow = false;
                         _this.successingShow = true;
                         _this.dqyqr_name = _this.user.yqr;
-                        setInterval(" _this.$router.push({ path: '/main'})","2000");
-
+                        //setInterval(" _this.$router.push({ path: '/main'})","2000");
+                        //_this.$router.push({ path: '/main'});
+                        _this.goTOnext();
                     }
                 })
 

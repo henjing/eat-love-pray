@@ -5,7 +5,7 @@
             <ul class="ui-list">
                 <li>
                     <div class="k-avatar ui-list-thumb">
-                        <span tag='goodsImg' style="background-image:url('http://ok813a2du.bkt.clouddn.com/hblb_cover.jpg')"></span>
+                        <span tag='goodsImg' style="background-image:url('http://ok813a2du.bkt.clouddn.com/heshi20170303150643.png')"></span>
                     </div>
                     <div class="ui-list-info font14">
                         <p class="ui-nowrap ui-txt-muted padding-r-15 font14">{{goodsQuantity.goods_name}}</p>
@@ -17,7 +17,9 @@
                     </div>
                 </li>
             </ul>
-
+            <ul class="jin-justify-flex agency ui-whitespace font12 ui-border-tb">
+                <li class="agency-btn" v-for="key in agency" :class="{'agency-btn-yes':key.name == agencyName}" @click="onAgency(key)">{{key.name}}</li>
+            </ul>
             <div class="ui-form-item ui-border-b bg-white ui-txt-info">
                 <label style="color: #000" class="font14">购买数量</label>
                 <div class="goods-number pull-right clearfix ui-txt-info">
@@ -35,6 +37,23 @@
     </div>
 </template>
 <style>
+    .agency{
+        padding: 10px;
+    }
+    .agency>li{
+        padding: 4px 8px;
+        border-radius: 4px;
+        color: #fff;
+    }
+    .agency-btn{
+        background-color: #D6D6D6;
+    }
+    .agency-btn-yes{
+        background-color: #13BF7B !important;
+    }
+    .agency-btn3{
+        background-color: #FF3E2A;
+    }
 </style>
 <script>
     import { XHRPost} from './../../js/ajax';
@@ -45,7 +64,13 @@
                 mod:"",
                 number:1,
                 goodsQuantity:this.stateData,
-                goods_id:this.stateId
+                goods_id:this.stateId,
+                agency:[
+                    {number:1, name:"成为特约代理人",money: 181},
+                    {number:10, name:"成为金牌经销商",money: 150},
+                    {number:240, name:"成为市级总代",money: 110},
+                ],
+                agencyName:"成为特约代理人"
             }
         },
         props:['state-buy',"state-data", "state-id"],
@@ -57,6 +82,28 @@
                 _this.mod =_this.stateBuy;
             }, 100)
         },
+        watch:{
+            number(val,oldVal){
+                let _val = isNaN(parseInt(val)) ? 0 : parseInt(val);
+                if (_val < 10) {
+                    this.agency[0].number = _val;
+                    this.agency[1].number = 10;
+                    this.agency[2].number = 240;
+                    this.onAgency(this.agency[0])
+                }else if (10 <= _val < 240) {
+                    this.agency[0].number = 1;
+                    this.agency[1].number = _val;
+                    this.agency[2].number = 240;
+                    this.onAgency(this.agency[1])
+                }
+                if(_val >= 240) {
+                    this.agency[0].number = 1;
+                    this.agency[1].number = 10;
+                    this.agency[2].number = _val;
+                    this.onAgency(this.agency[2])
+                }
+            }
+        },
         methods:{
             close(){
                 let _this = this;
@@ -64,6 +111,7 @@
                 setTimeout(function(){
                     _this.$emit('on-close')
                 }, 500);
+                this.goodsQuantity.price = 181;
             },
             reduce(){
                 if (this.number>1){
@@ -81,6 +129,12 @@
                            this.$router.push({path:'/index/indexOrder',query:{num:this.number,gid:this.goods_id}})
                       }
                 }.bind(this));
+            },
+//            选择代理级别
+            onAgency(msg){
+                this.number = msg.number;
+                this.agencyName = msg.name;
+                this.goodsQuantity.price = msg.money;
             }
         }
     }

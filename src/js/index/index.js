@@ -2,11 +2,14 @@ import indexDetails from 'components/index/index-details.vue';
 import indexOrder from 'components/index/index-order.vue';
 import indexOrderDetails from 'components/index/index-order-details.vue';
 import indexHome from 'components/index/index-home.vue';
+import indexOrderToPay from 'components/index/index-order-to-pay.vue';
 
 import AddressList from '../../components/address/address-list.vue';
 import AddressAdd from '../../components/address/address-add.vue';
 import AddressAlter from '../../components/address/address-alter.vue';
 import AddressSelect from '../../components/address/address-select.vue';
+
+import RegisterSucces from 'components/loginRegister/register-succes';
 import '../lib/layer.js';
 import '../lib/layer.css';
 
@@ -22,11 +25,13 @@ const routes = [
     { path: '/index/indexOrder', component: indexOrder},
     { path: '/index/indexOrderDetails', component: indexOrderDetails},
     { path: '/index/indexDetails', component: indexDetails},
+    { path: '/index/indexOrderToPay', component: indexOrderToPay},
 
     {path: '/address', component: AddressList},
     { path: '/address/addressAdd', component: AddressAdd},
     { path: '/address/addressAlter', component: AddressAlter},
     { path: '/address/addressSelect', component: AddressSelect},
+    { path: '/index/registerSucces', component: RegisterSucces},
     {path: '*', component: indexHome},
 ]
 
