@@ -7,6 +7,7 @@ import { countdown } from '../tools.js';
 var login = new Vue({
 	el: '#register',
 	data: {
+		registName: '',
 		phone: '',
 		code: '',
 		pwd: '',
@@ -55,11 +56,18 @@ var login = new Vue({
 			var config = {
 				url: '/api/registerAndLogin/goRegister',
 				data: {
+					uaer_name: '',
 					cellphone: encrypt(this.phone),
 					verify_code: '',
 					password: '',
 					inviting_sn: encrypt(this.inviting_sn),
 				},
+			}
+			if (this.registName.trim() == '') {
+				this.errorTip('请输入您的姓名');
+				return false;
+			}  else {
+				config.data.user_name = encrypt(this.registName.trim());
 			}
 			
 			
@@ -92,7 +100,7 @@ var login = new Vue({
 								if (response.data.status === 1) {
 									window.location.href = response.data.data;
 								} else {
-									window.location.href = '/index/index/index.html';
+									window.location.href = '/index#/index/registerSucces';
 								}
 							}.bind(this));
 						}
