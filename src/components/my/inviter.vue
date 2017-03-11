@@ -116,9 +116,10 @@
                 console.log('test');
                 const _this = this;
                 XHRGet('/api/MyCenter/mySeting', {}, function (response) {
-                    _this.user.dqyqr_name = response.data.data.inviting_name;
+                    var data = response.data.data;
+                    _this.user.dqyqr_name = data.inviting_name;
                     //_this.user.mephone = response.data.data.cellphone;
-                    _this.user.old_yqrphone = response.data.data.inviting_cellphone;
+                    _this.user.old_yqrphone = data.inviting_cellphone;
                 })
             },
             //错误提示方法

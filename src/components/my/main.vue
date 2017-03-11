@@ -1,16 +1,5 @@
 <template>
     <div class="jin-wrap">
-        <!--<div class="page_ _">-->
-            <!--<div class="weui-loadmore" v-if="loadingShow">-->
-                <!--<i class="weui-loading"></i>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="ui-loading-block show" v-if="loadingShow">-->
-            <!--<div class="ui-loading-cnt">-->
-                <!--<i class="weui-loading" style="margin:30px 10px auto;display: block;font-size:25px;"></i>-->
-               <!--<span class="weui-loadmore__tips">正在加载</span>-->
-            <!--</div>-->
-        <!--</div>-->
             <header class="mine-header jin-box-center ">
                 <div class="ui-avatar-lg rlt" style="  border: 3px solid #fff;">
                     <!--<span class="radius0" style="position: relative;">-->
