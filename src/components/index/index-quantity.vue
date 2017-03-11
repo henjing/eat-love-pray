@@ -77,6 +77,7 @@
         components:{
         },
         created: function() {
+            this.onAgency();
             let _this = this;
             setTimeout(function(){
                 _this.mod =_this.stateBuy;
@@ -120,6 +121,20 @@
             },
             add(){
                 this.number++
+            },
+//            获取等级
+            onAgency(){
+                XHRPost('/api/Shop/buyGoods',data,function (response) {
+                    if (response.status = 1){
+
+                    }else {
+                        layer.open({
+                            content: response.data.info,
+                            time: 2,
+                            style: 'background-color:rgba(0,0,0,.8);color:#fff'
+                        });
+                    }
+                }.bind(this));
             },
 //            提交购买
             onOrder(){

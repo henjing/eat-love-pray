@@ -88,7 +88,7 @@
                 }, function (res) {
                     console.log('res', res);
                     layer.closeAll();
-                    // alert(JSON.stringify(res));
+//                    alert(JSON.stringify(res));
                     if (res.data.status == 1) {
                         _this.nextWePay(res.data.data);
                     }
@@ -96,7 +96,7 @@
             },
             nextWePay(jsonStr) {
                 window.wePayObj = JSON.parse(jsonStr);
-                // alert(JSON.stringify(jsonStr));
+//                alert(JSON.stringify(jsonStr));
                 this.callPay();
             },
             callPay() {
@@ -114,12 +114,12 @@
             },
             jsApiCall() {
                 let _this = this;
-                // alert(JSON.stringify(window.wePayObj));
+//                alert(JSON.stringify(window.wePayObj));
                 WeixinJSBridge.invoke(
                     'getBrandWCPayRequest',
                     window.wePayObj,
                     function(res){
-                        // alert(JSON.stringify(res));
+//                        alert(JSON.stringify(res));
                         if(res.err_msg == "get_brand_wcpay_request:ok"){
                                 layer.open({
                                     title: '温馨提示'
@@ -190,7 +190,7 @@
             onPayWei(){
                 var _this = this;
                 layer.open({
-                    type: 1,
+                    type: 2,
                     shadeClose: false
                 });
                 this.getWeiChat();

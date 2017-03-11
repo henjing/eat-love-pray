@@ -64,8 +64,8 @@
                 <ul class="ui-list ui-list-pure margin-b-20 ui-border-tb">
                     <li class="font12 txt-color2 line-h-12">
                         <div class="margin-b-5">物流公司：{{detailsData.express_company}}</div>
-                        <div class="margin-b-5">订单编号：{{detailsData.express_sn}}</div>
-                        <!--<div>发货时间：2016-09-21 17:34:19</div>-->
+                        <div class="margin-b-5">订单编号：{{detailsData.order_sn}}</div>
+                        <div>物流单号：{{detailsData.express_sn}}</div>
                     </li>
                 </ul>
             </div>
