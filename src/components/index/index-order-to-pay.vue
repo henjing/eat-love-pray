@@ -154,7 +154,7 @@
             // 微股东支付
             onPayKong(){
                 var _this = this;
-                this.close();
+                // this.close();
                 layer.open({
                     title: '请输入交易密码',
                     content: '<input type="password" id="password" style="width:100%;height:40px; border:0;border-bottom:1px solid #ddd;" placeholder="输入支付密码">',
