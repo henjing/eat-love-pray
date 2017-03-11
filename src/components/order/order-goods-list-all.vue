@@ -24,7 +24,7 @@
                 <div class="font14 color-9b">{{key.status}}</div>
                 <div>
                     <button class="ui-btn ui-btn-s" style="width: 80px;color: red;border-color:red" v-if="key.status == '未付款'" @click="goPayment(key)">立即付款</button>
-                    <button class="ui-btn ui-btn-s" style="width: 80px;color: #333;" @click="onLogistics(key)">查看物流</button>
+                    <button class="ui-btn ui-btn-s" style="width: 80px;color: #333;" v-if="key.status == '已付款' || key.status == '已收货'" @click="onLogistics(key)">查看物流</button>
                     <div v-if="key.status == '已付款'">&nbsp;</div>
                 </div>
             </div>
