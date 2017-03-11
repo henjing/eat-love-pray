@@ -197,12 +197,13 @@
         const _this = this;
         XHRGet('/api/MyCenter/index', {}, function (response) {
           if(response.data.status != 0 ) {
-              _this.user.user_wallet = response.data.data.can_use_money;
-              _this.user.user_assets = response.data.data.info_asset;
-              _this.user.user_vip = response.data.data.level;
-              _this.user.user_member = response.data.data.my_children;
-              _this.user.user_name = response.data.data.user_name;
-              _this.user.user_avatars = response.data.data.wechat_avatar;
+              var data = response.data.data;
+              _this.user.user_wallet = data.can_use_money;
+              _this.user.user_assets = data.info_asset;
+              _this.user.user_vip = data.level;
+              _this.user.user_member = data.my_children;
+              _this.user.user_name = data.user_name;
+              _this.user.user_avatars = data.wechat_avatar;
           }else{
               var load = layer.open({type: 2, shadeClose: false})
               _this.goTOnext();
