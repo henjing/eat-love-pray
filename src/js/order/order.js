@@ -32,7 +32,6 @@ const routes = [
     { path: '/order/Logistics', component: OrderGoodsLogistics},
 
     { path: '/index', component: indexHome},
-    { path: '/index/indexOrder', component: indexOrder},
     { path: '/index/indexOrderDetails', component: indexOrderDetails},
 
     // {path: '/address', component: AddressList},

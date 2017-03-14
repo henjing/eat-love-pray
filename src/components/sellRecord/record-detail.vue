@@ -40,17 +40,17 @@
         </div>-->
         
         <div class="ui-whitespace text-center font14">
-            <div v-if="fahuo">
+            <div v-if="shipmentsFinish">
                 <div v-show="shipmentsYes ">
-                    <div class="return-btm return-btm-color13B" v-show="guadan" @click="onGuandan">
-                        挂单
+                    <div class="return-btm return-btm-color13B" v-show="lend" @click="onGuandan">
+                        借单
                     </div>
                     <div class="return-btm return-btm-colorFF3" @click="onShipments" v-show="shipments">
                         发货
                     </div>
 
-                    <div class="return-btm return-btm-colorABAB" v-show="!guadan" >
-                        已挂单
+                    <div class="return-btm return-btm-colorABAB" v-show="!lend" >
+                        已借单
                     </div>
                 </div>
                 <div class="return-btm return-btm-colorABAB" v-show="!shipmentsYes">
@@ -80,10 +80,12 @@ import { XHRPost } from '../../js/ajax.js';
                 loadingShow: true,
                 title: '销售记录详情',
                 _switch:false,
-                shipmentsYes:true,
                 shipments:true,
-                guadan: true,
-                fahuo:false
+                shipmentsYes:true,
+//                是否借单
+                lend: true,
+//                是否发货
+                shipmentsFinish:false
 
             }
         },
@@ -104,16 +106,16 @@ import { XHRPost } from '../../js/ajax.js';
 				XHRPost('/api/Shop/salesDetail', {order_id: encrypt(String(this.id))} , function (response) {
 				    if (response.data.data.status == "已收货") {
                         this.shipmentsYes = false;
-                        this.fahuo = true;
+                        this.shipmentsFinish = true;
                     }else {
-				        this.fahuo = true;
+				        this.shipmentsFinish = true;
                     }
                     if(response.data.data.status == "已发货"){
-                        this.fahuo = false;
+                        this.shipmentsFinish = false;
                     }
-                    if(response.data.data.status == "已挂单"){
+                    if(response.data.data.status == "已借单"){
                         this.shipments = true;
-                        this.guadan = false
+                        this.lend = false
                     }
 					this.loadingShow = false;
 					console.log(response.data)
@@ -153,7 +155,7 @@ import { XHRPost } from '../../js/ajax.js';
                                     });
                                 } else {
                                   layer.closeAll();
-                                  _this.fahuo = false;
+                                  _this.shipmentsFinish = false;
                                 }
                             _this._switch = false;
                         }.bind(_this));
@@ -170,7 +172,7 @@ import { XHRPost } from '../../js/ajax.js';
                         });
                     } else {
                         this.shipments = true;
-                        this.guadan = false
+                        this.lend = false
                     }
                 }.bind(this));
             }

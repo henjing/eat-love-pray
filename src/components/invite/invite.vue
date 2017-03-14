@@ -8,6 +8,10 @@
 			</div>
 		</div>
 		<div class="wrapper">
+			<div class="form-item">
+				<label class="jin-icon jin-icon-user1 font18 text-color-red-dark"></label>
+				<input class="text-color-red-dark" type="text" name="registName" v-model="registName" placeholder="输入您的姓名" />
+			</div>
 			<div class="form-item form-item-btn-r">
 				<label class="jin-icon jin-icon-chongzhi font20 text-color-red-dark" style="margin-top: -16px;"></label>
 				<input class="text-color-red-dark" type="tel" name="phone" v-model="phone" placeholder="手机号" />
@@ -74,12 +78,13 @@
 	}
 </style>
 <script>
-	import { XHRPost } from '../../js/ajax.js';
+	import { XHRPost,XHRGet } from '../../js/ajax.js';
 	import { countdown, getQueryString } from '../../js/tools.js';
 	export default {
 		props: ['userSn'],
 		data() {
 			return {
+				registName: '',
 				phone: '',
 				code: '',
 				pwd: '',
@@ -160,11 +165,18 @@
 				var config = {
 					url: '/api/registerAndLogin/goRegister',
 					data: {
+						user_name: '',
 						cellphone: encrypt(this.phone),
 						verify_code: '',
 						password: '',
 						inviting_sn: encrypt(this.user_sn),
 					},
+				}
+				if (this.registName.trim() == '') {
+					this.errorTip('请输入您的姓名');
+					return false;
+				}  else {
+					config.data.user_name = encrypt(this.registName.trim());
 				}
 
 				const pwd = /^(\w){6,15}$/.test(this.pwd);
@@ -196,7 +208,7 @@
 									if(response.data.status === 1) {
 										window.location.href = response.data.data;
 									} else {
-										window.location.href = '/index/index/index.html';
+										window.location.href = '/index#/index/registerSucces';
 									}
 								}.bind(this));
 							}

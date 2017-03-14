@@ -103,9 +103,11 @@
             if(window.location.href.substr(0, 50) == _urk.substr(0, 50)){
                 this.goodsDetail();
             }else{
-                window.location.href = _urk;
+//                防止同步打断刷新
+                setTimeout(function () {
+                    window.location.href = _urk;
+                },10)
             }
-
             let _this = this;
             setTimeout(function(){
                 _this.mod =_this.stateBuy;

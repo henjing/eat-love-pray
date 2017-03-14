@@ -21,13 +21,16 @@
                 </li>
             </ul>
             <div class="jin-justify-flex ui-whitespace padding-t-10 padding-b-10 bg-white">
-                <div class="font14 color-9b">{{key.status}}</div>
+                <div class="font14 color-9b" ref="status-hook">{{ key.status }}</div>
                 <div>
                     <button class="ui-btn ui-btn-s" style="width: 80px;color: #333;" @click="onLogistics(key)">查看物流</button>
-                    <!--    <button class="ui-btn ui-btn-s margin-l-5" style="width: 80px;color: red;border-color:red"
-                                @click='onDete(key)'
-                        >确认收货</button>-->
-
+                    <button class="ui-btn ui-btn-s margin-l-5" 
+	                    	style="width: 80px;color: red;border-color:red" 
+	                    	@click='onDete(key)'
+	                    	v-if="key.status !== '已收货'"
+                    	>
+                        	确认收货
+                    </button>
                 </div>
             </div>
         </div>
@@ -50,7 +53,8 @@
                     nullData:false,
                     bottom:false,
                 },
-                _switch:false
+                _switch:false,
+                confirm: false,
             }
         },
         created(){
@@ -59,6 +63,43 @@
             OrderGoodsLog,StoreFooter
         },
         methods:{
+        		//确认收货
+        		onDete(info) {
+        			const _this = this;
+        			layer.open({
+					content: '确定要确认收货吗？',
+					btn: ['确认','取消'],
+					yes: function () {
+						XHRPost('/api/Shop/confirmOrder',{ order_id: encrypt(String(info.order_id)) }, function(response) {
+		        				console.info(response.data)
+		        				if (response.data.status === 1) {
+		        					console.log('000',_this.confirm)
+								layer.closeAll();
+		        					layer.open({
+									content: response.data.info,
+									time: 2,
+									end: function() {
+										window.location.reload();
+									}
+								});
+		        				} else {
+		        					layer.open({
+		        						content: response.data.info,
+		        						btn: ['确认'],
+		        						yes: function () {
+		        							layer.closeAll();
+		        						},
+		        					});
+		        				}
+		        			});
+					},
+					no: function () {
+						layer.closeAll();
+					},
+				});
+        			
+        		},
+        		
             onYet(){
                 if (this._switch) return false;
                 this._switch = true;

@@ -115,6 +115,7 @@
                     if (response.data.status == 1){
                         let _data = response.data.data;
                         this.goodsData=_data;
+                        console.log("打印", this.goodsData)
                         if (_data.discription.length>70){
                             this.goodsText = true;
                         }

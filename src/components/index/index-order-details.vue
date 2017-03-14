@@ -43,8 +43,10 @@
         </div>
         <ul class="ui-list ui-list-pure margin-b-20 ui-border-tb">
             <li class="font12 color-9b line-h-12">
-                <div class="margin-b-5">订单编号：{{detailsData.express_sn}}</div>
-                <div class="">创建时间：2016-09-21 17:34:19</div>
+                <div class="margin-b-5" v-show="detailsData.express_company !== null ">物流公司：{{detailsData.express_company}}</div>
+                <div class="margin-b-5" v-show="detailsData.express_sn !== null ">物流单号：{{ detailsData.express_sn }}</div>
+                <div class="margin-b-5">订单编号：{{ detailsData.order_sn }}</div>
+                <div class="">创建时间：{{ detailsData.add_time }}</div>
             </li>
         </ul>
     </div>
@@ -81,7 +83,7 @@
                 }.bind(this));
             },
             orderUrl(){
-                window.location.href="/index/order"
+                window.location.href="/index/order/?#/"
             },
             indexUrl(){
                 window.location.href="/index"

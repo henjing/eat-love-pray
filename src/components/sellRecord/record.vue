@@ -98,6 +98,7 @@ import { XHRPost } from '../../js/ajax.js';
             loadMore: function () {
             		this.page++;
                	this.loadMoreTip = true;
+               	console.log('pages',this.page)
                	XHRPost('/api/Shop/mySalesRecord',{page:encrypt(String(this.page))},function (response) {
                	    this.loadingShow = false;
                	    this.loadMoreTip = false;

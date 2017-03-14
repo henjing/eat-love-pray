@@ -133,7 +133,8 @@
                                     }
                                 });
                         }else if(res.err_msg == "get_brand_wcpay_request:cancel"){
-                            window.location.reload();
+//                            window.location.reload();
+                            _this.$router.push({path:'/index/indexOrderDetails',query: { oid: _this.orderId}})
                         }else{
                             layer.open({
                                 title: '温馨提示'
