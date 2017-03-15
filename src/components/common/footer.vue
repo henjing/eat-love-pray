@@ -78,6 +78,6 @@
 	}
 	.footer a:active,
 	.footer a.current {
-		color: #58AEE8;
+		color: #E61A42;
 	}
 </style>
