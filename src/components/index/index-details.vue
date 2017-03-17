@@ -14,7 +14,7 @@
     </div>
     <!--产品说明信息-->
     <ul class="ui-whitespace w-detail-info ui-row-flex ui-border-b">
-        <li class="display-box ui-col ui-col-4 ui-txt-warning">￥<span class="font20 font-w600">{{goodsData.price}}</span>/<i class="font12">件</i></li>
+        <li class="display-box ui-col ui-col-4 ui-txt-warning">￥<span class="font20 font-w600">{{goodsData.price}}</span>/<i class="font12">盒</i></li>
         <li class="ui-col text-center">
             <div class="font18 line-h-12">{{goodsData.sales}}</div>
             <div class="font12 ui-txt-info line-h-12">累计销量</div>
@@ -115,6 +115,7 @@
                     if (response.data.status == 1){
                         let _data = response.data.data;
                         this.goodsData=_data;
+                        console.log("打印", this.goodsData)
                         if (_data.discription.length>70){
                             this.goodsText = true;
                         }

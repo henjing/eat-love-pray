@@ -24,7 +24,7 @@
                 <div class="font14 color-9b">{{key.status}}</div>
                 <div>
                     <button class="ui-btn ui-btn-s" style="width: 80px;color: red;border-color:red" v-if="key.status == '未付款'" @click="goPayment(key)">立即付款</button>
-                    <button class="ui-btn ui-btn-s" style="width: 80px;color: #333;" v-if="key.status == '已付款' || key.status == '已收货'" @click="onLogistics(key)">查看物流</button>
+                    <button class="ui-btn ui-btn-s" style="width: 80px;color: #333;" v-if="key.status == '已发货' || key.status == '已收货'" @click="onLogistics(key)">查看物流</button>
                     <div v-if="key.status == '已付款'">&nbsp;</div>
                 </div>
             </div>
@@ -56,13 +56,23 @@
                     nullData:false,
                     bottom:false,
                 },
-                 _switch:false,
+                 _switch:true,
                 address_id:"0",
                 bank:false,
                 order_id:""
             }
         },
         created(){
+            var _href = location.href.split("/index");
+            let _urk = _href[0] + "/index/order/?#/";
+            if(window.location.href.substr(0, 50) !== _urk.substr(0, 50)){
+                this._switch = true;
+                setTimeout(function () {
+                    window.location.href = _urk;
+                },0)
+            }else {
+                this._switch = false;
+            }
         },
         components:{
             OrderGoodsLog,indexBank,StoreFooter

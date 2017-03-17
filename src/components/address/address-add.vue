@@ -56,7 +56,7 @@
        margin: auto;
        line-height: 40px;
        color: #fff;
-       background: #508CEE;
+       background: #f75549;
        border-radius: 5px;
    }
     .verify{

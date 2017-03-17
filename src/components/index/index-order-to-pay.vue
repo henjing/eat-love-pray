@@ -43,7 +43,9 @@
         </div>
         <ul class="ui-list ui-list-pure margin-b-20 ui-border-tb">
             <li class="font12 color-9b line-h-12">
-                <div class="margin-b-5">订单编号：{{ detailsData.express_sn }}</div>
+                <div class="margin-b-5" v-show="detailsData.express_company !== null ">物流公司：{{ detailsData.express_company }}</div>
+                <div class="margin-b-5" v-show="detailsData.express_sn !== null ">物流单号：{{ detailsData.express_sn }}</div>
+                <div class="margin-b-5">订单编号：{{ detailsData.order_sn }}</div>
                 <div class="">创建时间：{{ detailsData.add_time }}</div>
             </li>
         </ul>
@@ -88,7 +90,7 @@
                 }, function (res) {
                     console.log('res', res);
                     layer.closeAll();
-                    // alert(JSON.stringify(res));
+//                    alert(JSON.stringify(res));
                     if (res.data.status == 1) {
                         _this.nextWePay(res.data.data);
                     }
@@ -96,7 +98,7 @@
             },
             nextWePay(jsonStr) {
                 window.wePayObj = JSON.parse(jsonStr);
-                // alert(JSON.stringify(jsonStr));
+//                alert(JSON.stringify(jsonStr));
                 this.callPay();
             },
             callPay() {
@@ -114,12 +116,12 @@
             },
             jsApiCall() {
                 let _this = this;
-                // alert(JSON.stringify(window.wePayObj));
+//                alert(JSON.stringify(window.wePayObj));
                 WeixinJSBridge.invoke(
                     'getBrandWCPayRequest',
                     window.wePayObj,
                     function(res){
-                        // alert(JSON.stringify(res));
+//                        alert(JSON.stringify(res));
                         if(res.err_msg == "get_brand_wcpay_request:ok"){
                                 layer.open({
                                     title: '温馨提示'
@@ -190,7 +192,7 @@
             onPayWei(){
                 var _this = this;
                 layer.open({
-                    type: 1,
+                    type: 2,
                     shadeClose: false
                 });
                 this.getWeiChat();

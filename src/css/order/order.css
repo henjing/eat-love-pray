@@ -81,7 +81,7 @@
   left: 0;
   right: 0;
   color: #fff;
-  background: #508CEE; }
+  background: #f75549; }
 
 /*crp-btn*/
 .crp-btn {
@@ -379,7 +379,7 @@ input[type="text"], input[type="password"] {
   text-align: center;
   border-radius: 4px;
   color: #fff;
-  background: #508CEE; }
+  background: #f75549; }
 
 .bottom-panel {
   display: -webkit-box;
@@ -429,7 +429,7 @@ input[type="text"], input[type="password"] {
 /*支付方式弹框*/
 .payment {
   background-color: #fff;
-  border-top: 2px solid #508cce; }
+  border-top: 2px solid #f75549; }
 
 .payment > li {
   padding: 15px 15px;
