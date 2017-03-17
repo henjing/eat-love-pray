@@ -296,7 +296,6 @@ button {
 .bg-100-g, li .k-list-thumb-s > .bg-100-g {
   background-size: 100% 100%;
   display: block;
-  width: 100%;
   z-index: 1;
   background-repeat: no-repeat; }
 
@@ -424,8 +423,9 @@ button {
 ul li div .hg {
   height: 100%; }
 
-ul li div .hg01 {
-  height: 145%; }
+ul > li > a div > .hg01 {
+  width: 80%;
+  height: 110%; }
 
 ul > li > a > .hg02 {
-  margin: 1px 10px 12px 0; }
+  margin: 8px 10px 12px 0px; }
