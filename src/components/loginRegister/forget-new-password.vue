@@ -9,7 +9,7 @@
 			<input class="text-color-red-dark" type="password" name="rePassword" v-model="repassword" placeholder="确认新密码" />
 		</div>
 		<div class="padding-t-20">
-			<button class="ui-btn ui-btn-lg ui-btn-primary" v-on:click="changePassword">保存</button>
+			<button class="ui-btn ui-btn-lg ui-btn-danger" v-on:click="changePassword">保存</button>
 		</div>
 	</div>
 </template>

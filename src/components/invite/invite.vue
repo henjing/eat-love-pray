@@ -29,19 +29,18 @@
 				<input class="text-color-red-dark" type="password" name="pwd" v-model="pwd" placeholder="设置登陆密码" />
 			</div>
 			<div class="padding-t-5">
-				<button class="ui-btn ui-btn-lg ui-btn-primary" v-on:click="goToRegister">注册</button>
+				<button class="ui-btn ui-btn-lg ui-btn-danger" v-on:click="goToRegister">注册</button>
 			</div>
-			<!--<p class="margin-t-20 padding-t-10 text-center font14">
+			<p class="margin-t-20 padding-t-10 text-center font14">
 				<a class="under-line ui-txt-default" href="/index/login_register/login.html">已有账号，直接登陆</a>
-			</p>-->
+			</p>
 		</div>
 	</div>
 </template>
 <style scoped>
 	.header {
 		height: 100px;
-		background-color: #2173EC;
-		background-image: linear-gradient(-180deg, #2173EC 0%, #72DEFE 100%);
+		/*background-image: linear-gradient(-180deg, #2173EC 0%, #72DEFE 100%);*/
 	}
 	
 	.inviter-info {
@@ -51,14 +50,14 @@
 	
 	.inviter-info .text {
 		font-size: 10px;
-		color: #1B68E7;
+		color: #ada59e;
 		letter-spacing: 0;
 	}
 	
 	.inviter-info .avatar {
 		width: 20px;
 		height: 20px;
-		background-color: #2173EC;
+		background-color: #eaebec;
 		background-position: center;
 		background-size: cover;
 		border-radius: 50%;

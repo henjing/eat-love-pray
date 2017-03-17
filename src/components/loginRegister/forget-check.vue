@@ -13,7 +13,7 @@
 			<input class="text-color-red-dark" type="text" name="code" v-model="code" placeholder="输入验证码"/>
 		</div>
 		<div class="padding-t-20">
-			<button class="ui-btn ui-btn-lg ui-btn-primary" @click="goToNext">下一步</button>
+			<button class="ui-btn ui-btn-lg ui-btn-danger" @click="goToNext">下一步</button>
 		</div>
 	</div>
 	

@@ -121,12 +121,14 @@ import { XHRPost } from '../../js/ajax.js';
                     			}
                     		});
                     }
-
-                   	if (response.data.totalPage == 0) {
-                    		this.nullData = true;
-                    } else if (response.data.current_page == response.data.totalPage) {
+                    if (response.data.current_page == response.data.totalPage) {
                     		this.loadend = true;
 					    	this.busy = true;
+                    }
+                    
+                    if (response.data.status === 0) {
+                    		this.nullData = true;
+                    		this.loadend = false;
                     }
                     
                	}.bind(this))
