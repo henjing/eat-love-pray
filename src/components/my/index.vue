@@ -24,7 +24,7 @@
             <ul class="ui-list jin-list-link k-list ui-list-active">
                 <li class="ui-border-b" onclick="location.href='/index/wallet/index.html'">
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                            <span class="bg-100-g" style="background-position: -113px -43px"></span>
+                            <span class="bg-100-g hs_wallet"></span>
                         </div>
                         <div class="ui-list-info">
                             <h4 class="ui-nowrap">钱包</h4>
@@ -34,7 +34,8 @@
                 <li>
                     <router-link to="/connection" class="click_a">
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                            <span class="bg-100-g" style="background-position: -114px -192px"></span>
+                            <!--<span class="bg-100-g hs_inventory" style="background-position: -114px -192px"></span>-->
+                            <span class="bg-100-g hs_inventory"></span>
                         </div>
                         <div class="ui-list-info">
                             <h4 class="ui-nowrap">我的会员</h4>
@@ -49,7 +50,8 @@
                 <li class="ui-border-b" onclick="location.href='/index/SellRecord/index.html'">
                     <!--<router-link to="" class="click_a">-->
                     <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                        <span class="bg-100-g" style="background-position: -115px -100px"></span>
+                        <!--<span class="bg-100-g" style="background-position: -115px -100px"></span>-->
+                        <span class="bg-100-g hs_sales hg"></span>
                     </div>
                     <div class="ui-list-info">
                         <h4 class="ui-nowrap">销售记录</h4>
@@ -59,7 +61,8 @@
                 </li>
                 <li class="ui-border-b" onclick="location.href='/index/order/index.html'">
                     <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                        <span class="bg-100-g" style="background-position: -115px -126px"></span>
+                        <!--<span class="bg-100-g" style="background-position: -115px -126px"></span>-->
+                        <span class="bg-100-g hs_dd hg"></span>
                     </div>
                     <div class="ui-list-info">
                         <h4 class="ui-nowrap">我的订单</h4>
@@ -68,7 +71,8 @@
                 </li>
                 <li onclick="location.href='/index/address/index.html'">
                     <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                        <span class="bg-100-g" style="background-position: -114px -228px"></span>
+                        <!--<span class="bg-100-g" style="background-position: -114px -228px"></span>-->
+                        <span class="bg-100-g hs_address"></span>
                     </div>
                     <div class="ui-list-info">
                         <h4 class="ui-nowrap">收货地址</h4>

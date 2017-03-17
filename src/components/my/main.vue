@@ -14,7 +14,8 @@
                     <li class="ui-border-b">
                         <router-link to="/name" class="click_a">
                             <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                                <span class="bg-100-g si" style="background-position: -39px -55px"></span>
+                                <!--<span class="bg-100-g si" style="background-position: -39px -55px"></span>-->
+                                <span class="bg-100-g hs_Pen" ></span>
                             </div>
                             <div class="ui-list-info">
                                 <h4 class="ui-nowrap">常用名</h4>
@@ -26,7 +27,8 @@
                 <li class="ui-border-b exq" v-if="user.yqr_name!=''" >
                     <!--<router-link to="/inviter" class="click_a">-->
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                            <span class="bg-100-g si" style="background-position: -39px -90px"></span>
+                            <!--<span class="bg-100-g si" style="background-position: -39px -90px"></span>-->
+                            <span class="bg-100-g hs_inviter" ></span>
                         </div>
                         <div class="ui-list-info">
                             <h4 class="ui-nowrap">邀请人</h4>
@@ -36,8 +38,9 @@
                 </li>
                 <li class="ui-border-b">
                     <router-link to="/phone" class="click_a">
-                        <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg" >
-                            <span class="bg-100-g si" style="background-position: -38px -122px"></span>
+                        <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg hg02" >
+                            <!--<span class="bg-100-g si" style="background-position: -38px -122px"></span>-->
+                            <span class="bg-100-g hs_Mobile hg01" ></span>
                         </div>
                         <div class="ui-list-info">
                             <h4 class="ui-nowrap">手机号码</h4>
@@ -68,7 +71,8 @@
                 <ul class="ui-list ui-list-active">
                     <li>
                         <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                            <span class="bg-100-g si" style="background-position: -37px -149px"></span>
+                            <!--<span class="bg-100-g si" style="background-position: -37px -149px"></span>-->
+                            <span class="bg-100-g hs_time" ></span>
                         </div>
                         <div class="ui-list-info">
                             <h4 class="ui-nowrap" >注册时间</h4>
@@ -81,7 +85,8 @@
                     <li>
                         <router-link to="/mima" class="click_a">
                             <div class="ui-list-thumb k-list-thumb-s  k-list-thumb-bg">
-                                <span class="bg-100-g si" style="background-position: -39px -182px"></span>
+                                <!--<span class="bg-100-g si" style="background-position: -39px -182px"></span>-->
+                                <span class="bg-100-g hs_pwd" ></span>
                             </div>
                             <div class="ui-list-info">
                                 <h4 class="ui-nowrap" >修改密码</h4>

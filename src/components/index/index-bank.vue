@@ -5,7 +5,7 @@
             <div class="bank-title text-center font12">选择支付方式</div>
             <ul class="ui-list bank-list">
                 <li class="ui-border-b" @click="onPayKong()">
-                    <div class="icon-list">
+                     <div class="icon-list">
                         <i class="jin-icon jin-icon-pay color-ff3 font24"></i>
                         <div class="margin-l-10 font14 color-499">钱包支付</div>
                     </div>
@@ -67,7 +67,7 @@
                 goods:this.stateId,
                 bankData:"",
                 orderId:this.stateOrderId,
-                switch:false,
+                  switch:false,
                 payString: ''
             }
         },

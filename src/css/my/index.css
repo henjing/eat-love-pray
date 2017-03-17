@@ -17,8 +17,7 @@
     width: 100%;
     height: 100%;
     z-index: 1;
-    background-repeat: no-repeat;
-    -webkit-background-size: cover; }
+    background-repeat: no-repeat; }
   .asset-btn {
     width: 45%;
     height: 35px;
@@ -295,19 +294,41 @@ button {
 
 /*index和main页的图标背景图*/
 .bg-100-g, li .k-list-thumb-s > .bg-100-g {
-  background-image: url(/static/images/icon01.jpg);
+  background-size: 100% 100%;
   display: block;
   width: 100%;
-  height: 100%;
   z-index: 1;
-  background-repeat: no-repeat;
-  -webkit-background-size: cover; }
+  background-repeat: no-repeat; }
 
-ul li .k-list-thumb-s > .si {
-  background-size: 940%; }
+.hs_wallet {
+  background: url(/static/images/hs_wallet.png); }
 
-li .k-list-thumb-s > .bg-100-g {
-  background-size: 840%; }
+.hs_inventory {
+  background: url(/static/images/hs_inventory.png); }
+
+.hs_sales {
+  background: url(/static/images/hs_sales.png); }
+
+.hs_dd {
+  background: url(/static/images/hs_dd.png); }
+
+.hs_address {
+  background: url(/static/images/hs_address.png); }
+
+.hs_Pen {
+  background: url(/static/images/hs_Pen.png); }
+
+.hs_pwd {
+  background: url(/static/images/hs_pwd.png); }
+
+.hs_inviter {
+  background: url(/static/images/hs_inviter.png); }
+
+.hs_Mobile {
+  background: url(/static/images/hs_Mobile.png); }
+
+.hs_time {
+  background: url(/static/images/hs_time.png); }
 
 .camera {
   width: 22px;
@@ -399,3 +420,12 @@ li .k-list-thumb-s > .bg-100-g {
   top: 50%;
   margin-top: -21px;
   margin-right: -10px; }
+
+ul li div .hg {
+  height: 130%; }
+
+ul li div .hg01 {
+  height: 145%; }
+
+ul > li > a > .hg02 {
+  margin: 1px 10px 12px 0; }
