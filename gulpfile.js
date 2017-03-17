@@ -43,11 +43,9 @@ let luYuQiu = {
 	resources: '../kongdian_hs/public/static/'
 };
 
-<<<<<<< HEAD
+
 let targetRoute = luYuQiu;
-=======
-let targetRoute = qinHaiLang;
->>>>>>> 3b2986bf1cf8307e31e5a94c630c519f63af816e
+
 
 // 下面就是dirty work, get your hands dirty!
 var webpackConfig = {
