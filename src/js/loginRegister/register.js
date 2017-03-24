@@ -98,14 +98,20 @@ var login = new Vue({
 						content: response.data.info,
 						time: 1.5,
 						end: function () {
-							XHRGet('/api/Wechat/getUserOpenId', {}, function (response) {
-								layer.closeAll();
-								if (response.data.status === 1) {
-									window.location.href = response.data.data;
-								} else {
-									window.location.href = '/index#/index/registerSucces';
-								}
-							}.bind(this));
+							layer.open({
+								type: 1,
+								shadeClose: false,
+								title: '长按识别二维码关注《和十素养公众号》',
+								content: '<div><p class="text-center">让高贵的素养传遍世界!</p><img src="/static/images/heshi-code.jpg" width="100%"/></div>'
+							})
+//							XHRGet('/api/Wechat/getUserOpenId', {}, function (response) {
+//								layer.closeAll();
+//								if (response.data.status === 1) {
+//									window.location.href = response.data.data;
+//								} else {
+//									window.location.href = '/index#/index/registerSucces';
+//								}
+//							}.bind(this));
 						}
 					});
 
