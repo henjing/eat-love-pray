@@ -71,13 +71,16 @@ var login = new Vue({
 			}
 			
 			
-			const pwd = /^(\w){6,15}$/.test(this.pwd);
 			if (this.code) {
 				config.data.verify_code = encrypt(this.code);
 			} else {
-				this.errorTip('请输入验证码');
-				return false;
+				//临时修改
+				config.data.verify_code = encrypt(this.code);
+//				this.errorTip('请输入验证码');
+//				return false;
 			}
+			
+			const pwd = /^(\w){6,15}$/.test(this.pwd);
 			if (pwd) {
 				config.data.password = encrypt(this.pwd);
 			} else {
