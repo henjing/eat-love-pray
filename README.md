@@ -1,3 +1,11 @@
+#安装
+第一步：git clone https://github.com/henjing/goldenEast.git
+第二步：执行 npm install 安装 项目依赖
+#运行项目
+执行 npm run dev
+#打包
+执行 npm run build
+
 1）通用的的git提交流程：
 
 第一步：git status，查看本地git仓库状态
