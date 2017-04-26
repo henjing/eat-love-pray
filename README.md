@@ -15,7 +15,7 @@
 
 执行 npm run build
 
-build的路径需要根据个人情况来修改：
+build的路径需要根据个人情况来修改gulpfile.js：
 
 ```js
 const exec = require('child_process').exec;
